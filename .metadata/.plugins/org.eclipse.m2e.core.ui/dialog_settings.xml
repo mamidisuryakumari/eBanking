@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\SuryaKumari\Automation\Automation_08102024" />
+			<item
+				value="C:\SuryaKumari\Automation\Automation_08102024\Test_Shop" />
+			<item
+				value="C:\SuryaKumari\Automation\TestShopBddFrameWork_18092024" />
+			<item value="C:\SuryaKumari\Automation\NewBddFrameWork_18092024" />
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]" />
+			<item value="[artifactId]-TRUNK" />
+			<item value="[artifactId]-[version]" />
+			<item value="[groupId].[artifactId]" />
+			<item value="[groupId].[artifactId]-[version]" />
+			<item value="[name]" />
+		</list>
+	</section>
+</section>
