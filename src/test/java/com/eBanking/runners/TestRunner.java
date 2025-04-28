@@ -8,9 +8,9 @@ import io.cucumber.junit.CucumberOptions;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/com/ecommerce/features", 
-                 glue = {"com.ecommerce.stepDefinitions", "com.ecommerce.hooks"},
-                		 tags = "@addmultipleproducts1",
+@CucumberOptions(features = "src/test/resources/Features", 
+                 glue = {"com.eBanking.stepDefinitions", "com.eBanking.hooks"},
+                		 tags = "@UserLogin",
                  plugin = {"pretty", "html:target/cucumber-reports/reports.html",
                 		 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
                  dryRun = false,
