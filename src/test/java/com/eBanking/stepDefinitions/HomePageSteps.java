@@ -10,6 +10,8 @@ import com.eBanking.pages.HomePage;
 import com.eBanking.pages.LoginPage;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class HomePageSteps {
 
@@ -32,4 +34,23 @@ public class HomePageSteps {
 		}
 
 	}
+	
+	
+
+	@When("User click on user menu")
+	public void user_click_on_user_menu() {
+		try {
+			homePage.clickOnUserMenu();
+			log.info("User menu clicked cuccessfully");
+		} catch (Exception e) {
+			log.error("An exception occured while clicking the user menu" , e);
+			throw e;
+		}
+		
+	}
+	
+	
+
+
+
 }

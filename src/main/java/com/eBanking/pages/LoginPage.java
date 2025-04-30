@@ -18,6 +18,10 @@ public class LoginPage {
 	private By passwordTextFld = By.id("password");
 	private By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
 	
+	public String getLoginPageTitle() {
+	return	driver.getTitle();
+	}
+	
 	public RegistrationPage createAccount() {
 		Elements.doClick(driver, createAnAccountlink);
 		return new RegistrationPage(driver);

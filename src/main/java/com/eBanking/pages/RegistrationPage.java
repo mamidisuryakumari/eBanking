@@ -21,6 +21,10 @@ public class RegistrationPage {
 	private By passwordFld = By.id("password");
 	private By registerAccountBtn = By.id("submit");
 	
+	public String getRegistrationPageTitle() {
+	return	driver.getTitle();
+	}
+	
 	public LoginPage registerUserAccount(String firstName,String lastName, String eamilAddress,String mobileNumber,String password) {
 		Elements.doSendKeys(driver, firstNameTextFld, firstName);
 		Elements.doSendKeys(driver, lastNameTextFld, lastName);

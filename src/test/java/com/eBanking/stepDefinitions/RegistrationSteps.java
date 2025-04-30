@@ -28,8 +28,6 @@ public class RegistrationSteps {
 	public void user_registers_an_account_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
 
 		try {
-			homePage.clickOnUserMenu();
-			loginPage.createAccount();
 			Map<String, String> registrationAccountDetails = dataTable.asMap();
 			registrationPage.registerUserAccount(registrationAccountDetails.get("First Name"),
 					registrationAccountDetails.get("Last Name"), registrationAccountDetails.get("Email Address"),
@@ -59,6 +57,21 @@ public class RegistrationSteps {
 			throw e;
 		}
 
-		
+		}
+
+	@Then("User should be navigated to registration page")
+	public void user_should_be_navigated_to_registration_page() {
+	    try {
+			String exceptedRegistrationPageTitle = "e-Banking";
+			String actualRegistrationPageTitle = registrationPage.getRegistrationPageTitle();
+			Assert.assertEquals(exceptedRegistrationPageTitle, actualRegistrationPageTitle);
+			log.info("The registration page title was matched");
+		} catch (AssertionError ae) {
+			log.error("Assert failed", ae);
+			throw ae;
+		}catch (Exception e) {
+			log.error("An exception error occured while navigating to registration page", e);
+			throw e;
+		}
 	}
 }

@@ -9,6 +9,7 @@ import com.eBanking.hooks.Hooks;
 import com.eBanking.pages.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class UserDashboardsteps {
 	
@@ -33,6 +34,20 @@ public class UserDashboardsteps {
 			throw e;
 		}
 	}
+
+	
+
+	@When("the user clicks on the Account Opening option")
+	public void the_user_clicks_on_the_account_opening_option() {
+		try {
+			 userDashboardPage.clickOnAccountOpening();
+			 log.info("User clicked on account opening successfully");
+		} catch (Exception e) {
+			log.error("An exception occured while clicking on the account opening option", e);
+			throw e;
+		}
+	  }
+	
 
 
 

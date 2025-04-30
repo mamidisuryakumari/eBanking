@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import java.util.Map;
 
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class LoginSteps {
 	@When("User log in with valid credentials")
 	public void user_logs_in_with_valid_credentials(io.cucumber.datatable.DataTable dataTable) {
 		try {
-			homePage.clickOnUserMenu();
+
 			Map<String, String> loginDetails = dataTable.asMap();
 			loginPage.loginUser(loginDetails.get("Email Address"), (loginDetails.get("Password")));
 			log.info("User logged successfully");
@@ -35,6 +36,32 @@ public class LoginSteps {
 
 	}
 
-	
+	@Then("User should be navigated to login page")
+	public void user_should_be_navigated_to_login_page() {
+		try {
+			String exceptedLoginPageTitle = "e-Banking | User Login";
+			String actualLoginPageTitle = loginPage.getLoginPageTitle();
+			Assert.assertEquals(exceptedLoginPageTitle, actualLoginPageTitle);
+			log.info("Login page title is matched");
+		} catch (AssertionError ae) {
+			log.error("Assert is failed", ae);
+			throw ae;
+		} catch (Exception e) {
+			log.error("An exception occured while navigating to login page");
+			throw e;
+		}
+
+	}
+
+	@When("User click on create an account link")
+	public void user_click_on_create_an_account_link() {
+		try {
+			loginPage.createAccount();
+			log.info("Account link was clicked successfully");
+		} catch (Exception e) {
+			log.error("An exception occured while clicking create account link", e);
+			throw e;
+		}
+	}
 
 }
