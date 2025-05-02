@@ -5,18 +5,20 @@ import org.openqa.selenium.WebDriver;
 
 import com.eBanking.utilities.Elements;
 
-public class LoginPage {
+public class UserLoginPage {
 	
 	
 	private WebDriver driver;
 	
-	public LoginPage(WebDriver driver) {
+	public UserLoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
-	private By createAnAccountlink = By.xpath("//a[text()='Create an Account!']");
-	private By emailTextFld = By.id("email");
-	private By passwordTextFld = By.id("password");
-	private By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
+	private static By createAnAccountlink = By.xpath("//a[text()='Create an Account!']");
+	private static By emailTextFld = By.id("email");
+	private static By passwordTextFld = By.id("password");
+	private static By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
+	
+
 	
 	public String getLoginPageTitle() {
 	return	driver.getTitle();

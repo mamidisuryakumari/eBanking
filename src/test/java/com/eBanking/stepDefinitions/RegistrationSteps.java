@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
 import com.eBanking.pages.HomePage;
-import com.eBanking.pages.LoginPage;
 import com.eBanking.pages.RegistrationPage;
+import com.eBanking.pages.UserLoginPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,7 +22,7 @@ public class RegistrationSteps {
 	Logger log = LoggerFactory.getLogger(RegistrationSteps.class);
 	RegistrationPage registrationPage = new RegistrationPage(driver);
 	HomePage homePage = new HomePage(driver);
-	LoginPage loginPage = new LoginPage(driver);
+	UserLoginPage loginPage = new UserLoginPage(driver);
 
 	@When("User registers with the following details")
 	public void user_registers_an_account_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {

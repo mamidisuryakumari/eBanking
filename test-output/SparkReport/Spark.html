@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Automation Test Execution Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">2025-04-30 11:14:08</span></a>
+<a href="#"><span class="badge badge-primary">2025-05-02 14:40:14</span></a>
 </li>
 </ul>
 </div>
@@ -45,11 +45,6 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
-</a>
-</li>
-<li class="nav-item dropdown" onclick="toggleView('exception-view')">
-<a id="nav-exception" class="dropdown-toggle" href="#">
-<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -76,7 +71,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -84,31 +79,31 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@Accountopening</a>
+<a class="dropdown-item" href="#">@AdminLogin</a>
 </ul>
 </li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="fail" test-id="1"
+        <li class="test-item"  status="pass" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">User Functionality</p>
+            <p class="name">Admin login</p>
             <p class="text-sm">
-              <span>11:14:09 am</span> / <span>00:01:10:787</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>2:40:14 pm</span> / <span>00:00:03:278</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">User Functionality</h5>
-<span class='badge badge-success'>04.30.2025 11:14:09 am</span>
-<span class='badge badge-danger'>04.30.2025 11:15:20 am</span>
-<span class='badge badge-default'>00:01:10:787</span>
+<h5 class="test-status text-pass">Admin login</h5>
+<span class='badge badge-success'>05.02.2025 2:40:14 pm</span>
+<span class='badge badge-danger'>05.02.2025 2:40:18 pm</span>
+<span class='badge badge-default'>00:00:03:278</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -121,119 +116,36 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify account opening</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify admin login is successful</div>
       </div>
     </div>
-        <div class="">
+        <div class="collapse">
           <div class="card-body">
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.user_is_on_the_home_page()">
-                <span>Given User is on the home page</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.admin_is_on_the_home_page()">
+                <span>Given Admin is on the home page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.user_click_on_user_menu()">
-                <span>When User click on user menu</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.admin_click_on_admin_menu()">
+                <span>When Admin click on admin menu</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.LoginSteps.user_should_be_navigated_to_login_page()">
-                <span>Then User should be navigated to login page</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.LoginSteps.admin_should_be_navigated_to_login_page()">
+                <span>Then Admin should be navigated to login page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.LoginSteps.user_logs_in_with_valid_credentials(io.cucumber.datatable.DataTable)">
-                <span>When User log in with valid credentials</span>
-      <div><table class='markup-table table '><tr><td>Email Address</td><td>dileepk@gmail.com</td></tr><tr><td>Password</td><td>dileep@123</td></tr></table>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.AdminLoginSteps.admin_log_in_with_valid_credentials(io.cucumber.datatable.DataTable)">
+                <span>When Admin log in with valid credentials</span>
+      <div><table class='markup-table table '><tr><td>Email Address</td><td>admin@gmail.com</td></tr><tr><td>Password</td><td>admin123</td></tr></table>
       </div>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserDashboardsteps.user_should_be_navigated_to_dashboard_page()">
-                <span>Then User should be navigated to dashboard page</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.AdminDashboardSteps.admin_should_be_navigated_to_admindashboard_page()">
+                <span>Then Admin should be navigated to admindashboard page</span>
       <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserDashboardsteps.the_user_clicks_on_the_account_opening_option()">
-                <span>When the user clicks on the Account Opening option</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.AccountDetailsStep.the_user_should_be_navigated_to_the_account_details_page()">
-                <span>Then the user should be navigated to the Account Details page</span>
-      <div>
-      </div>
-              </div>
-              <div class="step fail-bg" title="com.eBanking.stepDefinitions.AccountDetailsStep.the_user_enters_the_following_account_details(io.cucumber.datatable.DataTable)">
-                <span>When the user enters the following account details</span>
-      <div><table class='markup-table table '><tr><td>Address Proof ID Number</td><td>123578942365</td></tr><tr><td>PAN Card ID Number</td><td>WERTF1234D</td></tr><tr><td>Address</td><td>D.No 12-39, Colony, Nandivada</td></tr><tr><td>Date of birth</td><td>12-11-1990</td></tr></table>
-      </div>
-      <div>
-        <textarea disabled class="code-block">org.openqa.selenium.NoSuchSessionException: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=135.0.7049.115)
-Build info: version: '4.22.0', revision: 'c5f3146703*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0bb9b7d5e6b554d53da9cbf86af54c67, findElement {value=uplpancard, using=id}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.115, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Users\kumar\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60843}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60843/devtoo..., se:cdpVersion: 135.0.7049.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	at com.eBanking.utilities.WaitUtils.waitForElementIsVisible(WaitUtils.java:25)
-	at com.eBanking.utilities.Elements.doSendKeys(Elements.java:132)
-	at com.eBanking.pages.AccountDetailsPage.enterAccountDetails(AccountDetailsPage.java:50)
-	at com.eBanking.stepDefinitions.AccountDetailsStep.the_user_enters_the_following_account_details(AccountDetailsStep.java:32)
-	at ✽.the user enters the following account details(file:///C:/SuryaKumari/eBanking/Automation/Auto_27042025/eBanking/src/test/resources/Features/User.feature:39)
-</textarea>
-      
-      </div>
-              </div>
-              <div class="step fail-bg" title="AFTER_STEP">
-                <span>com.eBanking.hooks.Hooks.actionAfterEachStep(io.cucumber.java.Scenario)</span>
-      <div>
-        <textarea disabled class="code-block">org.openqa.selenium.NoSuchSessionException: invalid session id
-Build info: version: '4.22.0', revision: 'c5f3146703*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0bb9b7d5e6b554d53da9cbf86af54c67, screenshot {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.115, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Users\kumar\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60843}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60843/devtoo..., se:cdpVersion: 135.0.7049.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:591)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
-	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:321)
-	at com.eBanking.hooks.Hooks.actionAfterEachStep(Hooks.java:54)
-</textarea>
-      
-      </div>
-              </div>
-              <div class="step skip-bg" title="com.eBanking.stepDefinitions.AccountDetailsStep.the_user_should_see_a_message(java.lang.String)">
-                <span>Then the user should see a message "Account opened successfully"</span>
-      <div>Step skipped
       </div>
               </div>
           </div>
@@ -251,69 +163,7 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view exception-view attributes-view">
-<div class="test-list">
-<div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
-</div>
-<div class="test-list-wrapper scrollable">
-<ul class="test-list-item">
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>2</span>
-</span>
-<p class="name">org.openqa.selenium.NoSuchSessionException</p>
-<p class="duration text-sm">2 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>org.openqa.selenium.NoSuchSessionException</h4>
-<span status="fail" class='badge log badge-danger'>2 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>11:14:13 am</td>
-<td>
-<a href="#" class="linked" test-id='1' id='19'>When the user enters the following account details</a>
-<div class="">
-<span class="badge badge-default">User Functionality.Verify account opening.When the user enters the following account details</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>11:15:20 am</td>
-<td>
-<a href="#" class="linked" test-id='1' id='20'>com.eBanking.hooks.Hooks.actionAfterEachStep(io.cucumber.java.Scenario)</a>
-<div class="">
-<span class="badge badge-default">User Functionality.Verify account opening.com.eBanking.hooks.Hooks.actionAfterEachStep(io.cucumber.java.Scenario)</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="test-content scrollable">
-<div class="test-content-detail">
-<div class="detail-body"></div>
-</div>
-</div>
-</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-wrapper row view category-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
@@ -324,15 +174,15 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">@Accountopening</p>
+<p class="name">@AdminLogin</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@Accountopening</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<h4>@AdminLogin</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -343,13 +193,13 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>11:14:09 am</td>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>14:40:14 pm</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Verify account opening</a>
+<a href="#" class="linked" test-id='1' id='2'>Verify admin login is successful</a>
 <div class="">
-<span class="badge badge-default">User Functionality.Verify account opening</span>
+<span class="badge badge-default">Admin login.Verify admin login is successful</span>
 </div>
 </td>
 </tr>
@@ -370,25 +220,25 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>2025-04-30 11:14:08</h3>
+<h3>2025-05-02 14:40:14</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>2025-04-30 11:15:20</h3>
+<h3>2025-05-02 14:40:18</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 </div>
@@ -404,12 +254,12 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'>
-<b>0</b> features passed
+<div><small data-tooltip='100%'>
+<b>1</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='100%'><b>1</b> features failed,
+<small data-tooltip='0%'><b>0</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -427,9 +277,9 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'><b>0</b> scenarios passed</small></div>
+<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='100%'><b>1</b> scenarios failed,
+<small data-tooltip='0%'><b>0</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -447,10 +297,10 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='70%'><b>7</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>5</b> steps passed</small></div>
 <div>
-<small data-tooltip='20%'><b>2</b> steps failed,
-<b>1</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='0%'><b>0</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -466,7 +316,7 @@ Session ID: 0bb9b7d5e6b554d53da9cbf86af54c67
 </div></div>
 <script>
 var timeline = {
-"User Functionality":70.787
+"Admin login":3.278
 };
 </script>
 <div class="row">
@@ -476,12 +326,12 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@Accountopening</td>
-<td>0</td>
+<td>@AdminLogin</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0%</td>
+<td>0</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
@@ -492,21 +342,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 0,
-failParent: 1,
+passParent: 1,
+failParent: 0,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 0,
-failChild: 1,
+passChild: 1,
+failChild: 0,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 7,
-failGrandChild: 2,
+passGrandChild: 5,
+failGrandChild: 0,
 warningGrandChild: 0,
-skipGrandChild: 1,
+skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
 };

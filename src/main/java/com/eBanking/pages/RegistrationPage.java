@@ -25,13 +25,13 @@ public class RegistrationPage {
 	return	driver.getTitle();
 	}
 	
-	public LoginPage registerUserAccount(String firstName,String lastName, String eamilAddress,String mobileNumber,String password) {
+	public UserLoginPage registerUserAccount(String firstName,String lastName, String eamilAddress,String mobileNumber,String password) {
 		Elements.doSendKeys(driver, firstNameTextFld, firstName);
 		Elements.doSendKeys(driver, lastNameTextFld, lastName);
 		Elements.doSendKeys(driver, emailAddressFld, eamilAddress);
 		Elements.doSendKeys(driver, mobileNUmberFld, mobileNumber);
 		Elements.doSendKeys(driver, passwordFld, password);
 		Elements.doClick(driver, registerAccountBtn);
-		return new LoginPage(driver);
+		return new UserLoginPage(driver);
 	}
 }

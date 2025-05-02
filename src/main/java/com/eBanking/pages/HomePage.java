@@ -16,14 +16,18 @@ public class HomePage {
 	private By userMenu = By.xpath("(//a[text()='User/Account Holder'])[2]");
 	private By adminMenu = By.xpath("(//a[text()='Admin'])[2]");
 	
-	public LoginPage clickOnUserMenu() {
+	public UserLoginPage clickOnUserMenu() {
 		Elements.doJsClick(driver, userMenu);
-		return new LoginPage(driver);
+		return new UserLoginPage(driver);
 	}
 	
 	public String getHomePageTitle() {
 	return	driver.getTitle();
 	}
 	
+	public UserLoginPage clickOnAdminMenu() {
+		Elements.doJsClick(driver, adminMenu);
+		return new UserLoginPage(driver);
+	}
 
 }
