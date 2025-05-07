@@ -8,20 +8,20 @@ public class AlertUtil {
 	private static boolean bStatus;
 	
 	//accept alert
-	public static boolean acceptAlert(WebDriver driver,By locator) {
-		bStatus=WaitUtils.waitForAlertIsPresent(driver, locator, Constants.maxWaitTime);
+	public static boolean acceptAlert(WebDriver driver) {
+		bStatus=WaitUtils.waitForAlertIsPresent(driver, Constants.maxWaitTime);
 		if(bStatus) {
 			driver.switchTo().alert().accept();
 			return true;
 			
 		}else {
-			System.out.println("Alert"+locator+" was not present");
+			System.out.println("Alert was not present");
 		}
 		return false;
 	}
 //dismiss alert
 	public static boolean dismissAlert(WebDriver driver,By locator) {
-		bStatus=WaitUtils.waitForAlertIsPresent(driver, locator, Constants.maxWaitTime);
+		bStatus=WaitUtils.waitForAlertIsPresent(driver, Constants.maxWaitTime);
 		if(bStatus) {
 			driver.switchTo().alert().dismiss();
 			return true;
@@ -49,7 +49,7 @@ public class AlertUtil {
 
 //get alert message
 public static boolean getAlertMessage(WebDriver driver,By locator) {
-	bStatus=WaitUtils.waitForAlertIsPresent(driver, locator, Constants.maxWaitTime);
+	bStatus=WaitUtils.waitForAlertIsPresent(driver, Constants.maxWaitTime);
 	if(bStatus) {
 		driver.switchTo().alert().getText();
 		return true;

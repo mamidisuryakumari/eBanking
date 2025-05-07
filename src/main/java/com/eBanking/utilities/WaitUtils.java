@@ -13,6 +13,16 @@ import org.slf4j.LoggerFactory;
 public class WaitUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(WaitUtils.class);
+	
+	public static boolean waitUntilTitle(WebDriver driver, String expectedTitle, Duration timeout) {
+	    try {
+	    	WebDriverWait wait = new WebDriverWait(driver, timeout);
+	        return wait.until(ExpectedConditions.titleIs(expectedTitle));
+	    } catch (Exception e) {
+	    	logger.error("Timeout waiting for title: " + expectedTitle, e);
+	        return false;
+	    }
+	}
 
 	// Wait for Element Visible
 	public static boolean waitForElementIsVisible(WebDriver driver, By locator, Duration timeout) {
@@ -95,15 +105,15 @@ public class WaitUtils {
 	}
 
 	// Wait for alert
-	public static boolean waitForAlertIsPresent(WebDriver driver, By locator, Duration timeout) {
-		if (driver == null || locator == null || timeout == null) {
+	public static boolean waitForAlertIsPresent(WebDriver driver,Duration timeout) {
+		if (driver == null  || timeout == null) {
 			logger.error("Driver,locator,timeout is null");
 			return false;
 		}
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			wait.until(ExpectedConditions.alertIsPresent());
-			logger.info("Alert is present" + locator);
+			logger.info("Alert is present" );
 			return true;
 		} catch (TimeoutException e) {
 			logger.error("Alert is not present with in the time period" + e);

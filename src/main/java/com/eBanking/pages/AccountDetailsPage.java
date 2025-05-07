@@ -1,10 +1,5 @@
 package com.eBanking.pages;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
@@ -13,9 +8,6 @@ import org.openqa.selenium.WebDriver;
 import com.eBanking.utilities.CommonUtils;
 import com.eBanking.utilities.DropdownUtil;
 import com.eBanking.utilities.Elements;
-import com.eBanking.utilities.KeyBoardActionsUtil;
-
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
 
 public class AccountDetailsPage {
 	

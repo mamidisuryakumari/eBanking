@@ -22,12 +22,11 @@ public class UserDashboardsteps {
 	@Then("User should be navigated to dashboard page")
 	public void user_should_be_navigated_to_dashboard_page() {
 	    try {
-			String actualTitle = userDashboardPage.getUserDashboardPage();
-			String expectedTitle = "e-Banking | User Dashboard";
-			Assert.assertEquals(expectedTitle, actualTitle);
-			log.info("Title is matched");
+	    	boolean result = userDashboardPage.isOnUserDashboardPage();
+			Assert.assertTrue(result);
+			log.info("Title is matched for userdashboard page");
 	    }catch (AssertionError ae) {
-			log.error("Title is not matched" , ae);
+			log.error("Title is not matched for userdashboard" , ae);
 			throw ae;
 		} catch (Exception e) {
 			log.error("An exception error occured while navigating to dashboard page" , e);

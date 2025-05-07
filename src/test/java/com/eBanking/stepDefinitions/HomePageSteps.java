@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.eBanking.hooks.Hooks;
 import com.eBanking.pages.HomePage;
 import com.eBanking.pages.UserLoginPage;
+import com.eBanking.utilities.BrowserUtils;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,12 +24,11 @@ public class HomePageSteps {
 	@Given("User is on the home page")
 	public void user_is_on_the_home_page() {
 		try {
-			String actualTitle = homePage.getHomePageTitle();
-			String expTitle = "e-Banking System";
-			Assert.assertEquals(expTitle, actualTitle);
-			log.info("Title is matched");
+			boolean result = homePage.isOnHomePage();
+			Assert.assertTrue(result);
+			log.info(" Title matched for the home page");
 		} catch (AssertionError ae) {
-			log.error("Title is not matched", ae);
+			log.error("Title is not matched for home page", ae);
 		} catch (Exception e) {
 			log.error("An unexcepted error occured while matching the title");
 		}
@@ -51,14 +51,13 @@ public class HomePageSteps {
 	@Given("Admin is on the home page")
 	public void admin_is_on_the_home_page() {
 		try {
-			String actualTitle = homePage.getHomePageTitle();
-			String expTitle = "e-Banking System";
-			Assert.assertEquals(expTitle, actualTitle);
-			log.info("Title is matched");
+			boolean result = homePage.isOnHomePage();
+			Assert.assertTrue(result);
+			log.info("Title is matched for homepage");
 		} catch (AssertionError ae) {
-			log.error("Title is not matched", ae);
+			log.error("Title is not matched for homepage", ae);
 		} catch (Exception e) {
-			log.error("An unexcepted error occured while matching the title");
+			log.error("An unexcepted error occured while matching the homepage title");
 		}
 	}
 	

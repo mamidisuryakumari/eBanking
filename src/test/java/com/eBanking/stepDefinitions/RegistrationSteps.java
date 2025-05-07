@@ -62,9 +62,8 @@ public class RegistrationSteps {
 	@Then("User should be navigated to registration page")
 	public void user_should_be_navigated_to_registration_page() {
 	    try {
-			String exceptedRegistrationPageTitle = "e-Banking";
-			String actualRegistrationPageTitle = registrationPage.getRegistrationPageTitle();
-			Assert.assertEquals(exceptedRegistrationPageTitle, actualRegistrationPageTitle);
+	    	boolean result = registrationPage.isOnRegistrationPage();
+			Assert.assertTrue(result);
 			log.info("The registration page title was matched");
 		} catch (AssertionError ae) {
 			log.error("Assert failed", ae);

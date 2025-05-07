@@ -15,10 +15,10 @@ import com.eBanking.pages.UserLoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LoginSteps {
+public class UserLoginSteps {
 
 	WebDriver driver = Hooks.getDriver();
-	Logger log = LoggerFactory.getLogger(LoginSteps.class);
+	Logger log = LoggerFactory.getLogger(UserLoginSteps.class);
 	UserLoginPage userLoginPage = new UserLoginPage(driver);
 	HomePage homePage = new HomePage(driver);
 	AdminLoginPage adminLoginPage = new AdminLoginPage(driver);
@@ -40,9 +40,8 @@ public class LoginSteps {
 	@Then("User should be navigated to login page")
 	public void user_should_be_navigated_to_login_page() {
 		try {
-			String exceptedLoginPageTitle = "e-Banking | User Login";
-			String actualLoginPageTitle = userLoginPage.getLoginPageTitle();
-			Assert.assertEquals(exceptedLoginPageTitle, actualLoginPageTitle);
+			boolean result = userLoginPage.isOnLoginPage();
+			Assert.assertTrue(result);
 			log.info("Login page title is matched");
 		} catch (AssertionError ae) {
 			log.error("Assert is failed", ae);
@@ -51,8 +50,7 @@ public class LoginSteps {
 			log.error("An exception occured while navigating to login page");
 			throw e;
 		}
-
-	}
+		}
 
 	@When("User click on create an account link")
 	public void user_click_on_create_an_account_link() {
@@ -69,21 +67,7 @@ public class LoginSteps {
 
 	
 	
-	@Then("Admin should be navigated to login page")
-	public void admin_should_be_navigated_to_login_page() {
-		try {
-			String exceptedAdminLoginPageTitle = "e-Banking | Admin";
-			String actualAdminLoginPageTitle = adminLoginPage.getAdminLoginPageTitle();
-			Assert.assertEquals(exceptedAdminLoginPageTitle, actualAdminLoginPageTitle);
-			log.info("Admin login page title is matched");
-		} catch (AssertionError ae) {
-			log.error("Assert is failed", ae);
-			throw ae;
-		} catch (Exception e) {
-			log.error("An exception occured while navigating to admin login page");
-			throw e;
-		}
-	}
+	
 	
 	
 

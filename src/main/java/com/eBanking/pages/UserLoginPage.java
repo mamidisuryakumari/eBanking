@@ -3,6 +3,7 @@ package com.eBanking.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.Elements;
 
 public class UserLoginPage {
@@ -20,8 +21,9 @@ public class UserLoginPage {
 	
 
 	
-	public String getLoginPageTitle() {
-	return	driver.getTitle();
+	public boolean isOnLoginPage() {
+		String exceptedLoginPageTitle = "e-Banking | User Login";
+		return BrowserUtils.verifyTitle(driver, exceptedLoginPageTitle);
 	}
 	
 	public RegistrationPage createAccount() {

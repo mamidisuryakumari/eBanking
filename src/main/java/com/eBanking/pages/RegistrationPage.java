@@ -4,6 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.Elements;
 
 public class RegistrationPage {
@@ -21,8 +22,9 @@ public class RegistrationPage {
 	private By passwordFld = By.id("password");
 	private By registerAccountBtn = By.id("submit");
 	
-	public String getRegistrationPageTitle() {
-	return	driver.getTitle();
+	public boolean isOnRegistrationPage() {
+		String exceptedRegistrationPageTitle = "e-Banking";
+		return BrowserUtils.verifyTitle(driver, exceptedRegistrationPageTitle);
 	}
 	
 	public UserLoginPage registerUserAccount(String firstName,String lastName, String eamilAddress,String mobileNumber,String password) {

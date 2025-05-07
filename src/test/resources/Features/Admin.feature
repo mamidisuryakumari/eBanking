@@ -8,7 +8,7 @@ Feature: Admin login
       | Email Address | admin@gmail.com |
       | Password      | admin123        |
     Then Admin should be navigated to admindashboard page
-    
+ @AccountApproval   
  Scenario: Verify Account Approval
   Given Admin is on the home page
     When Admin click on admin menu
@@ -18,6 +18,6 @@ Feature: Admin login
       | Password      | admin123        |
     Then Admin should be navigated to admindashboard page
     When Admin click on new account request menu
-    Then Admin should be navigated to account opening request page
+    Then Admin should be navigated to admin page
     When Admin approv the request
     Then Admin should see approve request successful message

@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Automation Test Execution Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">2025-05-02 14:40:14</span></a>
+<a href="#"><span class="badge badge-primary">2025-05-07 18:47:36</span></a>
 </li>
 </ul>
 </div>
@@ -79,7 +79,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@AdminLogin</a>
+<a class="dropdown-item" href="#">@MoneyTraferToPayee</a>
 </ul>
 </li>
 </ul>
@@ -90,9 +90,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Admin login</p>
+            <p class="name">User Functionality</p>
             <p class="text-sm">
-              <span>2:40:14 pm</span> / <span>00:00:03:278</span>
+              <span>6:47:37 pm</span> / <span>00:00:08:155</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -100,10 +100,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Admin login</h5>
-<span class='badge badge-success'>05.02.2025 2:40:14 pm</span>
-<span class='badge badge-danger'>05.02.2025 2:40:18 pm</span>
-<span class='badge badge-default'>00:00:03:278</span>
+<h5 class="test-status text-pass">User Functionality</h5>
+<span class='badge badge-success'>05.07.2025 6:47:37 pm</span>
+<span class='badge badge-danger'>05.07.2025 6:47:45 pm</span>
+<span class='badge badge-default'>00:00:08:155</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -116,35 +116,45 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify admin login is successful</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify money transfer to payee</div>
       </div>
     </div>
         <div class="collapse">
           <div class="card-body">
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.admin_is_on_the_home_page()">
-                <span>Given Admin is on the home page</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.user_is_on_the_home_page()">
+                <span>Given User is on the home page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.admin_click_on_admin_menu()">
-                <span>When Admin click on admin menu</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.HomePageSteps.user_click_on_user_menu()">
+                <span>When User click on user menu</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.LoginSteps.admin_should_be_navigated_to_login_page()">
-                <span>Then Admin should be navigated to login page</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserLoginSteps.user_should_be_navigated_to_login_page()">
+                <span>Then User should be navigated to login page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.AdminLoginSteps.admin_log_in_with_valid_credentials(io.cucumber.datatable.DataTable)">
-                <span>When Admin log in with valid credentials</span>
-      <div><table class='markup-table table '><tr><td>Email Address</td><td>admin@gmail.com</td></tr><tr><td>Password</td><td>admin123</td></tr></table>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserLoginSteps.user_logs_in_with_valid_credentials(io.cucumber.datatable.DataTable)">
+                <span>When User log in with valid credentials</span>
+      <div><table class='markup-table table '><tr><td>Email Address</td><td>dhanyas@gmail.com</td></tr><tr><td>Password</td><td>dhanyas@123</td></tr></table>
       </div>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="com.eBanking.stepDefinitions.AdminDashboardSteps.admin_should_be_navigated_to_admindashboard_page()">
-                <span>Then Admin should be navigated to admindashboard page</span>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserDashboardsteps.user_should_be_navigated_to_dashboard_page()">
+                <span>Then User should be navigated to dashboard page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserSteps.user_money_transfer_to_the_payee()">
+                <span>When User money transfer to the payee</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="com.eBanking.stepDefinitions.UserSteps.the_user_should_see_the_message(java.lang.String)">
+                <span>Then the user should see the message "Transaction details have been updated successfully"</span>
       <div>
       </div>
               </div>
@@ -176,12 +186,12 @@
 <span class="meta">
 <span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">@AdminLogin</p>
+<p class="name">@MoneyTraferToPayee</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@AdminLogin</h4>
+<h4>@MoneyTraferToPayee</h4>
 <span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -195,11 +205,11 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>14:40:14 pm</td>
+<td>18:47:37 pm</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Verify admin login is successful</a>
+<a href="#" class="linked" test-id='1' id='2'>Verify money transfer to payee</a>
 <div class="">
-<span class="badge badge-default">Admin login.Verify admin login is successful</span>
+<span class="badge badge-default">User Functionality.Verify money transfer to payee</span>
 </div>
 </td>
 </tr>
@@ -220,13 +230,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>2025-05-02 14:40:14</h3>
+<h3>2025-05-07 18:47:36</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>2025-05-02 14:40:18</h3>
+<h3>2025-05-07 18:47:45</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -297,7 +307,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>5</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>7</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -316,7 +326,7 @@
 </div></div>
 <script>
 var timeline = {
-"Admin login":3.278
+"User Functionality":8.155
 };
 </script>
 <div class="row">
@@ -326,7 +336,7 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@AdminLogin</td>
+<td>@MoneyTraferToPayee</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -353,7 +363,7 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 5,
+passGrandChild: 7,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,
