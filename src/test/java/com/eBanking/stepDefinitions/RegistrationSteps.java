@@ -24,7 +24,7 @@ public class RegistrationSteps {
 	HomePage homePage = new HomePage(driver);
 	UserLoginPage loginPage = new UserLoginPage(driver);
 
-	@When("User registers with the following details")
+	@When("the user registers with the following details")
 	public void user_registers_an_account_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
 
 		try {
@@ -40,7 +40,7 @@ public class RegistrationSteps {
 
 	}
 
-	@Then("User should see a registration successful message")
+	@Then("the user should see a registration successful message")
 	public void user_should_see_a_registration_successful_message() {
 		try {
 			Alert alert = driver.switchTo().alert();
@@ -59,7 +59,7 @@ public class RegistrationSteps {
 
 		}
 
-	@Then("User should be navigated to registration page")
+	@Then("the user should be navigated to the registration page")
 	public void user_should_be_navigated_to_registration_page() {
 	    try {
 	    	boolean result = registrationPage.isOnRegistrationPage();

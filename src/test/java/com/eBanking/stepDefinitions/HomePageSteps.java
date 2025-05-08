@@ -21,7 +21,7 @@ public class HomePageSteps {
 	HomePage homePage = new HomePage(driver);
 	UserLoginPage loginPage = new UserLoginPage(driver);
 
-	@Given("User is on the home page")
+	@Given("the user is on the home page")
 	public void user_is_on_the_home_page() {
 		try {
 			boolean result = homePage.isOnHomePage();
@@ -37,7 +37,7 @@ public class HomePageSteps {
 	
 	
 
-	@When("User click on user menu")
+	@When("the user clicks on user menu")
 	public void user_click_on_user_menu() {
 		try {
 			homePage.clickOnUserMenu();

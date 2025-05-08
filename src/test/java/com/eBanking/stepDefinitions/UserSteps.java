@@ -60,7 +60,7 @@ public class UserSteps {
 	
 	
 
-	@When("User delete payee details")
+	@When("the user deletes the payee details")
 	public void user_delete_payee_details() throws Exception {
 	  try {
 		userDashboardPage.clickOnPayeeOption().managePayee();
@@ -71,7 +71,7 @@ public class UserSteps {
 		throw e;
 	}
 	}
-	@Then("User should see message data deleted")
+	@Then("the user should see message data deleted")
 	public void user_should_see_message_data_deleted() {
 
 		try {
@@ -91,7 +91,7 @@ public class UserSteps {
 	}
 	
 
-	@When("User money transfer to the payee")
+	@When("the user money transfers to the payee's account")
 	public void user_money_transfer_to_the_payee() throws Exception {
 	  try {
 		userDashboardPage.clickOnPayeeOption().managePayee();

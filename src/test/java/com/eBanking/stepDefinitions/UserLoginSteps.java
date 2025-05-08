@@ -23,7 +23,7 @@ public class UserLoginSteps {
 	HomePage homePage = new HomePage(driver);
 	AdminLoginPage adminLoginPage = new AdminLoginPage(driver);
 
-	@When("User log in with valid credentials")
+	@When("the user log in with valid credentials")
 	public void user_logs_in_with_valid_credentials(io.cucumber.datatable.DataTable dataTable) {
 		try {
 
@@ -37,7 +37,7 @@ public class UserLoginSteps {
 
 	}
 
-	@Then("User should be navigated to login page")
+	@Then("the user should be navigated to the login page")
 	public void user_should_be_navigated_to_login_page() {
 		try {
 			boolean result = userLoginPage.isOnLoginPage();
@@ -52,7 +52,7 @@ public class UserLoginSteps {
 		}
 		}
 
-	@When("User click on create an account link")
+	@When("the user clicks on create an account link")
 	public void user_click_on_create_an_account_link() {
 		try {
 			userLoginPage.createAccount();

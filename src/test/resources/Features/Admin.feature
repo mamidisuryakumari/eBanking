@@ -1,6 +1,6 @@
 Feature: Admin login
 @AdminLogin
-  Scenario: Verify admin login is successful
+  Scenario: Verify admin log in with valid email address and password
     Given Admin is on the home page
     When Admin click on admin menu
     Then Admin should be navigated to login page

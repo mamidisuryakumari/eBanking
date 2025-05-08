@@ -19,7 +19,7 @@ public class UserDashboardsteps {
 	
 	
 
-	@Then("User should be navigated to dashboard page")
+	@Then("the user should be navigated to the dashboard page")
 	public void user_should_be_navigated_to_dashboard_page() {
 	    try {
 	    	boolean result = userDashboardPage.isOnUserDashboardPage();
