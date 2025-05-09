@@ -8,9 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.AdminLoginPage;
 import com.eBanking.pages.HomePage;
-import com.eBanking.pages.UserLoginPage;
+import com.eBanking.pages.admin.AdminLoginPage;
+import com.eBanking.pages.user.UserLoginPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -37,7 +37,7 @@ public class UserLoginSteps {
 
 	}
 
-	@Then("the user should be navigated to the login page")
+	@Then("I should be navigated to the user login page")
 	public void user_should_be_navigated_to_login_page() {
 		try {
 			boolean result = userLoginPage.isOnLoginPage();
@@ -52,7 +52,7 @@ public class UserLoginSteps {
 		}
 		}
 
-	@When("the user clicks on create an account link")
+	@When("I clicks on create an account link")
 	public void user_click_on_create_an_account_link() {
 		try {
 			userLoginPage.createAccount();

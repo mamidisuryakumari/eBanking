@@ -1,4 +1,4 @@
-package com.eBanking.pages;
+package com.eBanking.pages.user;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -7,11 +7,11 @@ import org.openqa.selenium.WebDriver;
 import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.Elements;
 
-public class RegistrationPage {
+public class UserRegistrationPage {
 	
 	private WebDriver driver;
 
-	public RegistrationPage(WebDriver driver) {
+	public UserRegistrationPage(WebDriver driver) {
 		this.driver = driver;
 	}
 	

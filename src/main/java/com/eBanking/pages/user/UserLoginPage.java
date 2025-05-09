@@ -1,4 +1,4 @@
-package com.eBanking.pages;
+package com.eBanking.pages.user;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,9 +26,9 @@ public class UserLoginPage {
 		return BrowserUtils.verifyTitle(driver, exceptedLoginPageTitle);
 	}
 	
-	public RegistrationPage createAccount() {
+	public UserRegistrationPage createAccount() {
 		Elements.doClick(driver, createAnAccountlink);
-		return new RegistrationPage(driver);
+		return new UserRegistrationPage(driver);
 	}
 	
 	public UserDashboardPage loginUser(String email,String password) {

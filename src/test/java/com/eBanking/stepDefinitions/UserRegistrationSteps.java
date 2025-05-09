@@ -10,21 +10,21 @@ import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
 import com.eBanking.pages.HomePage;
-import com.eBanking.pages.RegistrationPage;
-import com.eBanking.pages.UserLoginPage;
+import com.eBanking.pages.user.UserRegistrationPage;
+import com.eBanking.pages.user.UserLoginPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class RegistrationSteps {
+public class UserRegistrationSteps {
 
 	WebDriver driver = Hooks.getDriver();
-	Logger log = LoggerFactory.getLogger(RegistrationSteps.class);
-	RegistrationPage registrationPage = new RegistrationPage(driver);
+	Logger log = LoggerFactory.getLogger(UserRegistrationSteps.class);
+	UserRegistrationPage registrationPage = new UserRegistrationPage(driver);
 	HomePage homePage = new HomePage(driver);
 	UserLoginPage loginPage = new UserLoginPage(driver);
 
-	@When("the user registers with the following details")
+	@When("I registers with the following details")
 	public void user_registers_an_account_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
 
 		try {
@@ -39,8 +39,9 @@ public class RegistrationSteps {
 		}
 
 	}
+	
 
-	@Then("the user should see a registration successful message")
+	@Then("I should see a message You have successfully registered with us")
 	public void user_should_see_a_registration_successful_message() {
 		try {
 			Alert alert = driver.switchTo().alert();
@@ -59,7 +60,7 @@ public class RegistrationSteps {
 
 		}
 
-	@Then("the user should be navigated to the registration page")
+	@Then("I should be navigated to the user registration page")
 	public void user_should_be_navigated_to_registration_page() {
 	    try {
 	    	boolean result = registrationPage.isOnRegistrationPage();

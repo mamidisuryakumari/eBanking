@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
 import com.eBanking.pages.HomePage;
-import com.eBanking.pages.UserLoginPage;
+import com.eBanking.pages.user.UserLoginPage;
 import com.eBanking.utilities.BrowserUtils;
 
 import io.cucumber.java.en.Given;
@@ -21,7 +21,7 @@ public class HomePageSteps {
 	HomePage homePage = new HomePage(driver);
 	UserLoginPage loginPage = new UserLoginPage(driver);
 
-	@Given("the user is on the home page")
+	@Given("I am on the home page")
 	public void user_is_on_the_home_page() {
 		try {
 			boolean result = homePage.isOnHomePage();
@@ -37,7 +37,7 @@ public class HomePageSteps {
 	
 	
 
-	@When("the user clicks on user menu")
+	@When("I clicks on user menu")
 	public void user_click_on_user_menu() {
 		try {
 			homePage.clickOnUserMenu();

@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
                 		 tags = "@Userregistration",
                  plugin = {"pretty", "html:target/cucumber-reports/reports.html",
                 		 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-                 dryRun = true,
+                 dryRun = false,
                  monochrome = true
 )
 

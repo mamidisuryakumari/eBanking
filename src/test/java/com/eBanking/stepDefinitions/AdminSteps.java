@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.AdminPage;
+import com.eBanking.pages.admin.AdminPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

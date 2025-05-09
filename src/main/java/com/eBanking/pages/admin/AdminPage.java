@@ -1,4 +1,4 @@
-package com.eBanking.pages;
+package com.eBanking.pages.admin;
 
 import java.io.IOException;
 
