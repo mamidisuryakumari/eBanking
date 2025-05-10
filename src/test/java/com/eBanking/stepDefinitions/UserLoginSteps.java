@@ -8,9 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.HomePage;
-import com.eBanking.pages.admin.AdminLoginPage;
-import com.eBanking.pages.user.UserLoginPage;
+import com.eBanking.ui.pages.HomePage;
+import com.eBanking.ui.pages.admin.AdminLoginPage;
+import com.eBanking.ui.pages.user.UserLoginPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,12 +23,10 @@ public class UserLoginSteps {
 	HomePage homePage = new HomePage(driver);
 	AdminLoginPage adminLoginPage = new AdminLoginPage(driver);
 
-	@When("the user log in with valid credentials")
+	@When("I log in with valid credentials")
 	public void user_logs_in_with_valid_credentials(io.cucumber.datatable.DataTable dataTable) {
 		try {
-
-			Map<String, String> loginDetails = dataTable.asMap();
-			userLoginPage.loginUser(loginDetails.get("Email Address"), (loginDetails.get("Password")));
+			userLoginPage.loginUser(dataTable);
 			log.info("User logged successfully");
 		} catch (Exception e) {
 			log.error("An unexcepted error occured while login the application", e);
@@ -50,7 +48,7 @@ public class UserLoginSteps {
 			log.error("An exception occured while navigating to login page");
 			throw e;
 		}
-		}
+	}
 
 	@When("I clicks on create an account link")
 	public void user_click_on_create_an_account_link() {
@@ -62,15 +60,5 @@ public class UserLoginSteps {
 			throw e;
 		}
 	}
-	
-	
-
-	
-	
-	
-	
-	
-
-
 
 }

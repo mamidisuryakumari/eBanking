@@ -22,7 +22,7 @@ Feature: Login feature
     Then I should be navigated to the user login page
     When I log in with valid credentials
       | Email Address | dhanyas@gmail.com |
-      | Password      | dhanyas@123       |
+      | Password      | dhanya@123       |
     Then I should be navigated to the user dashboard page
     
     @ForgotPassword

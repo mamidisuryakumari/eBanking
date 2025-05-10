@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.admin.AdminDashBoardPage;
+import com.eBanking.ui.pages.admin.AdminDashBoardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

@@ -6,7 +6,7 @@ Feature: Add payee feature
     And I should be navigated to the user login page
     And I log in with valid credentials
       | Email Address | dhanyas@gmail.com |
-      | Password      | dhanyas@123       |
+      | Password      | dhanya@123       |
     And I should be navigated to the user dashboard page
     When I clicks on add link
     Then I should be navigated to the add payee page

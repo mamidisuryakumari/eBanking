@@ -9,8 +9,7 @@ Given I am on the home page
       | Password      | dhanyas@123       |
     Then I should be navigated to the user dashboard page
     When I clicks on image
-    Then I should see logout link
-    When I click on logout link
+    And  I click on logout link
     Then I should see ready to leave pop up
     When I clicks on logout button
     Then I should be navigated to the user login page

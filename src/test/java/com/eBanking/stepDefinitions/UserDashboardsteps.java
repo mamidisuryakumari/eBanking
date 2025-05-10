@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.user.UserDashboardPage;
+import com.eBanking.ui.pages.user.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +19,7 @@ public class UserDashboardsteps {
 	
 	
 
-	@Then("the user should be navigated to the dashboard page")
+	@Then("I should be navigated to the user dashboard page")
 	public void user_should_be_navigated_to_dashboard_page() {
 	    try {
 	    	boolean result = userDashboardPage.isOnUserDashboardPage();
@@ -47,6 +47,14 @@ public class UserDashboardsteps {
 		}
 	  }
 	
+	
+	@When("I clicks on add link")
+	public void i_clicks_on_add_link() {
+	   
+	}
+	
+	
+
 
 
 

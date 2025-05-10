@@ -6,8 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.HomePage;
-import com.eBanking.pages.user.UserLoginPage;
+import com.eBanking.ui.pages.HomePage;
+import com.eBanking.ui.pages.user.UserLoginPage;
 import com.eBanking.utilities.BrowserUtils;
 
 import io.cucumber.java.en.Given;

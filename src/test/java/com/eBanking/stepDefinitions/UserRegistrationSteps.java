@@ -9,9 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.HomePage;
-import com.eBanking.pages.user.UserRegistrationPage;
-import com.eBanking.pages.user.UserLoginPage;
+import com.eBanking.ui.pages.HomePage;
+import com.eBanking.ui.pages.user.UserLoginPage;
+import com.eBanking.ui.pages.user.UserRegistrationPage;
+import com.eBanking.utilities.AlertUtil;
+import com.eBanking.utilities.CommonUtils;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -28,11 +30,9 @@ public class UserRegistrationSteps {
 	public void user_registers_an_account_with_the_following_details(io.cucumber.datatable.DataTable dataTable) {
 
 		try {
-			Map<String, String> registrationAccountDetails = dataTable.asMap();
-			registrationPage.registerUserAccount(registrationAccountDetails.get("First Name"),
-					registrationAccountDetails.get("Last Name"), registrationAccountDetails.get("Email Address"),
-					registrationAccountDetails.get("Mobile Number"), registrationAccountDetails.get("Password"));
+			registrationPage.addRegistrationDetails(dataTable);
 			log.info("registration successfull");
+			
 		} catch (Exception e) {
 			log.error("Unexcepted error occured", e);
 			throw e;
@@ -44,12 +44,13 @@ public class UserRegistrationSteps {
 	@Then("I should see a message You have successfully registered with us")
 	public void user_should_see_a_registration_successful_message() {
 		try {
-			Alert alert = driver.switchTo().alert();
-			String actualTetx = alert.getText();
-			alert.accept();
+			
+			String actualTetx =AlertUtil.getAlertMessage(driver);
+			
 			String expText = "You have successfully registered with us";
 			Assert.assertEquals(actualTetx, expText);
 			log.info("User should see register successfull message");
+			AlertUtil.acceptAlert(driver);
 		}catch (AssertionError ae) {
 			log.error("Assert failed" , ae);
 			throw ae;

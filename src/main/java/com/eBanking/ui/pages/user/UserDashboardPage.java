@@ -1,4 +1,4 @@
-package com.eBanking.pages.user;
+package com.eBanking.ui.pages.user;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

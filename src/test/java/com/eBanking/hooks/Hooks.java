@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import com.eBanking.driverManager.DriverManager;
-import com.eBanking.reports.ReportManager;
+
+import com.eBanking.ui.engine.BrowserFactory;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -22,26 +22,19 @@ public class Hooks {
 	static WebDriver driver;
 
 	@Before
-	public static void initDriver(Scenario scenario) throws IOException {
-		try {
-
-			driver = DriverManager.initDriver();
-
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-		}
+	public static void initDriver(Scenario scenario) {
+		driver = BrowserFactory.initializeDriver();
 		// Retrieve tags from the scenario and pass to createTest
-		String[] tags = scenario.getSourceTagNames().toArray(new String[0]);
-		ReportManager.createTest(scenario.getName(), tags);
+		//String[] tags = scenario.getSourceTagNames().toArray(new String[0]);
+		
 
 	}
 
 	@After
 	public void tearDown() {
-//		if (driver != null) {
-	//		driver.quit();
-		//	driver = null;
+//	if (driver != null) {
+//			driver.quit();
+//			driver = null;
 //}
 
 	//	ReportManager.flush();
@@ -62,8 +55,7 @@ public class Hooks {
 			// Logging the failure in ExtentReports with the screenshot
 			// ReportManager.getTest().fail("").addScreenCaptureFromBase64String(java.util.Base64.getEncoder().encodeToString(screenshot),
 			// "Failed Step Screenshot");
-			ReportManager.getTest().log(Status.FAIL, "Step failed",
-					MediaEntityBuilder.createScreenCaptureFromBase64String(base64Screenshot).build());
+			
 		}
 	}
 

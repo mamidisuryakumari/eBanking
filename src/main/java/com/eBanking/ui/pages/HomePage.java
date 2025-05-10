@@ -1,9 +1,9 @@
-package com.eBanking.pages;
+package com.eBanking.ui.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.eBanking.pages.user.UserLoginPage;
+import com.eBanking.ui.pages.user.UserLoginPage;
 import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.Elements;
 

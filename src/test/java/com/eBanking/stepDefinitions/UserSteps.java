@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.hooks.Hooks;
-import com.eBanking.pages.user.UserDashboardPage;
-import com.eBanking.pages.user.UserPage;
+import com.eBanking.ui.pages.user.UserDashboardPage;
+import com.eBanking.ui.pages.user.UserPage;
 import com.eBanking.utilities.CommonUtils;
 
 import io.cucumber.java.en.Then;
@@ -24,42 +24,7 @@ public class UserSteps {
 
 	private static Logger log = LoggerFactory.getLogger(UserSteps.class);
 
-	@When("the user add following payye account details")
-	public void the_user_add_following_payye_account_details(io.cucumber.datatable.DataTable dataTable) {
-		try {
-			userDashboardPage.clickOnPayeeOption().clickOnAddLink();
-			Map<String, String> payeeAccountDetails = dataTable.asMap();
-			userPage.userAddPayeeAccountDetails(payeeAccountDetails.get("Account Number"),
-					payeeAccountDetails.get("Confirm Account Number"), payeeAccountDetails.get("Account Holder Name"));
-			log.info("User added acconut details successfully");
-		} catch (Exception e) {
-			log.error("An exception occured while user add payee account details", e);
-			throw e;
-		}
-		
-	}
-
-	@Then("the user should see a message Payee or beneficiary Account detail has been added")
-	public void the_user_should_see_a_message_payee_beneficiary_account_detail_has_been_added() {
-		try {
-			Alert alert = driver.switchTo().alert();
-			String actualMessage = alert.getText();
-			alert.accept();
-			String expMessage = "Payee / beneficiary Account detail has been added.";
-			Assert.assertEquals(actualMessage, expMessage);
-			log.info("User should see account details added successfull message");
-			} catch (AssertionError ae) {
-			log.error("Assert failed", ae);
-			throw ae;
-		} catch (Exception e) {
-			log.error("An exception error occured while seeing account details added successful message", e);
-			throw e;
-		}
-
-	}
 	
-	
-
 	@When("the user deletes the payee details")
 	public void user_delete_payee_details() throws Exception {
 	  try {
