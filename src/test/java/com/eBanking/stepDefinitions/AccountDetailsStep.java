@@ -3,21 +3,20 @@ package com.eBanking.stepDefinitions;
 import java.io.IOException;
 import java.util.Map;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.AccountDetailsPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AccountDetailsStep {
-	WebDriver driver = Hooks.getDriver();
-	AccountDetailsPage accountDetailsPage = new AccountDetailsPage(driver);
+public class AccountDetailsStep extends Page{
+	AccountDetailsPage accountDetailsPage = new AccountDetailsPage();
 	Logger log = LoggerFactory.getLogger(AccountDetailsStep.class);
 
 	@Then("the user should be navigated to the Account Details page")
@@ -26,7 +25,7 @@ public class AccountDetailsStep {
 		try {
 			String exceptedAccountDetailsText = "Account Details";
 			String actualAccountDetailsText = accountDetailsPage.getAccountDetailsText();
-			Assert.assertEquals(exceptedAccountDetailsText, actualAccountDetailsText);
+			assertEquals(exceptedAccountDetailsText, actualAccountDetailsText);
 			log.info("Account details text is matched successfully");
 		} catch (AssertionError ae) {
 			log.error("Assert failed", ae);
@@ -59,7 +58,7 @@ public class AccountDetailsStep {
 			String actualTetx = alert.getText();
 			alert.accept();
 			String expSuccessMsg = "Details succesfully submitted.";
-			Assert.assertEquals(expSuccessMsg, actualTetx);
+			assertEquals(expSuccessMsg, actualTetx);
 			log.info("Success message is matched");
 		} catch (AssertionError ae) {
 			log.error("Assertion failed: Alert text did not match the expected message" , ae);

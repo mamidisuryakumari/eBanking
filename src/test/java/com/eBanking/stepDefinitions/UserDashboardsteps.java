@@ -1,21 +1,20 @@
 package com.eBanking.stepDefinitions;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class UserDashboardsteps {
+public class UserDashboardsteps extends Page{
 	
-	WebDriver driver = Hooks.getDriver();
 	Logger log = LoggerFactory.getLogger(UserDashboardsteps.class);
-	UserDashboardPage userDashboardPage = new UserDashboardPage(driver);
+	UserDashboardPage userDashboardPage = new UserDashboardPage();
 	
 	
 
@@ -23,7 +22,7 @@ public class UserDashboardsteps {
 	public void user_should_be_navigated_to_dashboard_page() {
 	    try {
 	    	boolean result = userDashboardPage.isOnUserDashboardPage();
-			Assert.assertTrue(result);
+			assertTrue(result);
 			log.info("Title is matched for userdashboard page");
 	    }catch (AssertionError ae) {
 			log.error("Title is not matched for userdashboard" , ae);

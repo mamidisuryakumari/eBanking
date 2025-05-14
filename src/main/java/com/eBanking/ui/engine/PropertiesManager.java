@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 
 public class PropertiesManager {
 	
-	private static Logger log = LoggerFactory.getLogger(PropertiesManager.class);
-	static Properties properties;
+	private static final Logger log = LoggerFactory.getLogger(PropertiesManager.class);
+	public static Properties properties;
 	
 	public static Properties loadConfigProperties() {
 		try(InputStream inputStream = PropertiesManager.class.getClassLoader().getResourceAsStream("config.properties")) {
@@ -33,12 +33,10 @@ public class PropertiesManager {
 		return properties.getProperty(key);
 	}
 	
-	public static String getProperty(String key, String defaultValue) {
-		return properties.getProperty(key,defaultValue);
-	}
+	
 	
 	public static void main(String[] args) {
-		String browserName = getProperty("bowser.name");
+		String browserName = getProperty("browser.name");
 		System.out.println(browserName);
 	}
 	

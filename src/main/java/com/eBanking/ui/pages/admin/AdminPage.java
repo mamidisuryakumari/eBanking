@@ -5,19 +5,15 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.eBanking.ui.pages.Page;
 import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.CommonUtils;
 import com.eBanking.utilities.DropdownUtil;
 import com.eBanking.utilities.Elements;
 
-public class AdminPage {
+public class AdminPage extends Page{
 	
-	private WebDriver driver;
-
-	public AdminPage(WebDriver driver) {
-		this.driver = driver;
-	}
-
+	
 	private static By viewLink = By.xpath("//a[text()='View ']");
 	private static By takeActionBtn = By.xpath("//button[text()='Take Action']");
 	private static By remarkTextFld = By.xpath("//textarea[@name='remark']");

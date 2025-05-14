@@ -1,5 +1,7 @@
 package com.eBanking.ui.pages.user;
 
-public class TransferAmountPage {
+import com.eBanking.ui.pages.Page;
+
+public class TransferAmountPage extends Page{
 
 }

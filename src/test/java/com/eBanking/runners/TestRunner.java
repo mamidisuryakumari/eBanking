@@ -1,24 +1,20 @@
  package com.eBanking.runners;
 
-import org.junit.runner.RunWith;
+import static io.cucumber.junit.platform.engine.Constants.*;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.IncludeTags;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
 
-
-
-@RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/Features", 
-                 glue = {"com.eBanking.stepDefinitions", "com.eBanking.hooks"},
-                		 tags = "@AddPayeeorbeneficiary",
-                 plugin = {"pretty", "html:target/cucumber-reports/reports.html",
-                		 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-                 dryRun = true,
-                 monochrome = true
-)
-
-
-
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features")
+@IncludeTags("Userregistration")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty,html:target/cucumber-reports/reports.html, json:target/cucumber-report.json")
+@ConfigurationParameter(key = "cucumber.glue", value = "com.eBanking.stepDefinitions")
+@ConfigurationParameter(key = "cucumber.execution.verbose", value = "true")
 public class TestRunner{
 	
 }

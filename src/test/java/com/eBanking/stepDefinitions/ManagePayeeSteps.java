@@ -1,22 +1,22 @@
 package com.eBanking.stepDefinitions;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 import com.eBanking.ui.pages.user.UserPage;
 
 import io.cucumber.java.en.Then;
 
-public class ManagePayeeSteps {
+public class ManagePayeeSteps extends Page{
 	
-	WebDriver driver = Hooks.getDriver();
-	UserDashboardPage userDashboardPage = new UserDashboardPage(driver);
-	UserPage userPage = new UserPage(driver);
+	
+	UserDashboardPage userDashboardPage = new UserDashboardPage();
+	UserPage userPage = new UserPage();
 
 	private static Logger log = LoggerFactory.getLogger(ManagePayeeSteps.class);
 	
@@ -27,7 +27,7 @@ public class ManagePayeeSteps {
 			String actualMessage = alert.getText();
 			alert.accept();
 			String expMessage = "Payee / beneficiary Account detail has been added.";
-			Assert.assertEquals(actualMessage, expMessage);
+			assertEquals(actualMessage, expMessage);
 			log.info("User should see account details added successfull message");
 			} catch (AssertionError ae) {
 			log.error("Assert failed", ae);

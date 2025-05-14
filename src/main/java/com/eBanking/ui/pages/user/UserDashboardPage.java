@@ -3,16 +3,13 @@ package com.eBanking.ui.pages.user;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.eBanking.ui.pages.Page;
 import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.Elements;
 
-public class UserDashboardPage {
+public class UserDashboardPage extends Page{
 
-	private WebDriver driver;
-
-	public UserDashboardPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	private static By accountOpeninigoption = By.xpath("//span[text()='Account Openning']");
 	private static By payeeoption = By.xpath("//span[text()='Payee / Beneficiary']");
@@ -26,7 +23,7 @@ public class UserDashboardPage {
 
 	public AccountDetailsPage clickOnAccountOpening() {
 		Elements.doClick(driver, accountOpeninigoption);
-		return new AccountDetailsPage(driver);
+		return new AccountDetailsPage();
 	}
 
 	public UserDashboardPage clickOnPayeeOption() {
@@ -36,11 +33,11 @@ public class UserDashboardPage {
 	
 	public UserPage clickOnAddLink() {
 		Elements.doClick(driver, addLink);
-		return new UserPage(driver);
+		return new UserPage();
 	}
 	
 	public UserPage managePayee() {
 		Elements.doClick(driver, manageLink);
-		return new UserPage(driver);
+		return new UserPage();
 	}
 }

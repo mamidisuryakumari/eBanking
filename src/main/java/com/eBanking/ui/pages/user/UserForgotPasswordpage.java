@@ -1,5 +1,7 @@
 package com.eBanking.ui.pages.user;
 
-public class UserForgotPasswordpage {
+import com.eBanking.ui.pages.Page;
+
+public class UserForgotPasswordpage extends Page{
 
 }

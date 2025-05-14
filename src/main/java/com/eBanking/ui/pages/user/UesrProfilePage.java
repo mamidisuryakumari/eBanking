@@ -1,5 +1,7 @@
 package com.eBanking.ui.pages.user;
 
-public class UesrProfilePage {
+import com.eBanking.ui.pages.Page;
+
+public class UesrProfilePage extends Page {
 
 }

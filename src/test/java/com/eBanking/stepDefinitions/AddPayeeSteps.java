@@ -6,18 +6,18 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 import com.eBanking.ui.pages.user.UserPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AddPayeeSteps {
+public class AddPayeeSteps extends Page{
 	
-	WebDriver driver = Hooks.getDriver();
-	UserDashboardPage userDashboardPage = new UserDashboardPage(driver);
-	UserPage userPage = new UserPage(driver);
+	
+	UserDashboardPage userDashboardPage = new UserDashboardPage();
+	UserPage userPage = new UserPage();
 
 	private static Logger log = LoggerFactory.getLogger(AddPayeeSteps.class);
 	

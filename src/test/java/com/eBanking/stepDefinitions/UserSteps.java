@@ -2,13 +2,13 @@ package com.eBanking.stepDefinitions;
 
 import java.util.Map;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 import com.eBanking.ui.pages.user.UserPage;
 import com.eBanking.utilities.CommonUtils;
@@ -16,11 +16,11 @@ import com.eBanking.utilities.CommonUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class UserSteps {
+public class UserSteps extends Page{
 
-	WebDriver driver = Hooks.getDriver();
-	UserDashboardPage userDashboardPage = new UserDashboardPage(driver);
-	UserPage userPage = new UserPage(driver);
+	
+	UserDashboardPage userDashboardPage = new UserDashboardPage();
+	UserPage userPage = new UserPage();
 
 	private static Logger log = LoggerFactory.getLogger(UserSteps.class);
 
@@ -44,7 +44,7 @@ public class UserSteps {
 			String actualMessage = alert.getText();
 			alert.accept();
 			String expMessage = "Data deleted";
-			Assert.assertEquals(actualMessage, expMessage);
+			assertEquals(actualMessage, expMessage);
 			log.info("User should see account details deleted successfull message");
 			} catch (AssertionError ae) {
 			log.error("Assert failed", ae);
@@ -75,7 +75,7 @@ public class UserSteps {
 			String actualMessage = alert.getText();
 			alert.accept();
 			String expMessage = "Transaction Details has been updated";
-			Assert.assertEquals(actualMessage, expMessage);
+			assertEquals(actualMessage, expMessage);
 			log.info("User should see transaction details has been updated successfull message");
 			} catch (AssertionError ae) {
 			log.error("Assert failed", ae);

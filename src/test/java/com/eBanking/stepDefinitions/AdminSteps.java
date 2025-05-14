@@ -2,28 +2,28 @@ package com.eBanking.stepDefinitions;
 
 import java.io.IOException;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.admin.AdminPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AdminSteps {
-	WebDriver driver = Hooks.getDriver();
+public class AdminSteps extends Page{
+	
 	private static Logger log = LoggerFactory.getLogger(AdminSteps.class);
-	AdminPage adminPage = new AdminPage(driver);
+	AdminPage adminPage = new AdminPage();
 	
 	@Then("Admin should be navigated to admin page")
 	public void admin_should_be_navigated_to_account_opening_request_page() {
 	    try {
 	    	boolean result = adminPage.isOnAdminPage();
-			Assert.assertTrue(result);
+			assertTrue(result);
 			log.info("Title is matched");
 	    }catch (AssertionError ae) {
 			log.error("Title is not matched" , ae);
@@ -51,7 +51,7 @@ public class AdminSteps {
 			String actualTetx = alert.getText();
 			alert.accept();
 			String expSuccessMsg = "Remark has been updated";
-			Assert.assertEquals(expSuccessMsg, actualTetx);
+		assertEquals(expSuccessMsg, actualTetx);
 			log.info("Success message is matched");
 		} catch (AssertionError ae) {
 			log.error("Assertion failed: Alert text did not match the expected message" , ae);

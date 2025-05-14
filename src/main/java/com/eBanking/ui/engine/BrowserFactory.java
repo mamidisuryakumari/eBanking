@@ -1,5 +1,6 @@
 package com.eBanking.ui.engine;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,26 +12,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 
 public class BrowserFactory {
 
-	public static WebDriver driver;
-	private static final Logger log = LoggerFactory.getLogger(BrowserFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(BrowserFactory.class);
 	
-	public WebDriver getDriver() {
-		if(driver == null) {
-			initializeDriver();
-		}
-		return driver;
-	}
-
-	public static WebDriver initializeDriver()  {
+	@Getter
+	public static WebDriver driver;
+	
+	@Getter
+	private static Bot bot;
+	
+	public Bot theTargetBrowserisOpen()  {
 		String browserName = PropertiesManager.getProperty("browser.name");
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions chromeOptions = new ChromeOptions();
 			chromeOptions.addArguments("--incognito","--start-maximized");
+			chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			driver = new ChromeDriver(chromeOptions);
 			driver.get(PropertiesManager.getProperty("base.url"));
 			break;
@@ -38,35 +39,28 @@ public class BrowserFactory {
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
-			firefoxOptions.addArguments("--incognito").addArguments("--maximized");
+			firefoxOptions.addArguments("--incognito").addArguments("--start-maximized");
 			driver = new FirefoxDriver(firefoxOptions);
 			break;
 		
 		case "edge":
 			WebDriverManager.edgedriver().setup();
 			EdgeOptions edgeOptions = new EdgeOptions();
-			edgeOptions.addArguments("--incognito").addArguments("--maximized");
+			edgeOptions.addArguments("--incognito").addArguments("--start-maximized");
 			driver = new EdgeDriver(edgeOptions);
 			break;
 		
 		default:
+			logger.error("Please pass a correct browser value");
 			throw new IllegalArgumentException("Browser not supported " + browserName);
 		}
-		if(driver == null) {
-			throw new IllegalStateException("WebDriver initialization failed");
-		}
-		return driver;
-	}
-
-	public static void quitDriver() {
-		if (driver != null) {
-			driver.quit();
-			log.info("Browser is closed");
-		}
+		
+		bot = new Bot();
+		return bot;
 	}
 	
-	public static void main(String args[]) {
-		initializeDriver();
-	}
+	
+	
+	
 
 }

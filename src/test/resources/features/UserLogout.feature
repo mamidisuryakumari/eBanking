@@ -13,3 +13,6 @@ Given I am on the home page
     Then I should see ready to leave pop up
     When I clicks on logout button
     Then I should be navigated to the user login page
+    
+    
+   

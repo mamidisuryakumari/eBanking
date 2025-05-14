@@ -3,16 +3,13 @@ package com.eBanking.ui.pages.admin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.eBanking.ui.pages.Page;
 import com.eBanking.utilities.BrowserUtils;
 import com.eBanking.utilities.Elements;
 
-public class AdminLoginPage {
+public class AdminLoginPage extends Page{
 	
-	private WebDriver driver;
-
-	public AdminLoginPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 	
 	private static By enterEmailAddressFld = By.id("email");
 	private static By passwordFld = By.id("password");
@@ -23,11 +20,11 @@ public class AdminLoginPage {
 		return BrowserUtils.verifyTitle(driver, exceptedAdminLoginPageTitle);
 	}
 	
-	public AdminDashBoardPage adminLogin(String email, String password) {
+	public void adminLogin(String email, String password) {
 		Elements.doSendKeys(driver, enterEmailAddressFld, email);
 		Elements.doSendKeys(driver, passwordFld, password);
 		Elements.doClick(driver, loginBtn);
-		return new AdminDashBoardPage(driver);
+	//	return new AdminDashBoardPage();
 	}
 
 }

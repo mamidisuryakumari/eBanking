@@ -1,27 +1,28 @@
 package com.eBanking.stepDefinitions;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.admin.AdminDashBoardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class AdminDashboardSteps {
+public class AdminDashboardSteps extends Page{
 	
-	WebDriver driver = Hooks.getDriver();
+	
 	Logger log = LoggerFactory.getLogger(AdminDashboardSteps.class);
-	AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage(driver);
+	AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
 	
 	@Then("Admin should be navigated to admindashboard page")
 	public void admin_should_be_navigated_to_admindashboard_page() {
 		 try {
 			 boolean result = adminDashBoardPage.isOnAdminDashBoardPage();
-				Assert.assertTrue(result);
+				assertTrue(result);
 				log.info("Title is matched");
 		    }catch (AssertionError ae) {
 				log.error("Title is not matched" , ae);

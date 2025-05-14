@@ -1,29 +1,30 @@
 package com.eBanking.stepDefinitions;
 
 import java.util.Map;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.admin.AdminLoginPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AdminLoginSteps {
+public class AdminLoginSteps extends Page {
 	
-	WebDriver driver = Hooks.getDriver();
-	AdminLoginPage adminLoginPage = new AdminLoginPage(driver);
+	
+	AdminLoginPage adminLoginPage = new AdminLoginPage();
 	Logger log = LoggerFactory.getLogger(AdminLoginSteps.class);
 	
 	@Then("Admin should be navigated to login page")
 	public void admin_should_be_navigated_to_login_page() {
 		try {
 			boolean result = adminLoginPage.isOnAdminLoginPage();
-			Assert.assertTrue(result);
+			assertTrue(result);
 			log.info("Admin login page title is matched");
 		} catch (AssertionError ae) {
 			log.error("Assert is failed", ae);

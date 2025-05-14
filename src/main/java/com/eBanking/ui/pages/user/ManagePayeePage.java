@@ -1,5 +1,7 @@
 package com.eBanking.ui.pages.user;
 
-public class ManagePayeePage {
+import com.eBanking.ui.pages.Page;
+
+public class ManagePayeePage extends Page{
 
 }

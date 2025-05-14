@@ -48,15 +48,5 @@ public class AlertUtil {
 
 
 //get alert message
-public static String getAlertMessage(WebDriver driver) {
-	bStatus=WaitUtils.waitForAlertIsPresent(driver, Constants.maxWaitTime);
-	if(bStatus) {
-		String alertMessage = driver.switchTo().alert().getText();
-		return alertMessage;
-		
-	}else {
-		System.out.println("Alert was not present");
-	}
-	return null;
-}
+
 }

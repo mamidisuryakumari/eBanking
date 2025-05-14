@@ -1,5 +1,7 @@
 package com.eBanking.ui.pages.user;
 
-public class UserTransactionHistoryPage {
+import com.eBanking.ui.pages.Page;
+
+public class UserTransactionHistoryPage extends Page{
 
 }

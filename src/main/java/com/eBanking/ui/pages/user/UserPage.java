@@ -1,20 +1,17 @@
 package com.eBanking.ui.pages.user;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
+import com.eBanking.ui.pages.Page;
 import com.eBanking.utilities.AlertUtil;
 import com.eBanking.utilities.Elements;
 
-import io.cucumber.datatable.DataTable;
 
-public class UserPage {
+
+
+public class UserPage extends Page{
 	
-	private WebDriver driver;
-
-	public UserPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	private static final By PayeeorBeneficiaryAccountNumber = By.id("accountnumber");
 	private static final By PayeeorBeneficiaryconfirmAccountNumber = By.id("conaccountnumber");
@@ -27,21 +24,7 @@ public class UserPage {
 	private static final By transferSubmitBtn = By.id("submit");
 	
 	
-	public UserPage userAddPayeeAccountDetails(DataTable payeeAccountDetailsTable) {
-		var payeeAccountDetailsMap = payeeAccountDetailsTable.asMap();
-		var payeeAccountDetails = payeeAccountDetailsMap;
-		
-		var accountNumber = payeeAccountDetails.get("Account Number");
-		var confirmAccountNumber = payeeAccountDetails.get("Confirm Account Number");
-		var accountHolderName = payeeAccountDetails.get("Account Holder Name");
-		Elements.doSendKeys(driver, PayeeorBeneficiaryAccountNumber, accountNumber);
-		Elements.doSendKeys(driver, PayeeorBeneficiaryconfirmAccountNumber, confirmAccountNumber);
-		Elements.doSendKeys(driver, pbAccountHolderName,accountHolderName);
-		Elements.doClick(driver, submitBtn);
-		return this;
-		
-		
-	}
+	
 	
 	public UserPage userAddPayeeAccountDetails(String accountNumber,String confirmAccountNumber,String accountHolderName ) {
 		Elements.doSendKeys(driver, PayeeorBeneficiaryAccountNumber, accountNumber);

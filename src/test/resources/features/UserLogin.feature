@@ -1,31 +1,30 @@
-Feature: Login feature 
+Feature: Login feature
 
   @Userregistration
   Scenario: Verify that the user can successfully register.
     Given I am on the home page
-    When I clicks on user menu
-    Then I should be navigated to the user login page
-    When I clicks on create an account link
-    Then I should be navigated to the user registration page
-    When I registers with the following details
+    When I navigate to user login page     
+    And I go to registration page  
+    And I add user registration details: 
       | First Name    | Dhanya            |
       | Last Name     | Sri               |
       | Email Address | dhanyas@gmail.com |
       | Mobile Number |        9963512345 |
       | Password      | dhanyas@123       |
-    Then I should see a message You have successfully registered with us
+    Then I should see user registered successfully
 
   @UserLogin
   Scenario: Verify that the user can log in with a valid username and password.
     Given I am on the home page
-    When I clicks on user menu
-    Then I should be navigated to the user login page
-    When I log in with valid credentials
+    When I go to user login page
+    And I log in with valid credentials
       | Email Address | dhanyas@gmail.com |
-      | Password      | dhanya@123       |
+      | Password      | dhanya@123        |
     Then I should be navigated to the user dashboard page
+
     
-    @ForgotPassword
+    
+     @ForgotPassword
     Scenario: Verify that the user can reset their password using the forgot Password option
     Given I am on the home page
     When I clicks on user menu
@@ -38,13 +37,3 @@ Feature: Login feature
     |New Password | dhanya@123|
     |Confirm Password| dhanya@123|
     Then I should see a message "Your Password succesfully changed"
-
- 
-
- 
-
- 
-
- 
-
-

@@ -1,35 +1,59 @@
 package com.eBanking.stepDefinitions;
 
-import java.util.Map;
-
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.eBanking.hooks.Hooks;
+import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.pages.HomePage;
+import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.admin.AdminLoginPage;
 import com.eBanking.ui.pages.user.UserLoginPage;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class UserLoginSteps {
+public class UserLoginSteps extends Page{
 
-	WebDriver driver = Hooks.getDriver();
-	Logger log = LoggerFactory.getLogger(UserLoginSteps.class);
-	UserLoginPage userLoginPage = new UserLoginPage(driver);
-	HomePage homePage = new HomePage(driver);
-	AdminLoginPage adminLoginPage = new AdminLoginPage(driver);
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserLoginSteps.class);
+	UserLoginPage userLoginPage = new UserLoginPage();
+	HomePage homePage = new HomePage();
+	AdminLoginPage adminLoginPage = new AdminLoginPage();
+	
+	@When("I navigate to user login page")
+	public void iNavigateToUserLoginPage(){
+		try {
+			homePage.iNavigatedToUserLoginPage();
+			String actualUserLoginPageTitle = bot.getTitle();
+			String exceptedUserLoginPageTitle = PropertiesManager.getProperty("userlogin.page.title").trim();
+			assertEquals(exceptedUserLoginPageTitle, actualUserLoginPageTitle);
+			logger.info("I navigated to login page successfully");
+			userLoginPage.createAccount();
+		} catch (Exception e) {
+			logger.error("An exception occured while navigating login page", e);
+			throw e;
+		}
+			
+		}
+	
+@When("I go to user login page")
+public void iGoToUserLoginPage()  {
+	homePage.iNavigatedToUserLoginPage();
+}
+	
+	
 
 	@When("I log in with valid credentials")
-	public void user_logs_in_with_valid_credentials(io.cucumber.datatable.DataTable dataTable) {
+	public void user_logs_in_with_valid_credentials(DataTable userLoginDetails) {
 		try {
-			userLoginPage.loginUser(dataTable);
-			log.info("User logged successfully");
+			var userLoginMap = userLoginDetails.asMap(String.class, String.class);
+			userLoginPage.loginUser(userLoginMap.get("Email Address"), userLoginMap.get("Password"));
+			logger.info("User logged successfully");
 		} catch (Exception e) {
-			log.error("An unexcepted error occured while login the application", e);
+			logger.error("An unexcepted error occured while login the application", e);
 			throw e;
 		}
 
@@ -39,13 +63,13 @@ public class UserLoginSteps {
 	public void user_should_be_navigated_to_login_page() {
 		try {
 			boolean result = userLoginPage.isOnLoginPage();
-			Assert.assertTrue(result);
-			log.info("Login page title is matched");
+			assertTrue(result);
+			logger.info("Login page title is matched");
 		} catch (AssertionError ae) {
-			log.error("Assert is failed", ae);
+			logger.error("Assert is failed", ae);
 			throw ae;
 		} catch (Exception e) {
-			log.error("An exception occured while navigating to login page");
+			logger.error("An exception occured while navigating to login page");
 			throw e;
 		}
 	}
@@ -53,10 +77,10 @@ public class UserLoginSteps {
 	@When("I clicks on create an account link")
 	public void user_click_on_create_an_account_link() {
 		try {
-			userLoginPage.createAccount();
-			log.info("Account link was clicked successfully");
+			
+			logger.info("Account link was clicked successfully");
 		} catch (Exception e) {
-			log.error("An exception occured while clicking create account link", e);
+			logger.error("An exception occured while clicking create account link", e);
 			throw e;
 		}
 	}

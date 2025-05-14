@@ -5,17 +5,14 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.eBanking.ui.pages.Page;
 import com.eBanking.utilities.CommonUtils;
 import com.eBanking.utilities.DropdownUtil;
 import com.eBanking.utilities.Elements;
 
-public class AccountDetailsPage {
+public class AccountDetailsPage extends Page{
 	
-	private WebDriver driver;
-
-	public AccountDetailsPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 	
 	
 
@@ -45,7 +42,7 @@ public class AccountDetailsPage {
 		Elements.doSendKeys(driver, dobDate, dob);
 		Elements.selectCheckbox(driver, acceptCheckbox);
 		Elements.doClick(driver, submitBtn);
-		return new UserDashboardPage(driver);
+		return new UserDashboardPage();
 	}
 	
 	

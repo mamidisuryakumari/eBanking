@@ -1,5 +1,7 @@
 package com.eBanking.stepDefinitions;
 
-public class TransferAmountSteps {
+import com.eBanking.ui.pages.Page;
+
+public class TransferAmountSteps extends Page{
 
 }
