@@ -7,9 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.eBanking.ui.pages.Page;
-import com.eBanking.utilities.BrowserUtils;
-import com.eBanking.utilities.CommonUtils;
-import com.eBanking.utilities.Elements;
+
 
 
 
@@ -26,12 +24,12 @@ public class UserRegistrationPage extends Page {
 	
 	
 	public UserLoginPage addRegistrationDetails(String firstName,String lastName, String emailId, String mobileNumber,String password) {
-		Elements.doSendKeys(driver, firstNameTextFld, firstName);
-		Elements.doSendKeys(driver, lastNameTextFld, lastName);
-		Elements.doSendKeys(driver, emailAddressFld, emailId);
-		Elements.doSendKeys(driver, mobileNUmberFld, mobileNumber);
-		Elements.doSendKeys(driver, passwordFld, password);
-		Elements.doClick(driver, registerAccountBtn);
+		bot.enterText(firstNameTextFld, firstName)
+		.enterText(lastNameTextFld, lastName)
+		.enterText(emailAddressFld, emailId)
+		.enterText( mobileNUmberFld, mobileNumber)
+		.enterText(passwordFld, password)
+		.click(registerAccountBtn);
 		return new UserLoginPage();
 	}
 

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
-import com.eBanking.ui.pages.user.UserPage;
+
 
 import io.cucumber.java.en.Then;
 
@@ -16,7 +16,7 @@ public class ManagePayeeSteps extends Page{
 	
 	
 	UserDashboardPage userDashboardPage = new UserDashboardPage();
-	UserPage userPage = new UserPage();
+	
 
 	private static Logger log = LoggerFactory.getLogger(ManagePayeeSteps.class);
 	

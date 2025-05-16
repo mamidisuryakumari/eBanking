@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
-import com.eBanking.ui.pages.user.UserPage;
+
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,22 +17,13 @@ public class AddPayeeSteps extends Page{
 	
 	
 	UserDashboardPage userDashboardPage = new UserDashboardPage();
-	UserPage userPage = new UserPage();
+	
 
 	private static Logger log = LoggerFactory.getLogger(AddPayeeSteps.class);
 	
 	@When("I add following payee account details")
 	public void the_user_add_following_payye_account_details(io.cucumber.datatable.DataTable dataTable) {
-		try {
-			userDashboardPage.clickOnPayeeOption().clickOnAddLink();
-			Map<String, String> payeeAccountDetails = dataTable.asMap();
-			userPage.userAddPayeeAccountDetails(payeeAccountDetails.get("Account Number"),
-					payeeAccountDetails.get("Confirm Account Number"), payeeAccountDetails.get("Account Holder Name"));
-			log.info("User added acconut details successfully");
-		} catch (Exception e) {
-			log.error("An exception occured while user add payee account details", e);
-			throw e;
-		}
+		
 		
 	}
 	

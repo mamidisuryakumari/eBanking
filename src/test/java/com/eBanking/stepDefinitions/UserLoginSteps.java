@@ -41,8 +41,19 @@ public class UserLoginSteps extends Page{
 	
 @When("I go to user login page")
 public void iGoToUserLoginPage()  {
-	homePage.iNavigatedToUserLoginPage();
-}
+	try {
+		homePage.iNavigatedToUserLoginPage();
+		String actualUserLoginPageTitle = bot.getTitle();
+		String exceptedUserLoginPageTitle = PropertiesManager.getProperty("userlogin.page.title").trim();
+		assertEquals(exceptedUserLoginPageTitle, actualUserLoginPageTitle);
+		logger.info("I navigated to login page successfully");
+	} catch (Exception e) {
+		logger.error("An exception occured while navigating login page", e);
+		throw e;
+	}
+		
+	}
+
 	
 	
 
@@ -53,26 +64,13 @@ public void iGoToUserLoginPage()  {
 			userLoginPage.loginUser(userLoginMap.get("Email Address"), userLoginMap.get("Password"));
 			logger.info("User logged successfully");
 		} catch (Exception e) {
-			logger.error("An unexcepted error occured while login the application", e);
+			logger.error("An unexcepted error occured while login into the application", e);
 			throw e;
 		}
 
 	}
 
-	@Then("I should be navigated to the user login page")
-	public void user_should_be_navigated_to_login_page() {
-		try {
-			boolean result = userLoginPage.isOnLoginPage();
-			assertTrue(result);
-			logger.info("Login page title is matched");
-		} catch (AssertionError ae) {
-			logger.error("Assert is failed", ae);
-			throw ae;
-		} catch (Exception e) {
-			logger.error("An exception occured while navigating to login page");
-			throw e;
-		}
-	}
+	
 
 	@When("I clicks on create an account link")
 	public void user_click_on_create_an_account_link() {

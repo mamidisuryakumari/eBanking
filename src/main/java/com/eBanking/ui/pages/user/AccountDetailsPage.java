@@ -3,18 +3,11 @@ package com.eBanking.ui.pages.user;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
+import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.pages.Page;
-import com.eBanking.utilities.CommonUtils;
-import com.eBanking.utilities.DropdownUtil;
-import com.eBanking.utilities.Elements;
 
-public class AccountDetailsPage extends Page{
-	
-	
-	
-	
+public class AccountDetailsPage extends Page {
 
 	private static By accountDetailsText = By.xpath("//h3[text()='Account Details']");
 	private static By AddressProffDropdown = By.xpath("//select[@name='addproof']");
@@ -24,26 +17,22 @@ public class AccountDetailsPage extends Page{
 	private static By submitBtn = By.id("submit");
 	private static By acceptCheckbox = By.id("tandc");
 	private static By dobDate = By.id("dob");
-	
+
 	private static By uploadAddressProffFilePath = By.xpath("//input[@id='attaddproof']");
 	private static By uploadPanCardFilePath = By.id("uplpancard");
-	
+
 	public String getAccountDetailsText() {
-	return Elements.getText(driver, accountDetailsText);
+		return bot.getText(accountDetailsText);
 	}
-	
-	public UserDashboardPage enterAccountDetails(String addressProffIDNumber,String pancardNumber,String address,String dob) throws IOException{
-		DropdownUtil.selectByValue(driver, AddressProffDropdown,CommonUtils.getProperties().getProperty("addressProof"));
-		Elements.doJsSendKeys(driver, addressProffIDNumberFld, addressProffIDNumber);
-		Elements.doSendKeys(driver, uploadAddressProffFilePath,CommonUtils.getProperties().getProperty("uploadAddressProofFilePath"));
-		Elements.doSendKeys(driver, uploadPanCardFilePath,CommonUtils.getProperties().getProperty("uploadPancardFilepath"));
-		Elements.doSendKeys(driver, pancardNumberFld, pancardNumber);
-		Elements.doSendKeys(driver, addressFld, address);
-		Elements.doSendKeys(driver, dobDate, dob);
-		Elements.selectCheckbox(driver, acceptCheckbox);
-		Elements.doClick(driver, submitBtn);
+
+	public UserDashboardPage enterAccountDetails(String addressProffIDNumber, String uploadAddressProof,
+			String uploadPanCard, String pancardNumber, String address, String dob) {
+		bot.selectByValue(AddressProffDropdown, PropertiesManager.getProperty("addressProof"))
+				.enterText(addressProffIDNumberFld, addressProffIDNumber)
+				.enterText(uploadAddressProffFilePath, uploadAddressProof)
+				.enterText(uploadPanCardFilePath, uploadPanCard).enterText(pancardNumberFld, pancardNumber)
+				.enterText(addressFld, address).enterText(dobDate, dob).checkCheckbox(acceptCheckbox).click(submitBtn);
 		return new UserDashboardPage();
 	}
-	
-	
+
 }

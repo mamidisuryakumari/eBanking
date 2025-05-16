@@ -10,9 +10,7 @@ import com.eBanking.ui.pages.HomePage;
 import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserLoginPage;
 import com.eBanking.ui.pages.user.UserRegistrationPage;
-import com.eBanking.utilities.AlertUtil;
-import com.eBanking.utilities.BrowserUtils;
-import com.eBanking.utilities.CommonUtils;
+
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
@@ -48,7 +46,7 @@ public class UserRegistrationSteps extends Page{
 			var registrationDetailsMap = registrationDetails.asMap(String.class,String.class);
 			userRegistrationPage.addRegistrationDetails(registrationDetailsMap.get("First Name"),
 					registrationDetailsMap.get("Last Name"), 
-					CommonUtils.getRandomNumber(10, 10000)+registrationDetailsMap.get("Email Address"),
+					bot.getRandomNumber(10, 10000)+registrationDetailsMap.get("Email Address"),
 					registrationDetailsMap.get("Mobile Number"),
 					registrationDetailsMap.get("Password"));
 			logger.info("registration successfull");

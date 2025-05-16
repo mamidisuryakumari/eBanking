@@ -1,25 +1,24 @@
 package com.eBanking.ui.pages.admin;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import com.eBanking.ui.pages.Page;
-import com.eBanking.utilities.BrowserUtils;
-import com.eBanking.utilities.Elements;
+
 
 public class AdminDashBoardPage extends Page{
 
 	
 
 	private static By newAccountRequestFld = By.xpath("//div[normalize-space(text())='New Account Requests']");
-
-	public boolean isOnAdminDashBoardPage() {
-		String expectedTitle = "e-Banking | Dashboard";
-		return BrowserUtils.verifyTitle(driver, expectedTitle);
+	
+	public String getAdminDashboardPageTitle() {
+		return bot.getTitle();
 	}
 
-	public AdminPage newAccountRequest() {
-		Elements.doClick(driver, newAccountRequestFld);
-		return new AdminPage();
+
+
+	public AdminAccountholderDetailsPage adminNavigateToNewAccountRequestPage() {
+		bot.click(newAccountRequestFld);
+		return new AdminAccountholderDetailsPage();
 	}
 }

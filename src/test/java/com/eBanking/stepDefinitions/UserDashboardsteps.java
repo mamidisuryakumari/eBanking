@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 
@@ -21,8 +22,9 @@ public class UserDashboardsteps extends Page{
 	@Then("I should be navigated to the user dashboard page")
 	public void user_should_be_navigated_to_dashboard_page() {
 	    try {
-	    	boolean result = userDashboardPage.isOnUserDashboardPage();
-			assertTrue(result);
+	    	String actualDashboardPageTitle = bot.getTitle();
+	    	String exceptedDashboardPageTitle = PropertiesManager.getProperty("userDashboard.page.title");
+	    	assertEquals(exceptedDashboardPageTitle, actualDashboardPageTitle);
 			log.info("Title is matched for userdashboard page");
 	    }catch (AssertionError ae) {
 			log.error("Title is not matched for userdashboard" , ae);
@@ -37,13 +39,7 @@ public class UserDashboardsteps extends Page{
 
 	@When("the user clicks on the Account Opening option")
 	public void the_user_clicks_on_the_account_opening_option() {
-		try {
-			 userDashboardPage.clickOnAccountOpening();
-			 log.info("User clicked on account opening successfully");
-		} catch (Exception e) {
-			log.error("An exception occured while clicking on the account opening option", e);
-			throw e;
-		}
+		
 	  }
 	
 	

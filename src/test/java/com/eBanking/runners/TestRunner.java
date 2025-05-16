@@ -11,7 +11,7 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
-@IncludeTags("Userregistration")
+@IncludeTags("AccountApproval")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty,html:target/cucumber-reports/reports.html, json:target/cucumber-report.json")
 @ConfigurationParameter(key = "cucumber.glue", value = "com.eBanking.stepDefinitions")
 @ConfigurationParameter(key = "cucumber.execution.verbose", value = "true")

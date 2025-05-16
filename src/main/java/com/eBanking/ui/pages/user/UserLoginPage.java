@@ -3,8 +3,7 @@ package com.eBanking.ui.pages.user;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.pages.Page;
-import com.eBanking.utilities.BrowserUtils;
-import com.eBanking.utilities.Elements;
+
 
 
 
@@ -19,10 +18,7 @@ public class UserLoginPage extends Page{
 	
 
 	
-	public boolean isOnLoginPage() {
-		String exceptedLoginPageTitle = "e-Banking | User Login";
-		return BrowserUtils.verifyTitle(driver, exceptedLoginPageTitle);
-	}
+	
 	
 	public UserRegistrationPage createAccount() {
 		bot.click(createAnAccountlink);
