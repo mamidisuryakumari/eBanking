@@ -1,9 +1,11 @@
 package com.eBanking.ui.pages.user;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
 
+import com.eBanking.ui.engine.Bot;
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.pages.Page;
 
@@ -25,14 +27,16 @@ public class AccountDetailsPage extends Page {
 		return bot.getText(accountDetailsText);
 	}
 
-	public UserDashboardPage enterAccountDetails(String addressProffIDNumber, String uploadAddressProof,
-			String uploadPanCard, String pancardNumber, String address, String dob) {
+	public UserDashboardPage enterAccountDetails(String addressProffIDNumber, String pancardNumber, String address, String dob) {
 		bot.selectByValue(AddressProffDropdown, PropertiesManager.getProperty("addressProof"))
 				.enterText(addressProffIDNumberFld, addressProffIDNumber)
-				.enterText(uploadAddressProffFilePath, uploadAddressProof)
-				.enterText(uploadPanCardFilePath, uploadPanCard).enterText(pancardNumberFld, pancardNumber)
+				.fileUpload(uploadAddressProffFilePath,System.getProperty("user.dir")+File.separator +PropertiesManager.getProperty("upload.AddressProof.FilePath").replace("/",File.separator))
+				.fileUpload(uploadPanCardFilePath,System.getProperty("user.dir")+File.separator +PropertiesManager.getProperty("upload.pancard.FilePath").replace("/", File.separator))
+				.enterText(pancardNumberFld, pancardNumber)
 				.enterText(addressFld, address).enterText(dobDate, dob).checkCheckbox(acceptCheckbox).click(submitBtn);
 		return new UserDashboardPage();
 	}
+
+	
 
 }

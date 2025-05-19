@@ -13,8 +13,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 import lombok.Getter;
 
 public class Bot {
@@ -34,7 +32,8 @@ public class Bot {
 
 	public Bot click(By locator) {
 		try {
-		//	wait.scrollToView(locator);
+			wait.waitForOverLayToDisapper();
+			wait.scrollToView(locator);
 			WebElement element = wait.waitForTheElementToBeClickable(locator);
 			new Actions(driver).moveToElement(element).perform();
 			element.click();
@@ -47,30 +46,32 @@ public class Bot {
 	}
 
 	public Bot enterText(By locator, String inputText) {
-	    try {
-	        WebElement element = wait.waitForTheElementToBeVisible(locator);
-	        String tagName = element.getTagName();
-			String typeAttr = element.getDomAttribute("type");
-
-	        // If it's a file input, skip click, clear, and actions
-	        if ("input".equalsIgnoreCase(tagName) && "file".equalsIgnoreCase(typeAttr)) {
-	            element.sendKeys(inputText);
-	        } else {
-	            wait.scrollToView(locator);
-	            new Actions(driver).moveToElement(element).perform();
-	            element.click();
-	            element.clear();
-	            element.sendKeys(inputText);
-	        }
-
-	        logger.info("Entered text '{}' into element: {} ", inputText, locator);
-	    } catch (Exception e) {
-	        logger.error("Failed to enter text '{}' in element: {}", inputText, locator);
-	        throw new RuntimeException("An exception occurred while entering text in element: " + locator, e);
-	    }
-	    return this;
+		try {
+			wait.scrollToView(locator);
+			WebElement element = wait.waitForTheElementToBeVisible(locator);
+			new Actions(driver).moveToElement(element).perform();
+			element.click();
+			element.clear();
+			element.sendKeys(inputText);
+			logger.info("Entered text '{}' into element: {} ", inputText, locator);
+		} catch (Exception e) {
+			logger.error("Failed to enter text '{}' in element: {}", inputText, locator,e);
+			throw new RuntimeException("An exception occurred while entering text in element: " + locator, e);
+		}
+		return this;
 	}
-
+	
+	public Bot fileUpload(By locatror, String filePath) {
+		try {
+			WebElement element = wait.waitForTheElementToBeVisible(locatror);
+			element.sendKeys(filePath);
+			 logger.info("Successfully uploaded file: '{}'", filePath);
+		} catch (Exception e) {
+			logger.error("Exception occurred during file upload for: '{}'", filePath, e);
+	        throw new RuntimeException("File upload failed for: " + filePath, e);
+		}
+		return this;
+	}
 
 	public String getTitle() {
 		try {
@@ -243,13 +244,13 @@ public class Bot {
 		}
 		return this;
 	}
-	
-	public  int getRandomNumber(int min, int max) {
-        if (min >= max) {
-            throw new IllegalArgumentException("max must be greater than min");
-        }
-        Random random = new Random();
-        return random.nextInt((max - min) + 1) + min;
-    }
+
+	public int getRandomNumber(int min, int max) {
+		if (min >= max) {
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+		Random random = new Random();
+		return random.nextInt((max - min) + 1) + min;
+	}
 
 }

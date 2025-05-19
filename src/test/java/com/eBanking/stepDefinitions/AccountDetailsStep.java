@@ -48,8 +48,6 @@ public class AccountDetailsStep extends Page{
 		try {
 			Map<String, String> accountDetails = dataTable.asMap();
 			accountDetailsPage.enterAccountDetails(accountDetails.get("Address Proof ID Number"),
-					accountDetails.get("Upload address proof"),
-					accountDetails.get("Upload pan card"),
 					accountDetails.get("PAN Card ID Number"), 
 					accountDetails.get("Address"),
 					accountDetails.get("Date of birth"));

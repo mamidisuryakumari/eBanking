@@ -16,6 +16,8 @@ public class UserLoginPage extends Page{
 	private static final By passwordTextFld = By.id("password");
 	private static final  By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
 	
+	UserRegistrationPage registrationPage = new UserRegistrationPage();
+	
 
 	
 	
@@ -26,6 +28,7 @@ public class UserLoginPage extends Page{
 	}
 	
 	public UserDashboardPage loginUser(String email,String password) {
+		
 		bot.enterText(emailTextFld, email)
 		.enterText(passwordTextFld, password)
 		.click(loginBtn);

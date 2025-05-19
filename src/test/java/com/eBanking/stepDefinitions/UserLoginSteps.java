@@ -1,18 +1,19 @@
 package com.eBanking.stepDefinitions;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.openqa.selenium.WebDriver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.eBanking.ui.engine.Commons;
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.pages.HomePage;
 import com.eBanking.ui.pages.Page;
 import com.eBanking.ui.pages.admin.AdminLoginPage;
 import com.eBanking.ui.pages.user.UserLoginPage;
+import com.eBanking.ui.pages.user.UserRegistrationPage;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class UserLoginSteps extends Page{
@@ -22,6 +23,9 @@ public class UserLoginSteps extends Page{
 	UserLoginPage userLoginPage = new UserLoginPage();
 	HomePage homePage = new HomePage();
 	AdminLoginPage adminLoginPage = new AdminLoginPage();
+	UserRegistrationPage registrationPage = new UserRegistrationPage();
+	
+	
 	
 	@When("I navigate to user login page")
 	public void iNavigateToUserLoginPage(){
@@ -69,6 +73,13 @@ public void iGoToUserLoginPage()  {
 		}
 
 	}
+	
+	@When("I login with userName and password")
+	public void loginToTheApplication()
+	{
+		userLoginPage.loginUser(Commons.userEmailId ,Commons.userPassword);
+		
+		}
 
 	
 

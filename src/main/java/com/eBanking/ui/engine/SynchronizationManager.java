@@ -109,4 +109,13 @@ public class SynchronizationManager {
 			throw new RuntimeException("Unable to scroll to element:  + locator ,e");
 		}
 	}
+	
+	public void waitForOverLayToDisapper() {
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("overlayer")));
+			logger.info("Overlay present");
+		} catch (Exception e) {
+			logger.error("Overlay did not disapper within the timeout");
+		}
+	}
 }

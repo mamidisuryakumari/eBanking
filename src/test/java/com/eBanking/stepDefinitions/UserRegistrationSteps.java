@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.eBanking.ui.engine.Common;
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.pages.HomePage;
 import com.eBanking.ui.pages.Page;
@@ -46,10 +47,12 @@ public class UserRegistrationSteps extends Page{
 			var registrationDetailsMap = registrationDetails.asMap(String.class,String.class);
 			userRegistrationPage.addRegistrationDetails(registrationDetailsMap.get("First Name"),
 					registrationDetailsMap.get("Last Name"), 
-					bot.getRandomNumber(10, 10000)+registrationDetailsMap.get("Email Address"),
+					registrationDetailsMap.get("Email Address").replace("${random}", Common.random()),
 					registrationDetailsMap.get("Mobile Number"),
 					registrationDetailsMap.get("Password"));
 			logger.info("registration successfull");
+			
+			
 		} catch (Exception e) {
 			logger.error("Unexcepted error occured", e);
 			throw e;
