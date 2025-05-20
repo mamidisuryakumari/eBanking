@@ -51,9 +51,7 @@ public class UserRegistrationSteps extends Page{
 					registrationDetailsMap.get("Mobile Number"),
 					registrationDetailsMap.get("Password"));
 			logger.info("registration successfull");
-			
-			
-		} catch (Exception e) {
+			} catch (Exception e) {
 			logger.error("Unexcepted error occured", e);
 			throw e;
 		}
@@ -80,5 +78,5 @@ public class UserRegistrationSteps extends Page{
 	@Then("I should be navigated to the user registration page")
 	public void user_should_be_navigated_to_registration_page() {
 	   
-	}
+}
 }

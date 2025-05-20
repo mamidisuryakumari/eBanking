@@ -22,7 +22,7 @@ public class UserDashboardsteps extends Page{
 	@Then("I should be navigated to the user dashboard page")
 	public void user_should_be_navigated_to_dashboard_page() {
 	    try {
-	    	String actualDashboardPageTitle = bot.getTitle();
+	    	String actualDashboardPageTitle = userDashboardPage.getDashboardPageTitle();
 	    	String exceptedDashboardPageTitle = PropertiesManager.getProperty("userDashboard.page.title");
 	    	assertEquals(exceptedDashboardPageTitle, actualDashboardPageTitle);
 			log.info("Title is matched for userdashboard page");
@@ -37,16 +37,6 @@ public class UserDashboardsteps extends Page{
 
 	
 
-	@When("the user clicks on the Account Opening option")
-	public void the_user_clicks_on_the_account_opening_option() {
-		
-	  }
-	
-	
-	@When("I clicks on add link")
-	public void i_clicks_on_add_link() {
-	   
-	}
 	
 	
 

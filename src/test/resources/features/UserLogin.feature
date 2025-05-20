@@ -25,15 +25,14 @@ Feature: Login feature
     Then I should be navigated to the user dashboard page
 
   @ForgotPassword
-  Scenario: Verify that the user can reset their password using the forgot Password option
+Scenario: Verify that the user can reset their password using the forgot Password option
     Given I am on the home page
-    When I clicks on user menu
-    Then I should be navigated to the user login page
-    When I clicks on forgot Password link
+    When I go to user login page
+    And I go to the forgot Password page
     Then I should be navigated to the user forgot password page
-    When I enter following details
-      | E-mail address   | dhanyas@gmail.com |
-      | Mobile number    |        9963512345 |
-      | New Password     | dhanya@123        |
-      | Confirm Password | dhanya@123        |
-    Then I should see a message "Your Password succesfully changed"
+    When I enter forgot password details
+      | E-mail address   | dileepk@gmail.com  |
+      | Mobile number    |       9963512345 |
+      | New Password     | dileepk123        |
+      | Confirm Password |dileepk123      |
+    Then I should see Password changed succesfully

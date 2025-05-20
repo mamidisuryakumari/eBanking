@@ -15,12 +15,16 @@ public class UserLoginPage extends Page{
 	private static final By emailTextFld = By.id("email");
 	private static final By passwordTextFld = By.id("password");
 	private static final  By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
+	private static final By forgotPasswordLink = By.xpath("//a[text()='Forgot Password?']");
 	
 	UserRegistrationPage registrationPage = new UserRegistrationPage();
 	
 
 	
-	
+	public UserForgotPasswordpage iNavigatedToForgotPasswordPage() {
+		bot.click(forgotPasswordLink);
+		return new UserForgotPasswordpage();
+	}
 	
 	public UserRegistrationPage createAccount() {
 		bot.click(createAnAccountlink);
