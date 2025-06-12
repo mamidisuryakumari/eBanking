@@ -18,8 +18,8 @@ Feature: Manage Payee feature
     Given I am on the home page
     When I go to user login page
     And I log in with valid credentials
-      | Email Address | 8178kumar@gmail.com |
-      | Password      | kumar123            |
+      | Email Address | kumari@gmail.com |
+      | Password      | kumari123            |
     Then I should be navigated to the user dashboard page
      When I go to manage payee page
     When I go to the transfer amount page 

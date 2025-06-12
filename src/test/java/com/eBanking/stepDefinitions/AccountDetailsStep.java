@@ -1,42 +1,48 @@
 package com.eBanking.stepDefinitions;
 
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.eBanking.ui.engine.Common;
 import com.eBanking.ui.engine.PropertiesManager;
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.user.AccountDetailsPage;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AccountDetailsStep extends Page{
+public class AccountDetailsStep {
 	
-	private static final Logger log = LoggerFactory.getLogger(AccountDetailsStep.class);
-	AccountDetailsPage accountDetailsPage = new AccountDetailsPage();
-	UserDashboardPage userDashboardPage = new UserDashboardPage();
+	private TestContext context;
+	private static final Logger logger = LoggerFactory.getLogger(AccountDetailsStep.class);
+	AccountDetailsPage accountDetailsPage ;
+	UserDashboardPage userDashboardPage ;
+	
+	public AccountDetailsStep(TestContext context) {
+		this.context = context;
+		this.accountDetailsPage = new AccountDetailsPage(context);
+		this.userDashboardPage  = new UserDashboardPage(context);
+	}
 	
 	
 	@When("I go to the account Details page")
 	public void iGoToTheAccountDetailsPage() {
 		try {
-			 userDashboardPage.iNavigatedToAccountDetailsPage();
+			 userDashboardPage.navigatedToAccountDetailsPage();
 			 String exceptedAccountDetailsText = PropertiesManager.getProperty("accountdetails.text");
 				String actualAccountDetailsText = accountDetailsPage.getAccountDetailsText();
 				assertEquals(exceptedAccountDetailsText, actualAccountDetailsText);
-				log.info("Account details text is matched successfully");
+				logger.info("Account details text is matched successfully");
 			} catch (AssertionError ae) {
-				log.error("Assert failed", ae);
+				logger.error("Assert failed", ae);
 				throw ae;
 			} catch (Exception e) {
-				log.error("An unexcepted error occured while navigating to the account details page", e);
+				logger.error("An unexcepted error occured while navigating to the account details page", e);
 				throw e;
 			}
 	}
@@ -47,30 +53,29 @@ public class AccountDetailsStep extends Page{
 	public void i_enters_the_following_account_details(io.cucumber.datatable.DataTable dataTable){
 		try {
 			Map<String, String> accountDetails = dataTable.asMap();
-			accountDetailsPage.enterAccountDetails(accountDetails.get("Address Proof ID Number"),
-					accountDetails.get("PAN Card ID Number"), 
+			accountDetailsPage.enterAccountDetails(accountDetails.get("Address Proof ID Number").trim().replace("${aadharCard}",Common.generateRandomAdharNumber()),
+					accountDetails.get("PAN Card ID Number").trim().replace("${panNumber}", Common.generateRandomPanNumber()), 
 					accountDetails.get("Address"),
 					accountDetails.get("Date of birth"));
-			log.info("Account details entered successfully");
+			logger.info("Account details entered successfully");
 		} catch (Exception e) {
-			log.error("An exception error occured while entered account details", e);
+			logger.error("An exception error occured while entered account details", e);
 			throw e;
 		}
 	}
 	
-	@Then("I should see account opening successfully")
-		public void iShouldSeeAccountOpeningSuccessfully() {
+	@Then("I should see success message as {}")
+		public void iShouldSeeSuccessMessageAs(String expSuccessMsg) {
 			try {
-				String createAccountSuccessMsg = bot.getAlertMessage();
-				String expSuccessMsg = PropertiesManager.getProperty("createAccount.success.msg");
+				accountDetailsPage.acceptAccountSubmition();
+				String createAccountSuccessMsg = context.getActualUserAccountSubmissionSuccessMsg();
 				assertEquals(createAccountSuccessMsg, expSuccessMsg);
-				bot.acceptAlert();
-				log.info("Success message is matched");
-			} catch (AssertionError ae) {
-				log.error("Assertion failed: Alert text did not match the expected message" , ae);
-				throw ae;
+				logger.info("Account created and sumbitted for approval");
+				} catch (AssertionError e) {
+				logger.error("Assertion failed: Alert text did not match the expected message" , e.getMessage());
+				throw e;
 			}catch (Exception e) {
-				log.error("An exception occurred while handling the alert message" , e);
+				logger.error("An exception occurred while handling the alert message" , e.getMessage());
 				throw e;
 			}
 	}

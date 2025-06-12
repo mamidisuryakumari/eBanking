@@ -1,10 +1,12 @@
 package com.eBanking.ui.engine;
 
+import java.io.File;
 import java.util.Random;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +19,7 @@ import lombok.Getter;
 
 public class Bot {
 
-	private static final Logger logger = LoggerFactory.getLogger(Bot.class);
+	private final Logger logger = LoggerFactory.getLogger(Bot.class);
 
 	@Getter
 	protected WebDriver driver;
@@ -25,10 +27,12 @@ public class Bot {
 	@Getter
 	protected SynchronizationManager wait;
 
-	public Bot() {
-		this.driver = BrowserFactory.getDriver();
+	public Bot(WebDriver driver) {
+		this.driver = driver;
 		this.wait = new SynchronizationManager(driver);
 	}
+
+	
 
 	public Bot click(By locator) {
 		try {
@@ -61,9 +65,12 @@ public class Bot {
 		return this;
 	}
 	
-	public Bot fileUpload(By locatror, String filePath) {
+	public Bot fileUpload(By locatror, String relativePath) {
+		String filePath = System.getProperty("user.dir") + File.separator + (relativePath);
 		try {
+			wait.scrollToView(locatror);
 			WebElement element = wait.waitForTheElementToBeVisible(locatror);
+			new Actions(driver).moveToElement(element).perform();
 			element.sendKeys(filePath);
 			 logger.info("Successfully uploaded file: '{}'", filePath);
 		} catch (Exception e) {
@@ -95,7 +102,15 @@ public class Bot {
 			throw new RuntimeException("An exception occurred while fetching the alert message", e);
 		}
 	}
-
+	
+	public String getAttributValue(By locator)
+	{
+		WebElement element =  driver.findElement(locator);
+		String capturedValue = element.getDomAttribute("value");
+		return capturedValue;
+		
+	}
+	
 	public void acceptAlert() {
 		try {
 			wait.waitForAlert();
@@ -244,6 +259,34 @@ public class Bot {
 		}
 		return this;
 	}
+	
+	public Bot pressEnterUsingActions(By locator) {
+	    try {
+	        WebElement element = wait.waitForTheElementToBeVisible(locator);
+	        Actions actions = new Actions(driver);
+	        actions.moveToElement(element).sendKeys(Keys.ENTER).build().perform();
+	        logger.info("Pressed ENTER using Actions on element: {}", locator);
+	    } catch (Exception e) {
+	        logger.error("Failed to press ENTER using Actions on element: {}", locator, e);
+	        throw new RuntimeException("An exception occurred while pressing ENTER with Actions on: " + locator, e);
+	    }
+	    return this;
+	}
+	
+	public Bot searchAccount(By locator, String text) {
+	    try {
+	        WebElement element = wait.waitForTheElementToBeVisible(locator);
+	        element.clear();
+	        element.sendKeys(text + Keys.ENTER);
+	        logger.info("Entered text '{}' and pressed ENTER on element: {}", text, locator);
+	    } catch (Exception e) {
+	        logger.error("Failed to enter text and press ENTER on element: {}", locator, e);
+	        throw new RuntimeException("An error occurred while entering text and pressing ENTER on: " + locator, e);
+	    }
+	    return this;
+	}
+
+
 
 	public int getRandomNumber(int min, int max) {
 		if (min >= max) {
@@ -252,5 +295,8 @@ public class Bot {
 		Random random = new Random();
 		return random.nextInt((max - min) + 1) + min;
 	}
+	
+	
+
 
 }

@@ -6,63 +6,109 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.PropertiesManager;
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.admin.AdminAccountholderDetailsPage;
 import com.eBanking.ui.pages.admin.AdminNewAccountRequestPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AdminAccountholderDetailsSteps extends Page {
+public class AdminAccountholderDetailsSteps {
 
-	private static Logger logger = LoggerFactory.getLogger(AdminAccountholderDetailsSteps.class);
+	private TestContext context;
+	private Logger logger = LoggerFactory.getLogger(AdminAccountholderDetailsSteps.class);
 
-	AdminNewAccountRequestPage adminNewAccountRequestPage = new AdminNewAccountRequestPage();
-	AdminAccountholderDetailsPage adminAccountholderDetailsPage = new AdminAccountholderDetailsPage();
+	AdminNewAccountRequestPage adminNewAccountRequestPage;
+	AdminAccountholderDetailsPage adminAccountholderDetailsPage;
 
-	@When("Admin navigated to admin account holder details page")
-	public void adminNavigateToAdminAccountHolderDetailsPage() {
+	public AdminAccountholderDetailsSteps(TestContext context) {
+		this.context = context;
+		this.adminAccountholderDetailsPage = new AdminAccountholderDetailsPage(context);
+		this.adminNewAccountRequestPage = new AdminNewAccountRequestPage(context);
+	}
+
+	@When("I go to the account holder details page")
+	public void iGotoTheAccountHolderDetailsPage() {
 		try {
-			adminNewAccountRequestPage.adminNavigateToAccountHolderDetailsPage();
+			adminNewAccountRequestPage.navigateToAccountHolderDetailsPage();
+			logger.info("Navigated to account holder details page successfully");
+		} catch (Exception e) {
+			logger.error("An exception error occured while navigating to the account holder details page",
+					e.getMessage());
+			throw e;
+		}
+	}
+
+	@Then("I am on account holder details page")
+	public void iAmOnAccountHilderDetailsPage() {
+		try {
 			String actualAdminAccountholderDetailsPageTitle = adminAccountholderDetailsPage
 					.getAdminAccountholderDetailsPage();
 			String exceptedAdminAccountholderDetailsPageTitle = PropertiesManager
 					.getProperty("admin.AccountHolderDetails.page.title");
 			assertEquals(exceptedAdminAccountholderDetailsPageTitle, actualAdminAccountholderDetailsPageTitle);
 			logger.info("Admin navigated to adimn holder details page successfully");
-		} catch (AssertionError ae) {
-			logger.error("Assertion failed : admin account holder details page title is mismatched");
+		} catch (AssertionError e) {
+			logger.error("Assertion failed : admin account holder details page title is mismatched", e.getMessage());
+			throw e;
 		} catch (Exception e) {
 			logger.error("An exception error occured while navigating to admin account holder details page");
+			throw e;
 		}
 	}
-	
-	@When("Admin approv the request")
-	public void adminApprovTheRequest() {
+
+	@When("I approve the request")
+	public void iApproveTheRequest() {
 		try {
 			adminAccountholderDetailsPage.accountApproval();
 			logger.info("Account approved successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while admin approve the request" , e);
+			logger.error("An exception error occured while admin approve the request", e.getMessage());
 			throw e;
 		}
 	}
-	
-	@Then("Admin should see approve request successfully")
-	public void adminShouldSeeApproveRequestSuccessfully() {
+
+	@Then("I should see approve request success message as {}")
+	public void iShouldSeeSpproveRequestSuccessMsg(String expectedApproveRequestMsg) {
 		try {
-			String actualApproveRequestMessage = bot.getAlertMessage();
-			String exceptedApproveRequestMessage = PropertiesManager.getProperty("admin.ApproveRequest.Message");
-			assertEquals(exceptedApproveRequestMessage, actualApproveRequestMessage);
-			logger.info("Approve request message is matched");
-			bot.acceptAlert();
-		} catch (AssertionError  ae) {
-			logger.error("Assertion filed : approve request message is mismatched" , ae);
-			throw ae;
-		}catch (Exception e) {
-			logger.error("An exception error occured while verifying the approve request message" , e);
+			adminAccountholderDetailsPage.acceptApproveRequest();
+			String actualApproveRequestMsg = context.getActualApproveRequestMsg();
+			assertEquals(expectedApproveRequestMsg, actualApproveRequestMsg);
+			logger.info("Approve request alert message is displayed successfully");
+		} catch (AssertionError e) {
+			logger.error("Assertion failed: Approve request alert message is not matched", e.getMessage());
+			throw e;
+		} catch (Exception e) {
+			logger.error("An exception error occured while seeing the approve request", e.getMessage());
 			throw e;
 		}
+	}
+
+	@When("I reject the request")
+	public void iRejectTheRequest() {
+		try {
+			adminAccountholderDetailsPage.accountReject();
+			logger.info("Reject the request successfully");
+		} catch (Exception e) {
+			logger.error("An exception error occured while rejecting the request", e.getMessage());
+			throw e;
+		}
+	}
+
+	@Then("I should see reject request success message as {}")
+	public void iShouldSeeRejectRequestSuccessfully(String expectedRejectRequestMsg) {
+		try {
+			adminAccountholderDetailsPage.acceptRejectRequest();
+			assertEquals(expectedRejectRequestMsg, context.getActualRejectRequestMsg());
+			logger.info("Reject request alert message is displayed successfully");
+		} catch (AssertionError e) {
+			logger.error("Assertion failed: Reject request alert message is not matched", e.getMessage());
+			throw e;
+		} catch (Exception e) {
+			logger.error("An exception error occured while seeing the reject request", e.getMessage());
+			throw e;
+		}
+
 	}
 
 }

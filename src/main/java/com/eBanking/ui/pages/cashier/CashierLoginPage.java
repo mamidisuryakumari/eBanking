@@ -1,0 +1,37 @@
+package com.eBanking.ui.pages.cashier;
+
+import org.openqa.selenium.By;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.eBanking.ui.engine.TestContext;
+import com.eBanking.ui.pages.HomePage;
+import enums.UserType;
+
+
+public class CashierLoginPage {
+	
+	private TestContext context;
+	private final Logger logger = LoggerFactory.getLogger(CashierLoginPage.class);
+	
+	public CashierLoginPage(TestContext context) {
+		this.context = context;
+	}
+	
+	private final By cashierEmployeeIdFld = By.id("empid");
+	private final By cashierPasswordFld = By.id("password");
+	private final By loginBtn = By.xpath("//button[@name='login']");
+	
+	public String getCashierLoginPageTitle() {
+		return context.getBot().getTitle();
+	}
+	
+	public CashierDashboardPage loginCashier(String employeeId, String password) {
+		context.getBot().enterText(cashierEmployeeIdFld, employeeId)
+		.enterText(cashierPasswordFld, password)
+		.click(loginBtn);
+		return new CashierDashboardPage(context);
+	}
+	
+
+}

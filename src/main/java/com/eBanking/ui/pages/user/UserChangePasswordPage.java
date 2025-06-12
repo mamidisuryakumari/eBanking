@@ -2,9 +2,15 @@ package com.eBanking.ui.pages.user;
 
 import org.openqa.selenium.By;
 
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 
-public class UserChangePasswordPage extends Page {
+public class UserChangePasswordPage  {
+	
+private TestContext context;
+	
+	public UserChangePasswordPage(TestContext context) {
+		this.context = context;
+	}
 
 	private static final By changePasswordLabel = By.xpath("//h3[text()='Home/Change Password']");
 	private static final By currectPasswordFld = By.id("currentpassword");
@@ -13,11 +19,11 @@ public class UserChangePasswordPage extends Page {
 	private static final By changeBtn = By.id("submit");
 
 	public String getChangePasswordLabelText() {
-		return bot.getText(changePasswordLabel);
+		return context.getBot().getText(changePasswordLabel);
 	}
 	
 	public UserChangePasswordPage enterChangePasswordDetails(String currentPassword, String newPassword, String confirmPassword) {
-		bot.enterText(currectPasswordFld, currentPassword)
+		context.getBot().enterText(currectPasswordFld, currentPassword)
 		.enterText(newpasswordFld, newPassword)
 		.enterText(confirmPasswordFld, confirmPassword)
 		.click(changeBtn);
@@ -25,11 +31,11 @@ public class UserChangePasswordPage extends Page {
 	}
 	
 	public String getPasswordChangedAlertMessage() {
-		return bot.getAlertMessage();
+		return context.getBot().getAlertMessage();
 	}
 	
 	public UserChangePasswordPage acceptPasswordChangedAlertMessage() {
-		bot.acceptAlert();
+		context.getBot().acceptAlert();
 		return this;
 	}
 

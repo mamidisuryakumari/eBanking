@@ -2,47 +2,53 @@ package com.eBanking.ui.pages.user;
 
 import org.openqa.selenium.By;
 
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 
-public class ManagePayeePage extends Page {
+public class ManagePayeePage{
+	
+private TestContext context;
+	
+	public ManagePayeePage(TestContext context) {
+		this.context = context;
+	}
 
-	private static By managePayeeText = By.xpath("//h1[text()='Manage Payee']");
-	private static final By deleteLink = By.xpath("//a[text()='Delete']");
-	private static final By transferLink = By.xpath("//a[text()='Transfer']");
-	private static By transactionHistoryLink = By.xpath("//span[text()='Transaction History']");
-	private static By searchTextFld = By.xpath("//input[@type='search']");
+	private final By managePayeeText = By.xpath("//h1[text()='Manage Payee']");
+	private  final By deleteLink = By.xpath("//a[text()='Delete']");
+	private  final By transferLink = By.xpath("//a[text()='Transfer']");
+	private final By transactionHistoryLink = By.xpath("//span[text()='Transaction History']");
+	private final By searchTextFld = By.xpath("//input[@type='search']");
 	
 	public ManagePayeePage searchPayeeName(String payeeName) {
-		bot.enterText(searchTextFld, payeeName);
+		context.getBot().enterText(searchTextFld, payeeName);
 		return this;
 	}
 	
 	public UserTransactionHistoryPage iNavigatedToTransactionHistoryPage() {
-			bot.click(transactionHistoryLink);
-		return new UserTransactionHistoryPage();
+		context.getBot().click(transactionHistoryLink);
+		return new UserTransactionHistoryPage(context);
 	}
 	
 	
 	public TransferAmountPage iNavigatedToTranferAmountPage() {
-		bot.click(transferLink);
-		return new TransferAmountPage();
+		context.getBot().click(transferLink);
+		return new TransferAmountPage(context);
 	}
 
 	public String getManagePayeeText() {
-		return bot.getText(managePayeeText);
+		return context.getBot().getText(managePayeeText);
 	}
 
 	public ManagePayeePage deletePayee() {
-		bot.click(deleteLink).acceptAlert();
+		context.getBot().click(deleteLink).acceptAlert();
 		return this;
 	}
 
 	public String deleteSuccessMsg() {
-		return bot.getAlertMessage();
+		return context.getBot().getAlertMessage();
 	}
 	
 	public ManagePayeePage acceptdeleteMsg() {
-		bot.acceptAlert();
+		context.getBot().acceptAlert();
 		return this;
 	}
 }

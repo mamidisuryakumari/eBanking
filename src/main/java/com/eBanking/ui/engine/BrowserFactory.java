@@ -16,15 +16,15 @@ import lombok.Getter;
 
 public class BrowserFactory {
 
-	private static final Logger logger = LoggerFactory.getLogger(BrowserFactory.class);
+	private  final Logger logger = LoggerFactory.getLogger(BrowserFactory.class);
 	
 	@Getter
-	public static WebDriver driver;
+	public  WebDriver driver;
 	
 	@Getter
-	private static Bot bot;
+	private Bot bot;
 	
-	public Bot theTargetBrowserisOpen()  {
+	public WebDriver theTargetBrowserisOpen()  {
 		String browserName = PropertiesManager.getProperty("browser.name");
 		switch (browserName.toLowerCase()) {
 		case "chrome":
@@ -54,11 +54,14 @@ public class BrowserFactory {
 			logger.error("Please pass a correct browser value");
 			throw new IllegalArgumentException("Browser not supported " + browserName);
 		}
-		
-		bot = new Bot();
-		return bot;
+		bot = new Bot(driver);
+		return driver;
 	}
 	
+	public Bot getBot() {
+		return bot;
+	}
+
 	
 	
 	

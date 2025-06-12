@@ -6,36 +6,56 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.PropertiesManager;
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.admin.AdminDashBoardPage;
 import com.eBanking.ui.pages.admin.AdminNewAccountRequestPage;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class AdminNewAccountRequestSteps extends Page {
+public class AdminNewAccountRequestSteps {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdminNewAccountRequestSteps.class);
+	private TestContext context;
+	private  final Logger logger = LoggerFactory.getLogger(AdminNewAccountRequestSteps.class);
 
-	AdminNewAccountRequestPage adminNewAccountRequestPage = new AdminNewAccountRequestPage();
-	AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
-
-	@When("Admin navigate to the admin new account request page")
-	public void adminNavigateToTheAdminNewAccountRequestPage() {
+	AdminNewAccountRequestPage adminNewAccountRequestPage ;
+	AdminDashBoardPage adminDashBoardPage ;
+	
+	public AdminNewAccountRequestSteps(TestContext context) {
+		this.context = context;
+		this.adminDashBoardPage = new AdminDashBoardPage(context);
+		this.adminNewAccountRequestPage = new AdminNewAccountRequestPage(context);
+	}
+	
+	@When("I go to the new account request page")
+	public void iGoToTheNewAccountRequestPage() {
 		try {
-			adminDashBoardPage.adminNavigateToNewAccountRequestPage();
-			String actualAdminNewAccountRequestPage = adminNewAccountRequestPage.getAdminNewAccountRequestPage();
+			adminDashBoardPage.navigateToNewAccountRequestPage();
+			logger.info("Navigated to account request page successfully");
+		} catch (Exception e) {
+			logger.error("An exception error occured while navigating to the account request page" , e.getMessage());
+			throw e;
+		}
+		
+		
+	}
+    @Then("I am on new account request page")
+    public void iAmOnNewAccountRequestPage() {
+    	try {
+			String actualAdminNewAccountRequestPage = adminNewAccountRequestPage.getAdminNewAccountRequestPageTitle();
 			String exceptedAdminNewAccountRequestPage = PropertiesManager
 					.getProperty("admin.NewAccountrequest.page.title");
 			assertEquals(exceptedAdminNewAccountRequestPage, actualAdminNewAccountRequestPage);
 			logger.info("Admin navigate to the admin new account request page successfully");
-		} catch (AssertionError ae) {
-			logger.error("Assertion failed: Admin New Account Request page title mismatch", ae);
-			throw ae;
+		} catch (AssertionError e) {
+			logger.error("Assertion failed: Admin New Account Request page title mismatch", e.getMessage());
+			throw e;
 		} catch (Exception e) {
 			logger.error("Exception occurred while navigating to Admin New Account Request page", e);
 			throw e;
 		}
 
 	}
+    }
 
-}
+	

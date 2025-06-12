@@ -2,23 +2,42 @@ package com.eBanking.stepDefinitions;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.PropertiesManager;
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.admin.AdminDashBoardPage;
 
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
-public class AdminDashboardSteps extends Page{
+public class AdminDashboardSteps {
 	
+	private TestContext context;
+	private final Logger logger = LoggerFactory.getLogger(AdminDashboardSteps.class);
+	AdminDashBoardPage adminDashBoardPage;
 	
-	Logger logger = LoggerFactory.getLogger(AdminDashboardSteps.class);
-	AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
+	public AdminDashboardSteps(TestContext context) {
+		this.context = context;
+		this.adminDashBoardPage = new AdminDashBoardPage(context);
+	}
+	
+	@Then("I should be navigated to the admindashboard page")
+	public void iShouldBeNavigatedToTheAdminDashBoardPage(){
+		 try {
+			 String actualAdminDashBoardPageTitle = adminDashBoardPage.getAdminDashboardText();
+			 String exceptedAdminDashBoardPageTitle = PropertiesManager.getProperty("admin.dashboard.text");
+			 assertEquals(exceptedAdminDashBoardPageTitle, actualAdminDashBoardPageTitle);
+				logger.info("Admin dashboard text  is matched");
+		    }catch (AssertionError ae) {
+				logger.error("Assertion failed: Admin dashboard text is not matched" , ae);
+				throw ae;
+			} catch (Exception e) {
+				logger.error("An exception error occured while navigating to admin dashboard page" , e);
+				throw e;
+			}
+}
 	
 	@Then("Admin should be navigated to the admindashboard page")
 	public void admin_should_be_navigated_to_admindashboard_page() {
@@ -35,6 +54,8 @@ public class AdminDashboardSteps extends Page{
 				throw e;
 			}
 	}
+	
+	
 	
 	
 

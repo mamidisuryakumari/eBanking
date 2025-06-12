@@ -7,19 +7,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.PropertiesManager;
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.user.ManagePayeePage;
 import com.eBanking.ui.pages.user.TransferAmountPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class TransferAmountSteps extends Page{
+public class TransferAmountSteps {
 	
+	private TestContext context;
 	private static Logger logger = LoggerFactory.getLogger(TransferAmountSteps.class);
-	ManagePayeePage managePayeePage = new ManagePayeePage();
-	TransferAmountPage transferAmountPage = new TransferAmountPage();
+	ManagePayeePage managePayeePage;
+	TransferAmountPage transferAmountPage;
 	
+	public TransferAmountSteps(TestContext context) {
+		this.context = context;
+		this.managePayeePage = new ManagePayeePage(context);
+		this.transferAmountPage = new TransferAmountPage(context);
+	}
 	
 	@When("I go to the transfer amount page")
 	public void iGoToTheTransferAmountPage() {

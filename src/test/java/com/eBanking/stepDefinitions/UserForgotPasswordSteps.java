@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.Bot;
 import com.eBanking.ui.engine.PropertiesManager;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.user.UserForgotPasswordpage;
 import com.eBanking.ui.pages.user.UserLoginPage;
 
@@ -18,16 +19,22 @@ import io.cucumber.java.en.When;
 
 public class UserForgotPasswordSteps {
 	
+	private TestContext context;
 	private static Logger logger = LoggerFactory.getLogger(UserForgotPasswordSteps.class);
-	UserLoginPage userLoginPage = new UserLoginPage();
-	UserForgotPasswordpage userForgotPasswordpage = new UserForgotPasswordpage();
+	UserLoginPage userLoginPage;
+	UserForgotPasswordpage userForgotPasswordpage;
 	
+	public UserForgotPasswordSteps() {
+		this.context = context;
+		this.userLoginPage = new UserLoginPage(context);
+		this.userForgotPasswordpage = new UserForgotPasswordpage(context);
+	}
 
 	
 	@When("I go to the forgot Password page")
 	public void iGoToTheForgotPasswordPage() {
 		try {
-			userLoginPage.iNavigatedToForgotPasswordPage();
+			userLoginPage.navigatedToForgotPasswordPage();
 			logger.info("I go to the forgot password page successfully");
 		} catch (Exception e) {
 			logger.error("An exception error occured while going to the forgot password page", e);

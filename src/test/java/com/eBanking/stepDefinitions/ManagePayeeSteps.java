@@ -6,24 +6,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.PropertiesManager;
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.user.ManagePayeePage;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ManagePayeeSteps extends Page {
+public class ManagePayeeSteps {
 
+	private TestContext context;
 	private static Logger logger = LoggerFactory.getLogger(ManagePayeeSteps.class);
-	UserDashboardPage userDashboardPage = new UserDashboardPage();
-	ManagePayeePage managePayeePage = new ManagePayeePage();
+	UserDashboardPage userDashboardPage;
+	ManagePayeePage managePayeePage;
 	
+	public ManagePayeeSteps(TestContext context) {
+		this.context = context;
+		this.userDashboardPage = new UserDashboardPage(context);
+		this.managePayeePage = new ManagePayeePage(context);
+	}
 	
 	@When("I go to manage payee page")
 	public void managePayee() {
 		try {
-			userDashboardPage.iNavigatedToManagePayee();
+			userDashboardPage.navigatedToManagePayee();
 
 			String actualManagePayeeText = managePayeePage.getManagePayeeText();
 			String exceptedManagePayeeText = PropertiesManager.getProperty("managePayee.text");

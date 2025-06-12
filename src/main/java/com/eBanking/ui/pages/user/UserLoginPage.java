@@ -2,41 +2,45 @@ package com.eBanking.ui.pages.user;
 
 import org.openqa.selenium.By;
 
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 
 
 
 
-public class UserLoginPage extends Page{
+public class UserLoginPage{
 	
+	private TestContext context;
 	
-	
-	private static final By createAnAccountlink = By.xpath("//a[text()='Create an Account!']");
-	private static final By emailTextFld = By.id("email");
-	private static final By passwordTextFld = By.id("password");
-	private static final  By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
-	private static final By forgotPasswordLink = By.xpath("//a[text()='Forgot Password?']");
-	
-	UserRegistrationPage registrationPage = new UserRegistrationPage();
-	
-
-	
-	public UserForgotPasswordpage iNavigatedToForgotPasswordPage() {
-		bot.click(forgotPasswordLink);
-		return new UserForgotPasswordpage();
+	public UserLoginPage(TestContext context) {
+		this.context = context;
 	}
 	
-	public UserRegistrationPage createAccount() {
-		bot.click(createAnAccountlink);
-		return new UserRegistrationPage();
+	private  final By userRegistrationLink = By.xpath("//a[text()='Create an Account!']");
+	private  final By emailTextFld = By.id("email");
+	private  final By passwordTextFld = By.id("password");
+	private final  By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
+	private  final By forgotPasswordLink = By.xpath("//a[text()='Forgot Password?']");
+	
+	public String getUserLoginPageTitle() {
+		return context.getBot().getTitle();
+	}
+	
+
+	public UserForgotPasswordpage navigatedToForgotPasswordPage() {
+		context.getBot().click(forgotPasswordLink);
+		return new UserForgotPasswordpage(context);
+	}
+	
+	public UserRegistrationPage goToRegistrationPage() {
+		context.getBot().click(userRegistrationLink);
+		return new UserRegistrationPage(context);
 	}
 	
 	public UserDashboardPage loginUser(String email,String password) {
-		
-		bot.enterText(emailTextFld, email)
+		context.getBot().enterText(emailTextFld, email)
 		.enterText(passwordTextFld, password)
 		.click(loginBtn);
-		return new UserDashboardPage();
+		return new UserDashboardPage(context);
 	}
 
 }

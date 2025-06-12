@@ -2,30 +2,36 @@ package com.eBanking.ui.pages.user;
 
 import org.openqa.selenium.By;
 
-import com.eBanking.ui.pages.Page;
+import com.eBanking.ui.engine.TestContext;
 
-public class TransferAmountPage extends Page{
+public class TransferAmountPage {
 	
-	private static final By transferAmountText = By.xpath("//h3[text()='Transfer Amount']");
-	private static final By amonutFld = By.name("amount");
-	private static final By transferSubmitBtn = By.id("submit");
+private TestContext context;
+	
+	public TransferAmountPage(TestContext context) {
+		this.context = context;
+	}
+	
+	private final By transferAmountText = By.xpath("//h3[text()='Transfer Amount']");
+	private  final By amonutFld = By.name("amount");
+	private  final By transferSubmitBtn = By.id("submit");
 	
 	public String getTransferAmountText() {
-		return bot.getText(transferAmountText);
+		return context.getBot().getText(transferAmountText);
 	}
 	
 	public ManagePayeePage trasferAmount(String transferAmount) {
-		bot.enterText(amonutFld, transferAmount)
+		context.getBot().enterText(amonutFld, transferAmount)
 		.click(transferSubmitBtn);
-		return new ManagePayeePage();
+		return new ManagePayeePage(context);
 		}
 
 	public String getTransferamountalertMsg() {
-		return	bot.getAlertMessage();
+		return	context.getBot().getAlertMessage();
 		}
 	
 	public ManagePayeePage acceptTransactionDetails() {
-		bot.acceptAlert();
-		return new ManagePayeePage();
+		context.getBot().acceptAlert();
+		return new ManagePayeePage(context);
 	}
 }

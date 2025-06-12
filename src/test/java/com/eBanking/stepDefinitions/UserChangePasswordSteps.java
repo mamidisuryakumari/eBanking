@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eBanking.ui.engine.PropertiesManager;
+import com.eBanking.ui.engine.TestContext;
 import com.eBanking.ui.pages.user.UserChangePasswordPage;
 import com.eBanking.ui.pages.user.UserDashboardPage;
 
@@ -17,14 +18,20 @@ import io.cucumber.java.en.When;
 
 public class UserChangePasswordSteps {
 	
+	private TestContext context;
 	private static final Logger logger = LoggerFactory.getLogger(UserChangePasswordSteps.class);
-	UserDashboardPage userDashboardPage = new UserDashboardPage();
-	UserChangePasswordPage userChangePasswordPage = new UserChangePasswordPage();
+	UserDashboardPage userDashboardPage ;
+	UserChangePasswordPage userChangePasswordPage ;
 	
+	public UserChangePasswordSteps(TestContext context) {
+		this.context = context;
+		this.userChangePasswordPage = new UserChangePasswordPage(context);
+		this.userDashboardPage = new UserDashboardPage(context);
+	}
 	@When("I go to the change password page")
 	public void iGoToTheChangePasswordPage() {
 		try {
-			userDashboardPage.iNavigatedToTheChangePasswordPage();
+			userDashboardPage.navigatedToTheChangePasswordPage();
 			logger.info("Go to the change password page successfully");
 		} catch (Exception e) {
 			logger.error("An exception error occured while going to the change password page" , e);
