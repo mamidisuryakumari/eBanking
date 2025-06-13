@@ -54,6 +54,7 @@ public class AddCashierPage extends BasePage {
 		context.setCashierFirstName(firstName);
 		context.setCashierLastName(lastName);
 		context.setCashierAddress(addressFld);
+		context.setCashierPassword(password);
 		return this;
 	}
 

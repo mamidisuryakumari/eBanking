@@ -1,6 +1,7 @@
 package com.eBanking.ui.engine;
 
 import java.io.File;
+import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.Alert;
@@ -32,7 +33,9 @@ public class Bot {
 		this.wait = new SynchronizationManager(driver);
 	}
 
-	
+	public WebElement getWebElement(By locator){
+		return driver.findElement(locator);
+	}
 
 	public Bot click(By locator) {
 		try {

@@ -62,7 +62,7 @@ public class AddCashierSteps {
     		var addCashierDetailsMap = addCashierDetails.asMap();
         	addCashierPage.addCashier(addCashierDetailsMap.get("First Name").replace("${random}", Common.random()),
         			addCashierDetailsMap.get("Last Name"),
-        			addCashierDetailsMap.get("Mobile Number").replace("${random}", Common.random()),
+        			addCashierDetailsMap.get("Mobile Number").replace("${random}", Common.generateMobileNumber()),
         			addCashierDetailsMap.get("Email").replace("${random}", Common.random()),
         			addCashierDetailsMap.get("Date of Birth"),
         			addCashierDetailsMap.get("Emp ID").replace("${random}", Common.random()),

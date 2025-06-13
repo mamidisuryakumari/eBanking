@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.cucumber.datatable.DataTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,47 +16,64 @@ import io.cucumber.java.en.When;
 
 public class AdminNewAccountRequestSteps {
 
-	private TestContext context;
-	private  final Logger logger = LoggerFactory.getLogger(AdminNewAccountRequestSteps.class);
+    private TestContext context;
+    private final Logger logger = LoggerFactory.getLogger(AdminNewAccountRequestSteps.class);
 
-	AdminNewAccountRequestPage adminNewAccountRequestPage ;
-	AdminDashBoardPage adminDashBoardPage ;
-	
-	public AdminNewAccountRequestSteps(TestContext context) {
-		this.context = context;
-		this.adminDashBoardPage = new AdminDashBoardPage(context);
-		this.adminNewAccountRequestPage = new AdminNewAccountRequestPage(context);
-	}
-	
-	@When("I go to the new account request page")
-	public void iGoToTheNewAccountRequestPage() {
-		try {
-			adminDashBoardPage.navigateToNewAccountRequestPage();
-			logger.info("Navigated to account request page successfully");
-		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to the account request page" , e.getMessage());
-			throw e;
-		}
-		
-		
-	}
+    AdminNewAccountRequestPage adminNewAccountRequestPage;
+    AdminDashBoardPage adminDashBoardPage;
+
+    public AdminNewAccountRequestSteps(TestContext context) {
+        this.context = context;
+        this.adminDashBoardPage = new AdminDashBoardPage(context);
+        this.adminNewAccountRequestPage = new AdminNewAccountRequestPage(context);
+    }
+
+    @When("I go to the new account request page")
+    public void iGoToTheNewAccountRequestPage() {
+        try {
+            adminDashBoardPage.navigateToNewAccountRequestPage();
+            logger.info("Navigated to account request page successfully");
+        } catch (Exception e) {
+            logger.error("An exception error occured while navigating to the account request page", e.getMessage());
+            throw e;
+        }
+
+
+    }
+
     @Then("I am on new account request page")
     public void iAmOnNewAccountRequestPage() {
-    	try {
-			String actualAdminNewAccountRequestPage = adminNewAccountRequestPage.getAdminNewAccountRequestPageTitle();
-			String exceptedAdminNewAccountRequestPage = PropertiesManager
-					.getProperty("admin.NewAccountrequest.page.title");
-			assertEquals(exceptedAdminNewAccountRequestPage, actualAdminNewAccountRequestPage);
-			logger.info("Admin navigate to the admin new account request page successfully");
-		} catch (AssertionError e) {
-			logger.error("Assertion failed: Admin New Account Request page title mismatch", e.getMessage());
-			throw e;
-		} catch (Exception e) {
-			logger.error("Exception occurred while navigating to Admin New Account Request page", e);
-			throw e;
-		}
+        try {
+            String actualAdminNewAccountRequestPage = adminNewAccountRequestPage.getAdminNewAccountRequestPageTitle();
+            String exceptedAdminNewAccountRequestPage = PropertiesManager
+                    .getProperty("admin.NewAccountrequest.page.title");
+            assertEquals(exceptedAdminNewAccountRequestPage, actualAdminNewAccountRequestPage);
+            logger.info("Admin navigate to the admin new account request page successfully");
+        } catch (AssertionError e) {
+            logger.error("Assertion failed: Admin New Account Request page title mismatch", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception occurred while navigating to Admin New Account Request page", e);
+            throw e;
+        }
 
-	}
     }
+
+    @When("I search an user account")
+    public void iSearchAnUserAccount() {
+        try {
+            adminNewAccountRequestPage.searchUserAccount();
+        } catch (Exception e) {
+
+        }
+    }
+
+    @When("I view the user account")
+    public void iViewTheUserAccount() {
+        adminNewAccountRequestPage.getAdminNewAccountRequesttext();
+    }
+
+
+}
 
 	

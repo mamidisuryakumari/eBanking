@@ -16,17 +16,23 @@ private TestContext context;
 	}
 	
 	private final By takeActionBtn = By.xpath("//button[text()='Take Action']");
+	private final By popupWindowTitle = By.xpath("//h5[text()='Take Action']");
 	private final  By remarkTextFld = By.xpath("//textarea[@name='remark']");
 	private  final By statusDropdwn = By.id("status");
-	private  final  By initialAmount = By.name("iniamt");
+	private  final  By initialAmountFld = By.name("iniamt");
 	private  final By updateBtn = By.xpath("//button[text()='Update']");
 	
-	
-	public AdminAccountholderDetailsPage accountApproval() {
-		context.getBot().click(takeActionBtn)
-		.enterText(remarkTextFld,PropertiesManager.getProperty("remark"))
-		.selectByValue(statusDropdwn,PropertiesManager.getProperty("status"))
-		.enterText(initialAmount, PropertiesManager.getProperty("initialAmount"))
+	public AdminAccountholderDetailsPage openTakeActionPopup(){
+		context.getBot().click(takeActionBtn);
+		System.out.println(context.getBot().getWebElement(popupWindowTitle).getText());
+		context.setPopupWindowTitle(context.getBot().getWebElement(popupWindowTitle).getText());
+		return this;
+	}
+	public AdminAccountholderDetailsPage accountApproval(String remark, String status, String initialAmount) {
+
+		context.getBot().enterText(remarkTextFld,remark)
+		.selectByValue(statusDropdwn,status)
+		.enterText(initialAmountFld,initialAmount )
 		.click(updateBtn);
 		return this;
 		}

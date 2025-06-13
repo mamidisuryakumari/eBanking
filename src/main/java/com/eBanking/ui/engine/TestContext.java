@@ -16,10 +16,17 @@ public class TestContext {
 	private  String userEmailId;
 	private  String userPassword;
 
+	private String SearchUserAccount;
 	private String cashierEmpId;
 	private String cashierFirstName;
 	private String cashierLastName;
+	public String getCashierFullName() {
+		return cashierFirstName + " " + cashierLastName;
+	}
 	private String cashierAddress;
+	private String cashierPassword;
+	private String PopupWindowTitle;
+	private String AccountCurrentStatus;
 
 	private String actualUserAccountSubmissionSuccessMsg;
 	private String actualUserRegistrationSuccessMsg;

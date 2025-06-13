@@ -21,6 +21,7 @@ public class AdminDashBoardPage extends BasePage {
 	private final By addCashierLink = By.xpath("//a[text()='Add Cashier']");
 	private final By manageCashierLink = By.xpath("//a[text()='Manage Cashier']");
 	private final By adminDashboardText = By.xpath("//h1[text()='Dashboard']");
+	private final By searchAccountLink = By.xpath("//span[text()='Search Account']");
 	
 	public String getAdminDashboardText() {
 		return context.getBot().getText(adminDashboardText);
@@ -28,6 +29,11 @@ public class AdminDashBoardPage extends BasePage {
 
 	public String getAdminDashboardPageTitle() {
 		return context.getBot().getTitle();
+	}
+
+	public SearchAccountHolderPage navigateToSearchAccountHolderPage(){
+		context.getBot().click(searchAccountLink);
+		return new SearchAccountHolderPage(context);
 	}
 
 	public AdminAccountholderDetailsPage navigateToNewAccountRequestPage() {

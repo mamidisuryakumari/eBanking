@@ -43,8 +43,8 @@ public class CashierLoginSteps {
 	public void iLogInWithCashierValidCredentails(DataTable cashierLoginDetails) {
 		try {
 			Map<String, String> cashierLoginDetailsMap = cashierLoginDetails.asMap(String.class, String.class);
-			cashierLoginPage.loginCashier(cashierLoginDetailsMap.get("Employeeid"),
-					cashierLoginDetailsMap.get("Password"));
+			cashierLoginPage.loginCashier(cashierLoginDetailsMap.get("EmployeeId").replace("${EmployeeId}",context.getCashierEmpId()),
+					cashierLoginDetailsMap.get("Password").replace("${Password}",context.getCashierPassword()));
 			logger.info("Cashier login successfully with valid credentails");
 		} catch (Exception e) {
 			logger.error("An exception error occured while logging in with cashier credentials", e.getMessage());

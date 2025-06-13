@@ -22,10 +22,27 @@ public class CashierDetailsPage extends BasePage {
 	private final By detailsCashierText = By.xpath("//h1[text()='Details of Cashier']");
 	private final By editCashier = By.xpath("//a[text()='Edit']");
 	private final By cashierEmpIds = By.xpath("//tbody//tr//td[3]");
+	private final By noMatchingRecordText = By.xpath("//td[text()='No matching records found']");
 	
-	
+	public String getNoMatchingRecordText(){
+		System.out.println(context.getBot().getText(noMatchingRecordText));
+		return context.getBot().getText(noMatchingRecordText);
+	}
 	public String getDetailsCashierText() {
+
 		return context.getBot().getText(detailsCashierText);
+	}
+
+	public void searchCashier(){
+		context.getBot().searchAccount(cashierSearchFld, context.getCashierFullName());
+	}
+
+	public CashierDetailsPage deleteCashier() {
+		context.getBot()
+				.searchAccount(cashierSearchFld, context.getCashierEmpId())
+				.click(deleteLink)
+				.acceptAlert();
+		return this;
 	}
 	
 	public void deleteCashierUsingCashierList() {
@@ -45,13 +62,7 @@ public class CashierDetailsPage extends BasePage {
 		}
 	}
 	
-	public CashierDetailsPage deleteCashier() {
-		context.getBot()
-		.searchAccount(cashierSearchFld, context.getCashierEmpId())
-		.click(deleteLink)
-		.acceptAlert();
-		return this;
-	}
+
 	
 	public String getCashierDeleteAlertMsg() {
 		return context.getBot().getAlertMessage();
