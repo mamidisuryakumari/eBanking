@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.admin;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.engine.TestContext;
 
-public class AdminAccountholderDetailsPage {
+public class AdminAccountholderDetailsPage extends BasePage {
 	
 private TestContext context;
 	
 	public AdminAccountholderDetailsPage(TestContext context) {
+		super(context);
 		this.context = context;
 	}
 	

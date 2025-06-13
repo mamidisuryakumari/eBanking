@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class ManagePayeePage{
+public class ManagePayeePage extends BasePage {
 	
 private TestContext context;
 	
 	public ManagePayeePage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 
 	private final By managePayeeText = By.xpath("//h1[text()='Manage Payee']");

@@ -3,17 +3,19 @@ package com.eBanking.ui.pages.admin;
 import java.util.List;
 import java.util.Properties;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.engine.TestContext;
 
-public class AdminNewAccountRequestPage {
+public class AdminNewAccountRequestPage extends BasePage {
 	
 private TestContext context;
 	
 	public AdminNewAccountRequestPage(TestContext context) {
+		super(context);
 		this.context = context;
 	}
 

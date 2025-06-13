@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class UserChangePasswordPage  {
+public class UserChangePasswordPage extends BasePage {
 	
 private TestContext context;
 	
 	public UserChangePasswordPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 
 	private static final By changePasswordLabel = By.xpath("//h3[text()='Home/Change Password']");

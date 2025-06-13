@@ -1,5 +1,6 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
@@ -7,12 +8,13 @@ import com.eBanking.ui.engine.TestContext;
 
 
 
-public class UserLoginPage{
+public class UserLoginPage extends BasePage {
 	
 	private TestContext context;
 	
 	public UserLoginPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 	
 	private  final By userRegistrationLink = By.xpath("//a[text()='Create an Account!']");

@@ -38,6 +38,7 @@ public class AddCashierSteps {
 		} catch (Exception e) {
 			logger.error("An exception error occured while navigating to the add cashier page" , e.getMessage());
 			throw e;
+
 		}
 	}
     @Then("I should be on the add cashier page")

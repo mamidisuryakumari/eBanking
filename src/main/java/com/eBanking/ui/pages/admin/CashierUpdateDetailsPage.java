@@ -1,5 +1,6 @@
 package com.eBanking.ui.pages.admin;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,13 +9,14 @@ import com.eBanking.ui.engine.Common;
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.engine.TestContext;
 
-public class CashierUpdateDetailsPage {
+public class CashierUpdateDetailsPage extends BasePage {
 
 	private TestContext context;
 	private final Logger logger = LoggerFactory.getLogger(CashierUpdateDetailsPage.class);
 
 	public CashierUpdateDetailsPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 
 	private final By updateCashierLabel = By.xpath("//h1[text()='Update Cashier']");

@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.admin;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.engine.TestContext;
 
-public class AddCashierPage {
+public class AddCashierPage extends BasePage {
 
 	private TestContext context;
 
 	public AddCashierPage(TestContext context) {
+		super(context);
 		this.context = context;
 	}
 

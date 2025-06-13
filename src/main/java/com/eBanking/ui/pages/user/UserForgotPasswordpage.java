@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class UserForgotPasswordpage{
+public class UserForgotPasswordpage extends BasePage {
 	
 private TestContext context;
 	
 	public UserForgotPasswordpage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 
 	private  final By forgotPasswordLabel = By.xpath("//h1[text()='Forgot Password!']");

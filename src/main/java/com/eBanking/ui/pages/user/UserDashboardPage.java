@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.engine.TestContext;
 
-public class UserDashboardPage {
+public class UserDashboardPage extends BasePage {
 	private TestContext context;
 
 	public UserDashboardPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 
 	private final By accountOpeninigoption = By.xpath("//span[text()='Account Openning']");

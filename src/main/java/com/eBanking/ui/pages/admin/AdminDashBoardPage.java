@@ -1,14 +1,16 @@
 package com.eBanking.ui.pages.admin;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class AdminDashBoardPage {
+public class AdminDashBoardPage extends BasePage {
 
 	private TestContext context;
 
 	public AdminDashBoardPage(TestContext context) {
+		super(context);
 		this.context = context;
 	}
 

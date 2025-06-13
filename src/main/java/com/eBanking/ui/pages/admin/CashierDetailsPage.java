@@ -2,17 +2,19 @@ package com.eBanking.ui.pages.admin;
 
 import java.util.List;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.eBanking.ui.engine.PropertiesManager;
 import com.eBanking.ui.engine.TestContext;
 
-public class CashierDetailsPage {
+public class CashierDetailsPage extends BasePage {
 	
 	private TestContext context;
 	public CashierDetailsPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 	
 	private final By cashierSearchFld = By.xpath("//input[@type='search']");

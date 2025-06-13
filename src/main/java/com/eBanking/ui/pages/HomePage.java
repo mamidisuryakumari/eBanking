@@ -1,5 +1,6 @@
 package com.eBanking.ui.pages;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,11 +11,12 @@ import com.eBanking.ui.pages.user.UserLoginPage;
 import enums.UserType;
 
 
-public class HomePage{
+public class HomePage extends BasePage {
 
 	private TestContext context;
 	
 	public HomePage(TestContext context) {
+		super(context);
 		this.context = context;
 	}
 	

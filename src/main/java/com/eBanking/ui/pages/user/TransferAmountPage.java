@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class TransferAmountPage {
+public class TransferAmountPage extends BasePage {
 	
 private TestContext context;
 	
 	public TransferAmountPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 	
 	private final By transferAmountText = By.xpath("//h3[text()='Transfer Amount']");

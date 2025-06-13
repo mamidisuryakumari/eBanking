@@ -57,7 +57,8 @@ public class UserRegistrationSteps {
 					registrationDetailsMap.get("First Name").replace("${random}", Common.random()),
 					registrationDetailsMap.get("Last Name"),
 					registrationDetailsMap.get("Email Address").replace("${random}", Common.random()),
-					registrationDetailsMap.get("Mobile Number"), registrationDetailsMap.get("Password"));
+					registrationDetailsMap.get("Mobile Number").replace("${mobileNumber}",Common.generateMobileNumber()),
+					registrationDetailsMap.get("Password").replace("${password}",PropertiesManager.getProperty("user.password")));
 			logger.info("User registration details added successfully");
 		} catch (Exception e) {
 			logger.error("Unexpected error occurred while adding user registration details", e.getMessage());

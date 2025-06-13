@@ -1,5 +1,6 @@
 package com.eBanking.ui.pages.cashier;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,13 +10,14 @@ import com.eBanking.ui.pages.HomePage;
 import enums.UserType;
 
 
-public class CashierLoginPage {
+public class CashierLoginPage extends BasePage {
 	
 	private TestContext context;
 	private final Logger logger = LoggerFactory.getLogger(CashierLoginPage.class);
 	
 	public CashierLoginPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 	
 	private final By cashierEmployeeIdFld = By.id("empid");

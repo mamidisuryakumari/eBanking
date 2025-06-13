@@ -19,10 +19,10 @@ public class BrowserFactory {
 	private  final Logger logger = LoggerFactory.getLogger(BrowserFactory.class);
 	
 	@Getter
-	public  WebDriver driver;
+	public    WebDriver driver;
 	
 	@Getter
-	private Bot bot;
+	public Bot bot;
 	
 	public WebDriver theTargetBrowserisOpen()  {
 		String browserName = PropertiesManager.getProperty("browser.name");

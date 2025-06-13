@@ -4,17 +4,19 @@ import java.awt.image.renderable.ContextualRenderedImageFactory;
 import java.util.Iterator;
 import java.util.List;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class UserTransactionHistoryPage{
+public class UserTransactionHistoryPage extends BasePage {
 	
 private TestContext context;
 	
 	public UserTransactionHistoryPage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 	
 	

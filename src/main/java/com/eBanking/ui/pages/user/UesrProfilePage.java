@@ -1,15 +1,17 @@
 package com.eBanking.ui.pages.user;
 
+import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class UesrProfilePage {
+public class UesrProfilePage extends BasePage {
 	
 private TestContext context;
 	
 	public UesrProfilePage(TestContext context) {
-		this.context = context;
+        super(context);
+        this.context = context;
 	}
 	
 	private  final By userProfileLabel = By.xpath("//h6[text()='User Profile']");
