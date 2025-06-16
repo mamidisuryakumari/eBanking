@@ -26,6 +26,8 @@ private TestContext context;
 		context.getBot().enterText(enterEmailAddressFld, email);
 		context.getBot().enterText(passwordFld, password);
 		context.getBot().click(loginBtn);
+context.setAdminEmail(email);
+		context.setAdminPassword(password);
 		return new AdminDashBoardPage(context);
 	}
 

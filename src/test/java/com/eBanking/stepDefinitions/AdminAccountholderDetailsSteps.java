@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.eBanking.ui.pages.admin.AdminDashBoardPage;
 import com.eBanking.ui.pages.admin.SearchAccountHolderPage;
 import io.cucumber.datatable.DataTable;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,10 +17,11 @@ import com.eBanking.ui.pages.admin.AdminNewAccountRequestPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+@Slf4j
 public class AdminAccountholderDetailsSteps {
 
     private TestContext context;
-    private Logger logger = LoggerFactory.getLogger(AdminAccountholderDetailsSteps.class);
+
 
     AdminNewAccountRequestPage adminNewAccountRequestPage;
     AdminAccountholderDetailsPage adminAccountholderDetailsPage;
@@ -38,9 +40,9 @@ public class AdminAccountholderDetailsSteps {
     public void iGotoTheAccountHolderDetailsPage() {
         try {
             adminNewAccountRequestPage.navigateToAccountHolderDetailsPage();
-            logger.info("Navigated to account holder details page successfully");
+            log.info("Navigated to account holder details page successfully");
         } catch (Exception e) {
-            logger.error("An exception error occured while navigating to the account holder details page",
+            log.error("An exception error occured while navigating to the account holder details page",
                     e.getMessage());
             throw e;
         }
@@ -54,50 +56,62 @@ public class AdminAccountholderDetailsSteps {
             String exceptedAdminAccountholderDetailsPageTitle = PropertiesManager
                     .getProperty("admin.AccountHolderDetails.page.title");
             assertEquals(exceptedAdminAccountholderDetailsPageTitle, actualAdminAccountholderDetailsPageTitle);
-            logger.info("Admin navigated to adimn holder details page successfully");
+            log.info("Admin navigated to adimn holder details page successfully");
         } catch (AssertionError e) {
-            logger.error("Assertion failed : admin account holder details page title is mismatched", e.getMessage());
+            log.error("Assertion failed : admin account holder details page title is mismatched", e.getMessage());
             throw e;
         } catch (Exception e) {
-            logger.error("An exception error occured while navigating to admin account holder details page");
+            log.error("An exception error occured while navigating to admin account holder details page");
             throw e;
         }
     }
 
     @When("I click on 'Take Action' button")
     public void iClickOnTakeActionButton() {
-        adminAccountholderDetailsPage.openTakeActionPopup();
+        try {
+            adminAccountholderDetailsPage.openTakeActionPopup();
+            log.info("Take action button clicked successfully");
+        } catch (Exception e) {
+          log.error("An exception error occured while clicking the take action button" , e.getMessage());
+          throw e;
+        }
+
     }
 
     @Then("I should see 'Take Action' model window popup opened")
     public void iShouldSeeTakeActionModelPopupOpened() {
-        String actualPopupWindowTitle = context.getPopupWindowTitle();
-        String expectedPopupWindowTitle = "Take Action";
-     //   assertEquals(expectedPopupWindowTitle, actualPopupWindowTitle);
-        logger.info("Take action model window opened successfully");
+        try {
+            String actualPopupWindowTitle = adminAccountholderDetailsPage.getPopupWindowTitleText();
+            String expectedPopupWindowTitle = "Take Action";
+            assertEquals(expectedPopupWindowTitle, actualPopupWindowTitle);
+            log.info("Popup window title is matched");
+        } catch (AssertionError e) {
+            log.error("Assertion failed: Popup window title is mismatched", e.getMessage());
+            throw e;
+        }catch (Exception e) {
+            log.error("An exception error occured while seeing the take action model window opened", e.getMessage());
+            throw e;
+        }
+
     }
 
     @When("I add below remarks:")
     public void iAddBelowRemarks(DataTable dataTable) {
-        var remarksMap = dataTable.asMap();
-        adminAccountholderDetailsPage.accountApproval(
-                remarksMap.get("Remarks").trim(),
-                remarksMap.get("Status").trim(),
-                remarksMap.get("Initial Amount").trim());
+        try {
+            var remarksMap = dataTable.asMap();
+            adminAccountholderDetailsPage.accountApproval(
+                    remarksMap.get("Remarks").trim(),
+                    remarksMap.get("Status").trim(),
+                    remarksMap.get("Initial Amount").trim());
+            log.info("Remaks details added successfully");
+        } catch (Exception e) {
+           log.error("An exception error occured while adding remarks details" , e.getMessage());
+           throw  e;
+        }
+
     }
 
-    @When("I search the user account and verify the account status")
-    public void iSearchTheUserAccountAndVerifyTheAccountStatus() {
-adminDashBoardPage.navigateToSearchAccountHolderPage();
-searchAccountHolderPage.searchUserAccount(context.getSearchUserAccount());
-    }
 
-    @Then("I shound see user account status is {string}")
-    public void verifyAccountStatus(String expectedStatus) {
-        expectedStatus = "Approved";
-String actualAccountStatus = context.getAccountCurrentStatus();
-        assertEquals(expectedStatus, actualAccountStatus);
-    }
 
 
 
@@ -107,12 +121,12 @@ String actualAccountStatus = context.getAccountCurrentStatus();
             adminAccountholderDetailsPage.acceptApproveRequest();
             String actualApproveRequestMsg = context.getActualApproveRequestMsg();
             assertEquals(expectedApproveRequestMsg, actualApproveRequestMsg);
-            logger.info("Approve request alert message is displayed successfully");
+            log.info("Approve request alert message is displayed successfully");
         } catch (AssertionError e) {
-            logger.error("Assertion failed: Approve request alert message is not matched", e.getMessage());
+            log.error("Assertion failed: Approve request alert message is not matched", e.getMessage());
             throw e;
         } catch (Exception e) {
-            logger.error("An exception error occured while seeing the approve request", e.getMessage());
+            log.error("An exception error occured while seeing the approve request", e.getMessage());
             throw e;
         }
     }
@@ -121,9 +135,9 @@ String actualAccountStatus = context.getAccountCurrentStatus();
     public void iRejectTheRequest() {
         try {
             adminAccountholderDetailsPage.accountReject();
-            logger.info("Reject the request successfully");
+            log.info("Reject the request successfully");
         } catch (Exception e) {
-            logger.error("An exception error occured while rejecting the request", e.getMessage());
+            log.error("An exception error occured while rejecting the request", e.getMessage());
             throw e;
         }
     }
@@ -133,12 +147,12 @@ String actualAccountStatus = context.getAccountCurrentStatus();
         try {
             adminAccountholderDetailsPage.acceptRejectRequest();
             assertEquals(expectedRejectRequestMsg, context.getActualRejectRequestMsg());
-            logger.info("Reject request alert message is displayed successfully");
+            log.info("Reject request alert message is displayed successfully");
         } catch (AssertionError e) {
-            logger.error("Assertion failed: Reject request alert message is not matched", e.getMessage());
+            log.error("Assertion failed: Reject request alert message is not matched", e.getMessage());
             throw e;
         } catch (Exception e) {
-            logger.error("An exception error occured while seeing the reject request", e.getMessage());
+            log.error("An exception error occured while seeing the reject request", e.getMessage());
             throw e;
         }
 

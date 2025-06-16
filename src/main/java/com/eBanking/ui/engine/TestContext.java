@@ -27,11 +27,16 @@ public class TestContext {
 	private String cashierPassword;
 	private String PopupWindowTitle;
 	private String AccountCurrentStatus;
+	private String cashierUserAccount;
 
 	private String actualUserAccountSubmissionSuccessMsg;
 	private String actualUserRegistrationSuccessMsg;
 	private String actualApproveRequestMsg;
 	private String actualRejectRequestMsg;
+
+	private String AdminEmail;
+	private String adminPassword;
+	private String adminNewPassword;
 
 	private double calculateBalance;
 

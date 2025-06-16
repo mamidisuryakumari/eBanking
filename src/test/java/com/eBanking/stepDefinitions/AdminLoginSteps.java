@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +15,10 @@ import enums.UserType;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class AdminLoginSteps {
 	
-	private static final Logger logger = LoggerFactory.getLogger(AdminLoginSteps.class);
+
 	private TestContext context;
 	AdminLoginPage adminLoginPage;
 	HomePage homePage;
@@ -33,9 +34,9 @@ public class AdminLoginSteps {
 		try {
 			UserType userType = UserType.valueOf(user.toUpperCase());
 			homePage.navigateToPage(userType);
-			logger.info("Navigated to the admin login page successfully");
+			log.info("Navigated to the admin login page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to admin login page" ,e.getMessage());
+			log.error("An exception error occured while navigating to admin login page" ,e.getMessage());
 			throw e;
 		}
 		
@@ -45,9 +46,9 @@ public class AdminLoginSteps {
 	public void iGoToAdminLoginPage() {
 	try {
 		homePage.navigatedToAdminLoginPage();
-		logger.info("Navigated to the admin login page successfully");
+		log.info("Navigated to the admin login page successfully");
 	} catch (Exception e) {
-		logger.error("An exception error occured while navigating to the admin login page" , e.getMessage());
+		log.error("An exception error occured while navigating to the admin login page" , e.getMessage());
 		throw e;
 	}
 		
@@ -58,12 +59,12 @@ public class AdminLoginSteps {
 			String actualAdminDashBoardPageTitle = adminLoginPage.getAdminLoginPageTitle();
 			String exceptedAdminDashBoardPageTitle = PropertiesManager.getProperty("admin.Loginpage.title");
 			assertEquals(exceptedAdminDashBoardPageTitle, actualAdminDashBoardPageTitle);
-			logger.info("Admin login page title is matched");
+			log.info("Admin login page title is matched");
 		} catch (AssertionError e) {
-			logger.error("Assertion failed: Admin login page title mismatch", e.getMessage());
+			log.error("Assertion failed: Admin login page title mismatch", e.getMessage());
 			throw e;
 		} catch (Exception e) {
-			logger.error("An exception occured while navigating to admin login page");
+			log.error("An exception occured while navigating to admin login page");
 			throw e;
 		}
 	}
@@ -74,12 +75,26 @@ public class AdminLoginSteps {
 			 var adminUserDetailsMap = adminUserDetails.asMap();
 			   adminLoginPage.adminLogin(adminUserDetailsMap.get("Email Address"),
 					   adminUserDetailsMap.get("Password"));
-			   logger.info("Admin logged successfully");
+			   log.info("Admin logged successfully");
 			   } catch (Exception e) {
-			logger.error("An unexcepted error occured while login the application", e);
+			log.error("An unexcepted error occured while login the application", e);
 			throw e;
 		}
 	  
+	}
+
+	@When("I log in with valid admin credentials")
+	public void iLogInWithValidAdminCredentials() {
+		try {
+			String email = context.getAdminEmail();
+			String password = context.getAdminNewPassword();
+
+			adminLoginPage.adminLogin(email, password);
+			log.info("Admin logged in successfully using valid credentials.");
+		} catch (Exception e) {
+			log.error("Failed to log in with valid admin credentials", e);
+			throw e;
+		}
 	}
     }
     

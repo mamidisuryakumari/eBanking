@@ -6,8 +6,8 @@ Feature: Admin approve and reject account
   Then I am on admin login page
   When I log in to admin with valid credentials
     | Email Address | admin@gmail.com |
-    | Password      | admin123        |
-  Then I should be navigated to the admindashboard page
+    | Password      | admin@123        |
+  Then I should be navigated to the admin dashboard page
 
   @AccountApproval
   Scenario: Verify admin approve the request
@@ -25,19 +25,11 @@ Feature: Admin approve and reject account
     |Initial Amount | 10000|
     Then I should see approve request success message as Remark has been updated
     When I search the user account and verify the account status
-    Then I shound see user account status is "Approved"
+    Then I should see user account status is "Approved"
 
 
   @AccountReject
   Scenario: Verify admin reject the request
-    When I go to home page
-    Then I am on the home page
-    When I go to the admin login page
-    Then I am on admin login page
-    When I log in to admin with valid credentials
-      | Email Address | admin@gmail.com |
-      | Password      | admin123        |
-    Then I should be navigated to the admindashboard page
     When I go to the new account request page
     Then I am on new account request page
     When I go to the account holder details page

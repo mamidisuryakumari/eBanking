@@ -21,11 +21,16 @@ private TestContext context;
 	private  final By statusDropdwn = By.id("status");
 	private  final  By initialAmountFld = By.name("iniamt");
 	private  final By updateBtn = By.xpath("//button[text()='Update']");
+
+	public String getPopupWindowTitleText(){
+		return context.getBot().getText(popupWindowTitle);
+	}
 	
 	public AdminAccountholderDetailsPage openTakeActionPopup(){
 		context.getBot().click(takeActionBtn);
-		System.out.println(context.getBot().getWebElement(popupWindowTitle).getText());
-		context.setPopupWindowTitle(context.getBot().getWebElement(popupWindowTitle).getText());
+		String poppuWindowTitleText = context.getBot().getWebElement(popupWindowTitle).getText();
+		System.out.println(poppuWindowTitleText);
+		context.setPopupWindowTitle(poppuWindowTitleText);
 		return this;
 	}
 	public AdminAccountholderDetailsPage accountApproval(String remark, String status, String initialAmount) {

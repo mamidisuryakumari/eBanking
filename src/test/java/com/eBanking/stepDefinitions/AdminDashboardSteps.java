@@ -23,7 +23,7 @@ public class AdminDashboardSteps {
 		this.adminDashBoardPage = new AdminDashBoardPage(context);
 	}
 	
-	@Then("I should be navigated to the admindashboard page")
+	@Then("I should be navigated to the admin dashboard page")
 	public void iShouldBeNavigatedToTheAdminDashBoardPage(){
 		 try {
 			 String actualAdminDashBoardPageTitle = adminDashBoardPage.getAdminDashboardText();
@@ -39,8 +39,8 @@ public class AdminDashboardSteps {
 			}
 }
 	
-	@Then("Admin should be navigated to the admindashboard page")
-	public void admin_should_be_navigated_to_admindashboard_page() {
+	@Then("Admin should be navigated to the admin dashboard page")
+	public void admin_should_be_navigated_to_admin_dashboard_page() {
 		 try {
 			 String actualAdminDashBoardPageTitle = adminDashBoardPage.getAdminDashboardPageTitle();
 			 String exceptedAdminDashBoardPageTitle = PropertiesManager.getProperty("admin.DashboardPage.title");
