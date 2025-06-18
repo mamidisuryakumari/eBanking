@@ -4,8 +4,8 @@ Scenario: Verify that the user's available balance matches the transaction balan
   Given I am on the home page
   When I go to user login page
   And I log in with valid credentials
-    | Email Address | kumari@gmail.com |
-    | Password      | kumari123        |
+    | Email Address | rahul12@gmail.com |
+    | Password      | rahul12        |
   Then I should be navigated to the user dashboard page
   When I go to the transaction history page
  And I calculate the transaction balance from the history

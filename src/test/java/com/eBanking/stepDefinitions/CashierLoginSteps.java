@@ -53,4 +53,16 @@ public class CashierLoginSteps {
 		}
 	}
 
+	@When("I log in with valid cashier employeeId and Password")
+	public void iLogInWithValidCashierCredentials(){
+		try{
+			cashierLoginPage.loginCashier(context.getCashierEmpId(),context.getCashierNewPassword());
+			log.info("Cashier log in successfully");
+		} catch (Exception e) {
+			log.error("Failed to cashier login", e.getMessage());
+			throw e;
+		}
+
+	}
+
 }

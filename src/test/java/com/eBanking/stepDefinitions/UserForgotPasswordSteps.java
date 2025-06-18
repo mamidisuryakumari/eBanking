@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Properties;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,13 +17,12 @@ import com.eBanking.ui.pages.user.UserLoginPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class UserForgotPasswordSteps {
 	
 	private TestContext context;
-	private static Logger logger = LoggerFactory.getLogger(UserForgotPasswordSteps.class);
-	UserLoginPage userLoginPage;
-	UserForgotPasswordpage userForgotPasswordpage;
+	private UserLoginPage userLoginPage;
+	private UserForgotPasswordpage userForgotPasswordpage;
 	
 	public UserForgotPasswordSteps() {
 		this.context = context;
@@ -35,9 +35,9 @@ public class UserForgotPasswordSteps {
 	public void iGoToTheForgotPasswordPage() {
 		try {
 			userLoginPage.navigatedToForgotPasswordPage();
-			logger.info("I go to the forgot password page successfully");
+			log.info("I go to the forgot password page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while going to the forgot password page", e);
+			log.error("An exception error occured while going to the forgot password page", e);
 			throw e;
 	}
 	}
@@ -48,12 +48,12 @@ public class UserForgotPasswordSteps {
 			String actualForgotPasswordText = userForgotPasswordpage.getForgotPasswordText();
 			String exceptedForgotPasswordText = PropertiesManager.getProperty("forgotPassword.text");
 			assertEquals(exceptedForgotPasswordText, actualForgotPasswordText);
-			logger.info("Forgot password text is matched");
+			log.info("Forgot password text is matched");
 		}catch (AssertionError ae) {
-			logger.error("Assertion failed : Forgot password text is mismatched" , ae );
+			log.error("Assertion failed : Forgot password text is mismatched" , ae );
 			throw ae;
 		}catch (Exception e) {
-			logger.error("An exception error occured while navigating to the forgot password page" , e);
+			log.error("An exception error occured while navigating to the forgot password page" , e);
 			throw e;
 		}
 	}
@@ -68,9 +68,9 @@ public class UserForgotPasswordSteps {
 					forgotPasswordDetailsMap.get("Mobile number"),
 					forgotPasswordDetailsMap.get("New Password"),
 					forgotPasswordDetailsMap.get("Confirm Password"));
-			logger.info("Forgot password details entered successfully");
+			log.info("Forgot password details entered successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while entering forgot password details" ,e);
+			log.error("An exception error occured while entering forgot password details" ,e);
 			throw e;
 		}
 	}
@@ -81,13 +81,13 @@ public class UserForgotPasswordSteps {
 		String actualPasswordChangeSuccessMsg = userForgotPasswordpage.getPasswordChangeSuccessMsg();
 		String exceptedPasswordChangeSuccessMsg = PropertiesManager.getProperty("forgot.password.success.message");
 		assertEquals(exceptedPasswordChangeSuccessMsg, actualPasswordChangeSuccessMsg);
-		logger.info("Password changed success message ia matched");
+		  log.info("Password changed success message ia matched");
 		userForgotPasswordpage.acceptPasswordChangeSuccessMsgAlert();
 	} catch (AssertionError ae) {
-		logger.error("Assertion failed while verifying password changed success message" , ae);
+		  log.error("Assertion failed while verifying password changed success message" , ae);
 		throw ae;
 	}catch (Exception e) {
-		logger.error("An exception error occured while seeing paasword changed successfully", e);
+		  log.error("An exception error occured while seeing paasword changed successfully", e);
 		throw e;
 	}
   }

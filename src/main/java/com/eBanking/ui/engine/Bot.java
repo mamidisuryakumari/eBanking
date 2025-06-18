@@ -33,6 +33,26 @@ public class Bot {
 		this.wait = new SynchronizationManager(driver);
 	}
 
+	public void scrollTillBottom() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+
+		while (true) {
+			js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            try {
+                Thread.sleep(5000); // Wait for more rows to load
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+			if (newHeight == lastHeight) {
+				break; // No more new rows loaded
+			}
+			lastHeight = newHeight;
+		}
+	}
+
 	public WebElement getWebElement(By locator){
 		return driver.findElement(locator);
 	}

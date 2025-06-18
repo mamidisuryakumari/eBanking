@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,15 +16,14 @@ import com.eBanking.ui.pages.user.UserRegistrationPage;
 import enums.UserType;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class UserLoginSteps {
 
 	private final TestContext context;
-	private static final Logger logger = LoggerFactory.getLogger(UserLoginSteps.class);
-	UserLoginPage userLoginPage;
-	HomePage homePage;
-	AdminLoginPage adminLoginPage;
-	UserRegistrationPage registrationPage;
+	private UserLoginPage userLoginPage;
+	private HomePage homePage;
+	private AdminLoginPage adminLoginPage;
+	private UserRegistrationPage registrationPage;
 
 	public UserLoginSteps(TestContext context) {
 		this.context = context;
@@ -39,9 +39,9 @@ public class UserLoginSteps {
 		try {
 			UserType userType = UserType.valueOf(user.toUpperCase());
 			homePage.navigateToPage(userType);
-			logger.info("Navigate to page successfully");
+			log.info("Navigate to page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to page" , e.getMessage());
+			log.error("An exception error occured while navigating to page" , e.getMessage());
 			throw e;
 		}
 		
@@ -54,12 +54,12 @@ public class UserLoginSteps {
 			String actualUserLoginPageTitle = userLoginPage.getUserLoginPageTitle();
 			String exceptedUserLoginPageTitle = PropertiesManager.getProperty("userlogin.page.title").trim();
 		assertEquals(exceptedUserLoginPageTitle, actualUserLoginPageTitle);
-			logger.info("I navigated to login page successfully");
+			log.info("I navigated to login page successfully");
 			userLoginPage.goToRegistrationPage();
 		} catch (AssertionError e) {
-			logger.error("Assertion failed: login page title is not matched", e.getMessage());
+			log.error("Assertion failed: login page title is not matched", e.getMessage());
 		} catch (Exception e) {
-			logger.error("An exception occured while navigating to the login page", e.getMessage());
+			log.error("An exception occured while navigating to the login page", e.getMessage());
 			throw e;
 		}
 
@@ -72,9 +72,9 @@ public class UserLoginSteps {
 			String actualUserLoginPageTitle = userLoginPage.getUserLoginPageTitle();
 			String exceptedUserLoginPageTitle = PropertiesManager.getProperty("userlogin.page.title").trim();
 			assertEquals(exceptedUserLoginPageTitle, actualUserLoginPageTitle);
-			logger.info("I navigated to login page successfully");
+			log.info("I navigated to login page successfully");
 		} catch (Exception e) {
-			logger.error("An exception occured while navigating login page", e);
+			log.error("An exception occured while navigating login page", e);
 			throw e;
 		}
 
@@ -85,9 +85,9 @@ public class UserLoginSteps {
 		try {
 			var userLoginMap = userLoginDetails.asMap(String.class, String.class);
 			userLoginPage.loginUser(userLoginMap.get("Email Address"), userLoginMap.get("Password"));
-			logger.info("User logged successfully");
+			log.info("User logged successfully");
 		} catch (Exception e) {
-			logger.error("An unexcepted error occured while login into the application", e);
+			log.error("An unexcepted error occured while login into the application", e);
 			throw e;
 		}
 
@@ -97,9 +97,9 @@ public class UserLoginSteps {
 	public void loginToTheApplication() {
 		try {
 			userLoginPage.loginUser(context.getUserEmailId(), context.getUserPassword());
-			logger.info("User logged successfully");
+			log.info("User logged successfully");
 		} catch (Exception e) {
-			logger.error("An unexcepted error occured while login into the application", e);
+			log.error("An unexcepted error occurred while login into the application", e);
 			throw e;
 		}
 
@@ -109,9 +109,9 @@ public class UserLoginSteps {
 	public void user_click_on_create_an_account_link() {
 		try {
 
-			logger.info("Account link was clicked successfully");
+			log.info("Account link was clicked successfully");
 		} catch (Exception e) {
-			logger.error("An exception occured while clicking create account link", e);
+			log.error("An exception occured while clicking create account link", e);
 			throw e;
 		}
 	}

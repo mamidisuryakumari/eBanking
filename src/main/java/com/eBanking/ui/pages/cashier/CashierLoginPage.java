@@ -32,6 +32,8 @@ public class CashierLoginPage extends BasePage {
 		context.getBot().enterText(cashierEmployeeIdFld, employeeId)
 		.enterText(cashierPasswordFld, password)
 		.click(loginBtn);
+		context.setCashierEmpId(employeeId);
+		context.setCashierPassword(password);
 		return new CashierDashboardPage(context);
 	}
 	

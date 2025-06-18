@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,10 +16,10 @@ import com.eBanking.ui.pages.admin.CashierDetailsPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class AddCashierSteps {
 	
-	private final Logger logger = LoggerFactory.getLogger(AddCashierSteps.class);
+
 	
 	private TestContext context;
 	private AddCashierPage addCashierPage;
@@ -34,9 +35,9 @@ public class AddCashierSteps {
 	public void navigateToTheAddCashierPage() {
 		try {
 			adminDashBoardPage.navigateToAddCashierPage();
-			logger.info("Navigated to the add cashier page successfully");
+			log.info("Navigated to the add cashier page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to the add cashier page" , e.getMessage());
+			log.error("An exception error occured while navigating to the add cashier page" , e.getMessage());
 			throw e;
 
 		}
@@ -47,12 +48,12 @@ public class AddCashierSteps {
 			String actualAddCashierPageText = addCashierPage.getAddCashierText();
 			String expectedAddCashierPageText = PropertiesManager.getProperty("add.cashier.text");
 			assertEquals(expectedAddCashierPageText, actualAddCashierPageText);
-			logger.info("Add cashier text is matched");
+			log.info("Add cashier text is matched");
 		} catch (AssertionError e) {
-			logger.error("Assertion failed: Add cashier text is mismatched" ,e.getMessage());
+			log.error("Assertion failed: Add cashier text is mismatched" ,e.getMessage());
 			throw e;
 		}catch (Exception e) {
-			logger.error("An exception error occured while verifying add cashier text", e.getMessage());
+			log.error("An exception error occured while verifying add cashier text", e.getMessage());
 			throw e;
 		}
     }
@@ -68,9 +69,9 @@ public class AddCashierSteps {
         			addCashierDetailsMap.get("Emp ID").replace("${random}", Common.random()),
         			addCashierDetailsMap.get("Address"),
         			addCashierDetailsMap.get("Password"));
-        	logger.info("Cashier details added successfully");
+			log.info("Cashier details added successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while adding cashier details" , e.getMessage());
+			log.error("An exception error occured while adding cashier details" , e.getMessage());
 			throw e;
 		}
     	
@@ -82,13 +83,13 @@ public class AddCashierSteps {
 			String actualAddCashierAlertText=addCashierPage.getCashierAddAlertMsg();
 			String ExceptedAddCashierAlertText = PropertiesManager.getProperty("cashier.add.alert.msg");
 			assertEquals(ExceptedAddCashierAlertText, actualAddCashierAlertText);
-			logger.info("Add cashier alert text is matched");
+			log.info("Add cashier alert text is matched");
 			addCashierPage.acceptCashierAddAlertMsg();
 		} catch (AssertionError e) {
-			logger.error("Assertion failed : Add cashier alert text is mismatched", e.getMessage());
+			log.error("Assertion failed : Add cashier alert text is mismatched", e.getMessage());
 			throw e;
 		}catch (Exception e) {
-			logger.error("An exception error occured while verifying cashier added message", e.getMessage());
+			log.error("An exception error occured while verifying cashier added message", e.getMessage());
 			throw e;
 		}
     }
@@ -97,9 +98,9 @@ public class AddCashierSteps {
     public void iGoToAdminDashboardPage() {
     	try {
 			addCashierPage.navigateToAdminDashBoardPage();
-			logger.info("Navigated to dashboard page successfully");
+			log.info("Navigated to dashboard page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to the admin dashboard page" , e.getMessage());
+			log.error("An exception error occured while navigating to the admin dashboard page" , e.getMessage());
 			throw e;
 		}
     }

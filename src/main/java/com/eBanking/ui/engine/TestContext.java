@@ -28,6 +28,7 @@ public class TestContext {
 	private String PopupWindowTitle;
 	private String AccountCurrentStatus;
 	private String cashierUserAccount;
+	private String cashierNewPassword;
 
 	private String actualUserAccountSubmissionSuccessMsg;
 	private String actualUserRegistrationSuccessMsg;

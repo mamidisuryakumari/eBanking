@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,12 +14,8 @@ import com.eBanking.ui.pages.user.UserTransactionHistoryPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class UserTransactionHistorySteps {
-	
-	
-
-	private static final Logger logger = LoggerFactory.getLogger(UserTransactionHistorySteps.class);
 	private TestContext context;
 	ManagePayeePage managePayeePage;
 	UserTransactionHistoryPage userTransactionHistoryPage;
@@ -35,9 +32,9 @@ public class UserTransactionHistorySteps {
 	public void iGoToTheTransactionHistoryPage() {
 		try {
 		userDashboardPage.navigateToTransactionHistoryPage();
-		logger.info("Navigated to transaction history page successfully");
+		log.info("Navigated to transaction history page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to the transaction history page" , e.getMessage());
+			log.error("An exception error occured while navigating to the transaction history page" , e.getMessage());
 			throw e;
 		}
 	}
@@ -46,9 +43,9 @@ public class UserTransactionHistorySteps {
 	public void iVerifyTheUserTransactionBalance() {
 		try {
 	        double calculatedBalance = userTransactionHistoryPage.checkBalance();
-	        logger.info("Transaction balance calculated from history: " + calculatedBalance);
+			log.info("Transaction balance calculated from history: " + calculatedBalance);
 	    } catch (Exception e) {
-	        logger.error("An exception occurred while calculating the transaction balance", e);
+			log.error("An exception occurred while calculating the transaction balance", e);
 	        throw e;
 	    }
 		
@@ -61,12 +58,12 @@ public class UserTransactionHistorySteps {
 			double actualBalance = userDashboardPage.availableBalance();
 		 double calculatedBalance = context.getCalculateBalance();
 			assertEquals(actualBalance, calculatedBalance, "Balance mismatch:");
-			logger.info("The calculated balance displayed correctly");
+			log.info("The calculated balance displayed correctly");
 		} catch (AssertionError e) {
-			logger.error("Assertion faile: ", e.getMessage());
+			log.error("Assertion faile: ", e.getMessage());
 			throw e;
 		}catch (Exception e) {
-			logger.error("An exception error occured while seeing calculated balance" ,e.getMessage());
+			log.error("An exception error occured while seeing calculated balance" ,e.getMessage());
 			throw e;
 		}
 	}

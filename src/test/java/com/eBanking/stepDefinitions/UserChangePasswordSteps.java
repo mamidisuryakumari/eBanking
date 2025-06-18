@@ -4,6 +4,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,11 +16,10 @@ import com.eBanking.ui.pages.user.UserDashboardPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class UserChangePasswordSteps {
 	
 	private TestContext context;
-	private static final Logger logger = LoggerFactory.getLogger(UserChangePasswordSteps.class);
 	UserDashboardPage userDashboardPage ;
 	UserChangePasswordPage userChangePasswordPage ;
 	
@@ -32,9 +32,9 @@ public class UserChangePasswordSteps {
 	public void iGoToTheChangePasswordPage() {
 		try {
 			userDashboardPage.navigatedToTheChangePasswordPage();
-			logger.info("Go to the change password page successfully");
+			log.info("Go to the change password page successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while going to the change password page" , e);
+			log.error("An exception error occured while going to the change password page" , e);
 			throw e;
 		}
 	}
@@ -44,12 +44,12 @@ public class UserChangePasswordSteps {
 			String actualChangePasswordText = userChangePasswordPage.getChangePasswordLabelText();
 			String ExceptedChangePasswordText = PropertiesManager.getProperty("expected.changePassword.text");
 			assertEquals(ExceptedChangePasswordText, actualChangePasswordText);
-			logger.info("Change password text is matched");
+			 log.info("Change password text is matched");
 		}catch (AssertionError ae) {
-			logger.error("Assertion filed verifying change password text" ,ae);
+			 log.error("Assertion filed verifying change password text" ,ae);
 			throw ae;
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to the change password page");
+			 log.error("An exception error occured while navigating to the change password page");
 			throw e;
 		}
 	 }
@@ -61,9 +61,9 @@ public class UserChangePasswordSteps {
 					enterPasswordDetailsMap.get("Current password"), 
 					enterPasswordDetailsMap.get("New password"), 
 					enterPasswordDetailsMap.get("Confirm password"));
-			logger.info("Enter password details successfully");
+			  log.info("Enter password details successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while entering change password details", e);
+			  log.error("An exception error occured while entering change password details", e);
 			throw e;
 		}
 	  }
@@ -74,13 +74,13 @@ public class UserChangePasswordSteps {
 			String actualPasswordChangeAlertMsg = userChangePasswordPage.getPasswordChangedAlertMessage();
 			String exceptedPasswordChangeAlertMsg = PropertiesManager.getProperty("changePassword.success.message");
 			assertEquals(exceptedPasswordChangeAlertMsg, actualPasswordChangeAlertMsg);
-			logger.info("Password change alert message is matched");
+			  log.info("Password change alert message is matched");
 			userChangePasswordPage.acceptPasswordChangedAlertMessage();
 		} catch (AssertionError ae) {
-			logger.error("Password changed alert message is mismatched" , ae);
+			  log.error("Password changed alert message is mismatched" , ae);
 			throw ae;
 		}catch (Exception e) {
-			logger.error("An exception error occured while seeing password changed message" , e);
+			  log.error("An exception error occured while seeing password changed message" , e);
 			throw e;
 		} 
 	   }

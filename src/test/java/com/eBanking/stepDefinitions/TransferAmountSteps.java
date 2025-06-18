@@ -3,6 +3,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,13 +14,12 @@ import com.eBanking.ui.pages.user.TransferAmountPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class TransferAmountSteps {
 	
 	private TestContext context;
-	private static Logger logger = LoggerFactory.getLogger(TransferAmountSteps.class);
-	ManagePayeePage managePayeePage;
-	TransferAmountPage transferAmountPage;
+	private ManagePayeePage managePayeePage;
+	private TransferAmountPage transferAmountPage;
 	
 	public TransferAmountSteps(TestContext context) {
 		this.context = context;
@@ -35,11 +35,11 @@ public class TransferAmountSteps {
 			String actualTransferAmountText = transferAmountPage.getTransferAmountText();
 			String exceptedTransferAmountText = PropertiesManager.getProperty("transferAmount.text");
 			assertEquals(exceptedTransferAmountText, actualTransferAmountText);
-			logger.info("Tranfer amount text is matched");
+			log.info("Tranfer amount text is matched");
 		}catch (AssertionError ae) {
-			logger.error("Assertion failed : transfer amount text is mismatched" , ae);
+			log.error("Assertion failed : transfer amount text is mismatched" , ae);
 		}catch (Exception e) {
-			logger.error("An exception error occured while verifying transfer amount text" ,e);
+			log.error("An exception error occured while verifying transfer amount text" ,e);
 		}
 		
 	}
@@ -48,9 +48,9 @@ public class TransferAmountSteps {
 	public void moneyTranferToPayeeAccount() {
 		try {
 			transferAmountPage.trasferAmount(PropertiesManager.getProperty("transferAmount"));
-			logger.info("Money transfer to the payees account successfully");
+			log.info("Money transfer to the payees account successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while transfer money to payee account" , e);
+			log.error("An exception error occured while transfer money to payee account" , e);
 			throw e;
 		}
 	}
@@ -60,13 +60,13 @@ public class TransferAmountSteps {
 			String actualTransactionUpadtedSuccessMsg = transferAmountPage.getTransferamountalertMsg();
 			String exceptedTransactionUpadtedSuccessMsg = PropertiesManager.getProperty("transferAmount.success.msg");
 			assertEquals(exceptedTransactionUpadtedSuccessMsg, actualTransactionUpadtedSuccessMsg);
-			logger.info("Transaction updated message is matched");
+			log.info("Transaction updated message is matched");
 			transferAmountPage.acceptTransactionDetails();
 		}catch (AssertionError ae) {
-			logger.error("Assertion failed: Transaction updated message is mismatched" , ae);
+			log.error("Assertion failed: Transaction updated message is mismatched" , ae);
 			throw ae;
 		} catch (Exception e) {
-			logger.error("An exception error occured while verifying transaction updated alert message" ,e);
+			log.error("An exception error occured while verifying transaction updated alert message" ,e);
 			throw e;
 		}
     }

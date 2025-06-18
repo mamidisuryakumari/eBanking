@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,11 +13,10 @@ import com.eBanking.ui.pages.user.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class ManagePayeeSteps {
 
 	private TestContext context;
-	private static Logger logger = LoggerFactory.getLogger(ManagePayeeSteps.class);
 	UserDashboardPage userDashboardPage;
 	ManagePayeePage managePayeePage;
 	
@@ -34,12 +34,12 @@ public class ManagePayeeSteps {
 			String actualManagePayeeText = managePayeePage.getManagePayeeText();
 			String exceptedManagePayeeText = PropertiesManager.getProperty("managePayee.text");
 			assertEquals(exceptedManagePayeeText, actualManagePayeeText);
-			logger.info("Manage payee text is matched");
+			log.info("Manage payee text is matched");
 		} catch (AssertionError ae) {
-			logger.error("Assertion failed: manage payee text is mismatched", ae);
+			log.error("Assertion failed: manage payee text is mismatched", ae);
 			throw ae;
 		} catch (Exception e) {
-			logger.error("An exception error occured while navigating to manage payee page", e);
+			log.error("An exception error occured while navigating to manage payee page", e);
 			throw e;
 		}
 
@@ -50,9 +50,9 @@ public class ManagePayeeSteps {
 		try {
 			managePayeePage.searchPayeeName(PropertiesManager.getProperty("MoneyTransferToPayee"))
 			.deletePayee();
-			logger.info("Delete payee details successfully");
+			log.info("Delete payee details successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while delete payee details", e);
+			log.error("An exception error occured while delete payee details", e);
 			throw e;
 		}
 	}
@@ -63,13 +63,13 @@ public class ManagePayeeSteps {
 			String actualDeleteSuccessMsg = managePayeePage.deleteSuccessMsg();
 			String exceptedDeleteSuccessMsg = PropertiesManager.getProperty("deletePayee.success.msg");
 			assertEquals(exceptedDeleteSuccessMsg, actualDeleteSuccessMsg);
-			logger.info("Data deleted successfully");
+			log.info("Data deleted successfully");
 			managePayeePage.acceptdeleteMsg();
 		} catch (AssertionError ae) {
-			logger.error("Assertion failed : verify delete success message", ae);
+			log.error("Assertion failed : verify delete success message", ae);
 			throw ae;
 		} catch (Exception e) {
-			logger.error("An exception error occured while verifying delete success message", e);
+			log.error("An exception error occured while verifying delete success message", e);
 			throw e;
 		}
 	}

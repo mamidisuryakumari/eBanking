@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,11 +16,10 @@ import com.eBanking.ui.pages.user.UserDashboardPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+@Slf4j
 public class AccountDetailsStep {
 	
 	private TestContext context;
-	private static final Logger logger = LoggerFactory.getLogger(AccountDetailsStep.class);
 	AccountDetailsPage accountDetailsPage ;
 	UserDashboardPage userDashboardPage ;
 	
@@ -37,12 +37,12 @@ public class AccountDetailsStep {
 			 String exceptedAccountDetailsText = PropertiesManager.getProperty("accountdetails.text");
 				String actualAccountDetailsText = accountDetailsPage.getAccountDetailsText();
 				assertEquals(exceptedAccountDetailsText, actualAccountDetailsText);
-				logger.info("Account details text is matched successfully");
+				log.info("Account details text is matched successfully");
 			} catch (AssertionError ae) {
-				logger.error("Assert failed", ae);
+				log.error("Assert failed", ae);
 				throw ae;
 			} catch (Exception e) {
-				logger.error("An unexcepted error occured while navigating to the account details page", e);
+				log.error("An unexcepted error occured while navigating to the account details page", e);
 				throw e;
 			}
 	}
@@ -57,9 +57,9 @@ public class AccountDetailsStep {
 					accountDetails.get("PAN Card ID Number").trim().replace("${panNumber}", Common.generateRandomPanNumber()), 
 					accountDetails.get("Address"),
 					accountDetails.get("Date of birth"));
-			logger.info("Account details entered successfully");
+			log.info("Account details entered successfully");
 		} catch (Exception e) {
-			logger.error("An exception error occured while entered account details", e);
+			log.error("An exception error occured while entered account details", e);
 			throw e;
 		}
 	}
@@ -70,12 +70,12 @@ public class AccountDetailsStep {
 				accountDetailsPage.acceptAccountSubmition();
 				String createAccountSuccessMsg = context.getActualUserAccountSubmissionSuccessMsg();
 				assertEquals(createAccountSuccessMsg, expSuccessMsg);
-				logger.info("Account created and sumbitted for approval");
+				log.info("Account created and sumbitted for approval");
 				} catch (AssertionError e) {
-				logger.error("Assertion failed: Alert text did not match the expected message" , e.getMessage());
+				log.error("Assertion failed: Alert text did not match the expected message" , e.getMessage());
 				throw e;
 			}catch (Exception e) {
-				logger.error("An exception occurred while handling the alert message" , e.getMessage());
+				log.error("An exception occurred while handling the alert message" , e.getMessage());
 				throw e;
 			}
 	}
