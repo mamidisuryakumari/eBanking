@@ -1,5 +1,5 @@
 Feature: Transaction Report feature
-@TansactionReport                                     
+@TansactionReport   @happy-path
   Scenario: Verify that the user can view the transaction report.
   Given I am on the home page
     And I clicks on user menu

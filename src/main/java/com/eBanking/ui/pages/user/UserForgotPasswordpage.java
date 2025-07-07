@@ -1,10 +1,12 @@
 package com.eBanking.ui.pages.user;
 
 import com.eBanking.ui.engine.BasePage;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
+@Slf4j
 public class UserForgotPasswordpage extends BasePage {
 	
 private TestContext context;
@@ -31,6 +33,8 @@ private TestContext context;
 			context.getBot().enterText(emailAddressFld, emilAddress).enterText(mobileNumberFld, mobileNumber)
 					.enterText(newPasswordFld, newPassword).enterText(confirmPasswordFld, confirmPassword)
 					.click(resetBtn);
+			context.setUserEmailId(emilAddress);
+			context.setUserNewPassword(newPassword);
 			return this;
 		}
 	}

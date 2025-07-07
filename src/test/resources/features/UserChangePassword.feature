@@ -1,17 +1,20 @@
 Feature: Change password
 
-  @ChangePassword
+  @ChangePassword @happy-path
   Scenario: Verify that the user can successfully change their password from the user profile
     Given I am on the home page
-    When I go to user login page
+    When I navigate to login page as a user
     And I log in with valid credentials
-      | Email Address | dhanyas@gmail.com |
-      | Password      | dhanya123         |
+      | Email Address | rahul12@gmail.com |
+      | Password      | rahul12           |
     Then I should be navigated to the user dashboard page
     When I go to the change password page
     Then I should be navigated to the change password page
     When I enter change password details
-      | Current password | dhanya123 |
-      | New password     | dhanyas123  |
-      | Confirm password | dhanyas123  |
+      | New password     | rahul@12  |
+      | Confirm password | rahul@12  |
     Then I should see password changed successfully
+    When I go to home page
+    When I navigate to login page as a user
+    And I log in with valid email address and new password
+    Then I should be navigated to the user dashboard page

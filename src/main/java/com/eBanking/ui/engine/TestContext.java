@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class TestContext {
@@ -15,6 +17,7 @@ public class TestContext {
 
 	private  String userEmailId;
 	private  String userPassword;
+	private String userNewPassword;
 
 	private String SearchUserAccount;
 	private String cashierEmpId;
@@ -38,6 +41,11 @@ public class TestContext {
 	private String AdminEmail;
 	private String adminPassword;
 	private String adminNewPassword;
+	private String payeeName;
+	private String payeeAccountNumber;
+
+	private List<String> managePayyeAccount;
+	private List<String> approvedAccount;
 
 	private double calculateBalance;
 

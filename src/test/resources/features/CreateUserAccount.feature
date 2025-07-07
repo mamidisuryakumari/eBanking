@@ -3,7 +3,7 @@ Feature: Create Account feature
   @CreateUserAccount @happyPath
   Scenario: Verify that the user can open a new account.
     Given I am on the home page
-    When I navigate to page as a user
+    When I navigate to login page as a user
     And I go to registration page
     And I add user registration details:
       | First Name    | Kumar_${random}           |

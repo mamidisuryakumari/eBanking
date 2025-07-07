@@ -7,9 +7,9 @@ Feature: Manage Cashier
     And I log in to admin with valid credentials
       | Email Address | admin@gmail.com |
       | Password      | admin123        |
-    And I should be navigated to the admindashboard page
+    And I should be navigated to the admin dashboard page
 
-  @AddCashier
+  @AddCashier @happy-path
   Scenario: Verify that admin can add a cashier
     When I navigate to the add cashier page
     Then I should be on the add cashier page
@@ -24,7 +24,7 @@ Feature: Manage Cashier
       | Password      | cashier128                 |
     Then I should see a confirmation message that the cashier was added successfully
 
-  @AddAndDeleteCashier
+  @AddAndDeleteCashier @happy-path
   Scenario: Verify that admin can delete a cashier
     When I navigate to the add cashier page
     Then I should be on the add cashier page
@@ -39,7 +39,7 @@ Feature: Manage Cashier
       | Password      | cashier128                 |
     Then I should see a confirmation message that the cashier was added successfully
     When I go to admin dashboard page
-    Then I should be navigated to the admindashboard page
+    Then I should be navigated to the admin dashboard page
     When I navigate to the cashier details page
     Then I should be on the cashier details page
     When I delete the cashier
@@ -62,7 +62,7 @@ Feature: Manage Cashier
       | Password      | cashier128                 |
     Then I should see a confirmation message that the cashier was added successfully
     When I go to admin dashboard page
-    Then I should be navigated to the admindashboard page
+    Then I should be navigated to the admin dashboard page
     When I navigate to the cashier details page
     Then I should be on the cashier details page
     When I navigate to the cashier update details page

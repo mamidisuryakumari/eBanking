@@ -1,8 +1,8 @@
 Feature: Transaction History feature
-@TransactionHistory
+@TransactionHistory @happy-path
 Scenario: Verify that the user's available balance matches the transaction balance
   Given I am on the home page
-  When I go to user login page
+  When I navigate to admin login page as a user
   And I log in with valid credentials
     | Email Address | rahul12@gmail.com |
     | Password      | rahul12        |

@@ -48,7 +48,7 @@ public class HomePageSteps{
 			log.error("Title is not matched for home page", e.getMessage());
 			throw e;
 		} catch (Exception e) {
-			log.error("An unexcepted error occured while matching the title" , e);
+			log.error("An unexcepted error occurred while matching the title" , e);
 			throw e;
 		}
 

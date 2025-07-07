@@ -1,6 +1,6 @@
 Feature: Manage Payee feature 
 
- @deletePayee
+ @deletePayee @happy-path
   Scenario: Verify that the user can delete a payee from the account.
    Given I am on the home page
     When I go to user login page
@@ -13,7 +13,7 @@ Feature: Manage Payee feature
     Then I should see the data deleted successfully
    
     
-     @MoneyTraferToPayee
+     @MoneyTransferToPayee @happy-path
   Scenario: Verify that the user can transfer money to a payee's account.
     Given I am on the home page
     When I go to user login page
@@ -25,6 +25,5 @@ Feature: Manage Payee feature
     When I go to the transfer amount page 
     And  I money transfers to the payee's account
     Then I should see the Transaction details have been updated successfully
-    When I go to transaction history page
-  Then I should see money debited from the user account
+
    

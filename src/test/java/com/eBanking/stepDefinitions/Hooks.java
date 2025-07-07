@@ -1,5 +1,9 @@
 package com.eBanking.stepDefinitions;
 
+import io.cucumber.java.AfterStep;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,22 +16,25 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
+import java.io.ByteArrayInputStream;
+
 public class Hooks {
 	private TestContext context;
+
 	public Hooks(TestContext context) {
 		this.context = context;
 	}
-	
+
 	private final Logger logger = LoggerFactory.getLogger(Hooks.class);
 
 	@Before
-	public  void initDriver(Scenario scenario) {
-		
+	public void initDriver(Scenario scenario) {
+
 		BrowserFactory browserFactory = new BrowserFactory();
-		
+
 		WebDriver driver = browserFactory.theTargetBrowserisOpen();
 		Bot bot = browserFactory.getBot();
-		
+
 		context.setDriver(driver);
 		context.setBot(bot);
 
@@ -41,8 +48,22 @@ public class Hooks {
 //		
 //}
 
-	//	ReportManager.flush();
+		//	ReportManager.flush();
 	}
 
-	
-}
+	@AfterStep
+	public void addScreenshot(Scenario scenario) {
+		if (scenario.isFailed()) {
+			try {
+				TakesScreenshot ts = (TakesScreenshot) context.getDriver();
+				byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+
+				scenario.attach(screenshot, "image/png", "Failed Screenshot");
+
+			} catch (Exception e) {
+				System.out.println("Screenshot capture failed: " + e.getMessage());
+			}
+		}
+	}
+	}
+

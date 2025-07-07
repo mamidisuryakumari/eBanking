@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
 
-public class UesrProfilePage extends BasePage {
+public class UserProfilePage extends BasePage {
 	
 private TestContext context;
 	
-	public UesrProfilePage(TestContext context) {
+	public UserProfilePage(TestContext context) {
         super(context);
         this.context = context;
 	}
@@ -24,19 +24,19 @@ private TestContext context;
 		return context.getBot().getText(userProfileLabel);
 	}
 
-	public UesrProfilePage updateUserProfile(String firstName, String lastName , String mobileNumber) {
-		context.getBot().enterText(firstNameFld, firstName)
+	public UserProfilePage updateUserProfile(String lastName , String mobileNumber) {
+		context.getBot()
 		.enterText(lastNameFld, lastName)
 		.enterText(mobileNumberFld, mobileNumber)
 		.click(updateBtn);
 		return this;
 	}
 	
-	public String getUpdateuserProfileSuccessMsg() {
+	public String getUpdateuserProfileAlertSuccessMsg() {
 		return context.getBot().getAlertMessage();
 	}
 	
-	public  UesrProfilePage acceptUserUpdateprofileAlert() {
+	public UserProfilePage acceptUserUpdateprofileAlert() {
 		context.getBot().acceptAlert();
 		 return this;
 	}

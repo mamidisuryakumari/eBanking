@@ -61,7 +61,7 @@ public class AddPayeeSteps {
 	
 	
 	@Then("I should see Payee account details have been added successfully")
-	public void i_should_see_the_message(String string) {
+	public void i_should_see_the_message() {
 	   try {
 		String actualAddPayeeSuccessMsg = addPayeepage.addPayeeAlertmsg();
 		String exceptedAddPayeeSuccessMsg = PropertiesManager.getProperty("addPayyeAccount.success.msg");
@@ -76,6 +76,17 @@ public class AddPayeeSteps {
 	}
 	}
 	
-	
+	@When("I add payee account details")
+	public void iAddPayeeAccountDetails(){
+		try{
+			String accountNumber = context.getPayeeAccountNumber();
+			String payeeName = context.getPayeeName();
+			addPayeepage.addPayyeAccountDetails(accountNumber,accountNumber,payeeName);
+			log.info("Added payee details successfully");
+		} catch (Exception e) {
+			log.error("An exception error occurred while adding payee details" , e);
+			e.getMessage();
+		}
+	}
 
 }

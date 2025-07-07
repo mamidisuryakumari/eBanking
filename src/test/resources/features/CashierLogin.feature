@@ -1,6 +1,6 @@
 Feature: Cashier login
 
-  @Cashierlogin
+  @Cashierlogin @happy-path
   Scenario: Verify that the cashier log in with a valid employee id and password
     Given I am on the home page
     When I navigate to cashier login page as a cashier

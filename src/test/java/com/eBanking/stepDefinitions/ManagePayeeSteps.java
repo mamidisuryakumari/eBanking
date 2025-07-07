@@ -30,14 +30,8 @@ public class ManagePayeeSteps {
 	public void managePayee() {
 		try {
 			userDashboardPage.navigatedToManagePayee();
-
-			String actualManagePayeeText = managePayeePage.getManagePayeeText();
-			String exceptedManagePayeeText = PropertiesManager.getProperty("managePayee.text");
-			assertEquals(exceptedManagePayeeText, actualManagePayeeText);
-			log.info("Manage payee text is matched");
-		} catch (AssertionError ae) {
-			log.error("Assertion failed: manage payee text is mismatched", ae);
-			throw ae;
+			managePayeePage.managePayeeAccountHolderList();
+			log.info("Navigate to manage payee page successfully");
 		} catch (Exception e) {
 			log.error("An exception error occured while navigating to manage payee page", e);
 			throw e;
@@ -73,4 +67,21 @@ public class ManagePayeeSteps {
 			throw e;
 		}
 	}
+
+@Then("I should be navigated to the user manage payee page")
+	public void iShouldBeNavigatedToTheUserManagePayeePage() {
+	try {
+		String actualManagePayeeText = managePayeePage.getManagePayeeText();
+		String exceptedManagePayeeText = PropertiesManager.getProperty("managePayee.text");
+		assertEquals(exceptedManagePayeeText, actualManagePayeeText);
+		log.info("Manage payee text is matched");
+	} catch (AssertionError ae) {
+		log.error("Assertion failed: manage payee text is mismatched", ae);
+		throw ae;
+	} catch (Exception e) {
+		log.error("An exception error occured while navigating to the manage payee page");
+		throw  e;
+	}
+}
+
 }

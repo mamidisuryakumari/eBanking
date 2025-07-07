@@ -7,10 +7,10 @@ Feature: Update cashier
     And I log in to admin with valid credentials
       | Email Address | admin@gmail.com |
       | Password      | admin123        |
-    And I should be navigated to the admindashboard page
+    And I should be navigated to the admin dashboard page
 
-  @UpdateCashier1
-  Scenario: Verify that admin can upadate the cashier details
+  @UpdateCashier1 @happy-path
+  Scenario: Verify that admin can update the cashier details
     When I navigate to the cashier details page
     Then I should be on the cashier details page
     When I navigate to the cashier update details page

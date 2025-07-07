@@ -16,3 +16,4 @@ Feature: Cashier update feature
     When I go to home page
     And I navigate to admin login page as a cashier
     And I log in with valid cashier employeeId and Password
+    Then I should be navigated to the cashier dashboard page

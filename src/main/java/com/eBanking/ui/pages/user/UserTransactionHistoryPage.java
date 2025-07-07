@@ -36,10 +36,12 @@ public class UserTransactionHistoryPage extends BasePage {
 
 	public Double checkBalance() {
 		double balance = 0.0;
-		List<WebElement> totalPageLength = context.getDriver().findElements(totalPages);
 
-		for (int page = 1; page <= totalPageLength.size() - 2; page++) {
-			// Wait for the table to load
+		int totalPagesCount = context.getDriver().findElements(totalPages).size();
+		log.info("Total pages available: " + totalPagesCount);
+
+		for (int page = 1; page <= totalPagesCount - 2; page++) {
+			// Wait for table rows to load
 			List<WebElement> allRows = context.getDriver().findElements(rowsField);
 			log.info("Page " + page + " has " + allRows.size() + " transactions");
 
@@ -60,20 +62,29 @@ public class UserTransactionHistoryPage extends BasePage {
 				}
 			}
 
-			// Click on page 2 if currently on page 1
-			if (page == 1) {
+			// Click next page if not on the last page
+			if (page < totalPagesCount - 2) {
 				try {
-					context.getBot().click(nextPageBtn);
-					Thread.sleep(1000); // Wait for page 2 to load
+					if (context.getBot().getWebElement(nextPageBtn).isEnabled()) {
+
+						log.info("Iteration"+page+""+context.getBot().getWebElement(nextPageBtn).isEnabled()+"");
+						context.getBot().click(nextPageBtn);
+						Thread.sleep(1000); // Replace with WebDriverWait if using dynamic loads
+					} else {
+						log.warn("Next button is disabled on page: " + page);
+						break;
+					}
 				} catch (Exception e) {
-					log.error("Could not go to page 2: " + e.getMessage());
+					log.error("Could not go to page " + (page + 1) + ": " + e.getMessage());
+					break;
 				}
 			}
 		}
 
 		log.info("Calculated balance: " + balance);
-			context.setCalculateBalance(balance);
-			return balance;
-		}
+		context.setCalculateBalance(balance);
+		return balance;
 	}
 
+
+}

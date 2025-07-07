@@ -24,7 +24,7 @@ public class UserForgotPasswordSteps {
 	private UserLoginPage userLoginPage;
 	private UserForgotPasswordpage userForgotPasswordpage;
 	
-	public UserForgotPasswordSteps() {
+	public UserForgotPasswordSteps(TestContext context) {
 		this.context = context;
 		this.userLoginPage = new UserLoginPage(context);
 		this.userForgotPasswordpage = new UserForgotPasswordpage(context);
@@ -75,7 +75,7 @@ public class UserForgotPasswordSteps {
 		}
 	}
    
-  @Then("I should see Password changed succesfully")
+  @Then("I should see Password changed successfully")
   public void iShouldSeePasswordChangedSuccessfully() {
 	  try {
 		String actualPasswordChangeSuccessMsg = userForgotPasswordpage.getPasswordChangeSuccessMsg();
@@ -87,7 +87,7 @@ public class UserForgotPasswordSteps {
 		  log.error("Assertion failed while verifying password changed success message" , ae);
 		throw ae;
 	}catch (Exception e) {
-		  log.error("An exception error occured while seeing paasword changed successfully", e);
+		  log.error("An exception error occurred while seeing password changed successfully", e);
 		throw e;
 	}
   }

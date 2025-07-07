@@ -4,8 +4,8 @@ import com.eBanking.ui.engine.BasePage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.TestContext;
-
-
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 
 public class UserLoginPage extends BasePage {
@@ -22,7 +22,19 @@ public class UserLoginPage extends BasePage {
 	private  final By passwordTextFld = By.id("password");
 	private final  By loginBtn = By.xpath("//button[normalize-space(text())='Login']");
 	private  final By forgotPasswordLink = By.xpath("//a[text()='Forgot Password?']");
-	
+	private final By expectedMsg = By.xpath("//h1[text()='Dashboard']");
+
+	public String getExpectedDashboardText(){
+		 return context.getBot().getText(expectedMsg).trim();
+	}
+	public String getEmailFormatErrorMessage() {
+
+		context.getDriver().findElement(passwordTextFld).click(); // blur
+
+		return context.getBot().getValidationMessage(emailTextFld).trim();
+	}
+
+
 	public String getUserLoginPageTitle() {
 		return context.getBot().getTitle();
 	}
@@ -42,7 +54,14 @@ public class UserLoginPage extends BasePage {
 		context.getBot().enterText(emailTextFld, email)
 		.enterText(passwordTextFld, password)
 		.click(loginBtn);
+		context.setUserEmailId(email);
+		context.setUserPassword(password);
 		return new UserDashboardPage(context);
+	}
+
+	public UserForgotPasswordpage goToTheUserForgotPasswordPage(){
+		context.getBot().click(forgotPasswordLink);
+		return new UserForgotPasswordpage(context);
 	}
 
 }

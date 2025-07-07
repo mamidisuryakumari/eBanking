@@ -2,6 +2,7 @@ package com.eBanking.stepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ import io.cucumber.java.en.When;
 @Slf4j
 public class UserLoginSteps {
 
-	private final TestContext context;
+	private  TestContext context;
 	private UserLoginPage userLoginPage;
 	private HomePage homePage;
 	private AdminLoginPage adminLoginPage;
@@ -34,7 +35,7 @@ public class UserLoginSteps {
 
 	}
 
-	@When("I navigate to page as a {}")
+	@When("I navigate to login page as a {}")
 	public void iNavigateToPage(String user) {
 		try {
 			UserType userType = UserType.valueOf(user.toUpperCase());
@@ -108,12 +109,62 @@ public class UserLoginSteps {
 	@When("I clicks on create an account link")
 	public void user_click_on_create_an_account_link() {
 		try {
-
 			log.info("Account link was clicked successfully");
 		} catch (Exception e) {
 			log.error("An exception occured while clicking create account link", e);
 			throw e;
 		}
 	}
+
+	@When("I log in with valid email address and new password")
+	public void iLogInWithValidEmailAddressAndPassword(){
+		try{
+			userLoginPage.loginUser(context.getUserEmailId(),context.getUserNewPassword());
+			log.info("User log in successfully");
+		} catch (Exception e) {
+			log.error("An exception error occured while logging in the user "+ e.getMessage());
+			throw e;
+		}
+	}
+
+	@When("I log in email address {string} and password {string}")
+	public void i_log_in_email_address_and_password(String eamilAddress, String password) {
+		try {
+			userLoginPage.loginUser(eamilAddress,password );
+			log.info("Email address and password entered successfully");
+		} catch (Exception e) {
+			log.error("An exception error occured while entering email address and password", e.getMessage());
+			throw e;
+		}
+
+	}
+
+	@Then("I should see the message {string}")
+	public void i_should_see_the_message(String expectedMessage) {
+		try {
+            String actualMsgText = userLoginPage.getEmailFormatErrorMessage();
+
+            if(expectedMessage.isEmpty())
+            {
+              assertEquals(expectedMessage,actualMsgText,"Error message s not matched");
+              log.info(actualMsgText);
+            }
+
+			else if(expectedMessage.contains("@ is missing")){
+
+                assertEquals(expectedMessage ,actualMsgText , "Actual and Expected error message are not matched");
+                log.info(actualMsgText);
+			}
+
+		} catch (AssertionError e) {
+			log.error("Asserion failed", e.getMessage());
+			throw e;
+		} catch (Exception e) {
+			log.error("Exception error occurred while seeing the message", e.getMessage());
+			throw  e;
+		}
+
+	}
+
 
 }

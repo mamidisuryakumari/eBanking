@@ -2,7 +2,7 @@ Feature: Logout feature
 
   Scenario: Verify that the user can successfully log out
     Given I am on the home page
-    When I navigate to page as a user
+    When I navigate to login page as a user
     And I log in with valid credentials
       | Email Address | kumari@gmail.com |
       | Password      | kumari123        |

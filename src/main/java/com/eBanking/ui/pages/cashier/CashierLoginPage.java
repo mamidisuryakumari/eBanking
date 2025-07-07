@@ -23,6 +23,7 @@ public class CashierLoginPage extends BasePage {
 	private final By cashierEmployeeIdFld = By.id("empid");
 	private final By cashierPasswordFld = By.id("password");
 	private final By loginBtn = By.xpath("//button[@name='login']");
+	private final By cashierForgotPasswordLink = By.xpath("//a[text()='Forgot Password?']");
 	
 	public String getCashierLoginPageTitle() {
 		return context.getBot().getTitle();
@@ -35,6 +36,11 @@ public class CashierLoginPage extends BasePage {
 		context.setCashierEmpId(employeeId);
 		context.setCashierPassword(password);
 		return new CashierDashboardPage(context);
+	}
+
+	public CashierForgotPasswordPage navigateToTheForgotPasswordPage(){
+		context.getBot().click(cashierForgotPasswordLink);
+		return new CashierForgotPasswordPage(context);
 	}
 	
 

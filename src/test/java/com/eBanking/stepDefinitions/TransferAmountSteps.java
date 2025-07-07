@@ -57,9 +57,9 @@ public class TransferAmountSteps {
     @Then("I should see the Transaction details have been updated successfully")
     public void iShouldSeeTheTransactionDetailsUpdatedSuccessfully() {
     	try {
-			String actualTransactionUpadtedSuccessMsg = transferAmountPage.getTransferamountalertMsg();
-			String exceptedTransactionUpadtedSuccessMsg = PropertiesManager.getProperty("transferAmount.success.msg");
-			assertEquals(exceptedTransactionUpadtedSuccessMsg, actualTransactionUpadtedSuccessMsg);
+			String actualTransactionUpdatedSuccessMsg = transferAmountPage.getTransferamountalertMsg();
+			String exceptedTransactionUpdatedSuccessMsg = PropertiesManager.getProperty("transferAmount.success.msg");
+			assertEquals(exceptedTransactionUpdatedSuccessMsg, actualTransactionUpdatedSuccessMsg);
 			log.info("Transaction updated message is matched");
 			transferAmountPage.acceptTransactionDetails();
 		}catch (AssertionError ae) {

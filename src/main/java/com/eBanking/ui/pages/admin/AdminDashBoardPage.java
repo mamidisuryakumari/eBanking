@@ -25,6 +25,7 @@ public class AdminDashBoardPage extends BasePage {
     private final By adminFld = By.xpath("//img[@class='img-profile rounded-circle']");
     private final By profileLink = By.xpath("//a[@href='profile.php']");
     private final By changePasswordLink = By.xpath("//a[@href='change-password.php']");
+    private final By accountHolderLink = By.xpath("//div[contains(text(), 'Account Holder')]");
 
     public String getAdminDashboardText() {
         return context.getBot().getText(adminDashboardText);
@@ -62,5 +63,9 @@ public class AdminDashBoardPage extends BasePage {
     public AdminChangePasswordPage navigateToAdminChangePasswordPage() {
         context.getBot().click(adminFld).click(changePasswordLink);
         return new AdminChangePasswordPage(context);
+    }
+
+    public void navigateToApprovedAccountRequestPage(){
+        context.getBot().click(accountHolderLink);
     }
 }

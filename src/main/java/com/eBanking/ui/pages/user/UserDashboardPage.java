@@ -1,7 +1,6 @@
 package com.eBanking.ui.pages.user;
 
 import com.eBanking.ui.engine.BasePage;
-import com.eBanking.ui.pages.cashier.CashierDashboardPage;
 import org.openqa.selenium.By;
 
 import com.eBanking.ui.engine.PropertiesManager;
@@ -62,13 +61,13 @@ public class UserDashboardPage extends BasePage {
 	}
 
 	public UserChangePasswordPage navigatedToTheChangePasswordPage() {
-		context.getBot().click(userNameProfile).click(changePasswordLink);
+		context.getBot().click(userImageLink).click(changePasswordLink);
 		return new UserChangePasswordPage(context);
 	}
 
-	public UesrProfilePage navigatedToTheUserProfilePage() {
-		context.getBot().click(userNameProfile).click(profileLink);
-		return new UesrProfilePage(context);
+	public UserProfilePage navigatedToTheUserProfilePage() {
+		context.getBot().click(userImageLink).click(profileLink);
+		return new UserProfilePage(context);
 	}
 
 	public AccountDetailsPage navigatedToAccountDetailsPage() {

@@ -58,12 +58,12 @@ public class UserChangePasswordSteps {
 		  try {
 			var enterPasswordDetailsMap = enterPasswordDetails.asMap();
 			userChangePasswordPage.enterChangePasswordDetails(
-					enterPasswordDetailsMap.get("Current password"), 
+					context.getUserPassword(),
 					enterPasswordDetailsMap.get("New password"), 
 					enterPasswordDetailsMap.get("Confirm password"));
 			  log.info("Enter password details successfully");
 		} catch (Exception e) {
-			  log.error("An exception error occured while entering change password details", e);
+			  log.error("An exception error occurred while entering change password details", e);
 			throw e;
 		}
 	  }
