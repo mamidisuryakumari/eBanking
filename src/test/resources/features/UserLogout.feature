@@ -1,5 +1,6 @@
 Feature: Logout feature
 
+  @Regression
   Scenario: Verify that the user can successfully log out
     Given I am on the home page
     When I navigate to login page as a user

@@ -1,5 +1,6 @@
 Feature: Profile update feature
 
+  @Regression
   Scenario: Verify that the user can successfully update their profile
     Given I am on the home page
     When I navigate to login page as a user

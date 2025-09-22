@@ -9,7 +9,7 @@ Feature: Update cashier
       | Password      | admin123        |
     And I should be navigated to the admin dashboard page
 
-  @UpdateCashier1 @happy-path
+  @UpdateCashier1 @happy-path @Regression @Regression
   Scenario: Verify that admin can update the cashier details
     When I navigate to the cashier details page
     Then I should be on the cashier details page

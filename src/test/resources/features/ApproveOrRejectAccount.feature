@@ -9,7 +9,7 @@ Feature: Admin approve and reject account
     | Password      | admin@123        |
   Then I should be navigated to the admin dashboard page
 
-  @AccountApproval @happy-path
+  @AccountApproval @happy-path @Regression
   Scenario: Verify admin approve the request
     When I go to the new account request page
     Then I am on new account request page

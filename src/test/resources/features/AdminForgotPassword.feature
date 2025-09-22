@@ -1,6 +1,6 @@
 Feature: Admin forgot password
 
-  @Adminforgotpassword @happy-path
+  @Adminforgotpassword @happy-path @Regression
   Scenario: Verify that the admin can reset their password using the forgot Password option
     Given I am on the home page
     When I navigate to login page as a admin

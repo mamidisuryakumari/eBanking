@@ -1,6 +1,6 @@
 Feature: Manage Payee feature 
 
- @deletePayee @happy-path
+ @deletePayee @happy-path @Regression
   Scenario: Verify that the user can delete a payee from the account.
    Given I am on the home page
     When I go to user login page
@@ -13,7 +13,7 @@ Feature: Manage Payee feature
     Then I should see the data deleted successfully
    
     
-     @MoneyTransferToPayee @happy-path
+     @MoneyTransferToPayee @happy-path @Regression
   Scenario: Verify that the user can transfer money to a payee's account.
     Given I am on the home page
     When I go to user login page

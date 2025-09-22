@@ -1,6 +1,6 @@
 Feature: Change password
 
-  @ChangePassword @happy-path
+  @ChangePassword @happy-path @Regression
   Scenario: Verify that the user can successfully change their password from the user profile
     Given I am on the home page
     When I navigate to login page as a user

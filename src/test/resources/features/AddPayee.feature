@@ -1,5 +1,5 @@
 Feature: Add payee feature
-  @AddPayeeorbeneficiary @happy-path
+  @AddPayeeorbeneficiary @happy-path @Regression
   Scenario: Verify that the user can add a payee to the account.
     Given I am on the home page
     When I navigate to login page as a user

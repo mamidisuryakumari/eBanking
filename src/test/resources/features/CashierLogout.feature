@@ -1,5 +1,6 @@
 Feature: Cashier logout
 
+  @Regression
   Scenario: Verify that the cashier can log out successfully
     Given I am on the home page
     When I navigate to cashier login page as a cashier

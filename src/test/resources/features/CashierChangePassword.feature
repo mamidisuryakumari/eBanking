@@ -1,5 +1,6 @@
 Feature: Cashier update feature
 
+  @Regression
   Scenario: Verify that the cashier can update their change password
     Given I am on the home page
     When I navigate to cashier login page as a cashier

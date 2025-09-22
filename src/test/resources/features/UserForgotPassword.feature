@@ -1,5 +1,6 @@
 Feature: User forgot password
 
+  @Regression
   Scenario: Verify that the user can reset their password using the forgot Password option
     Given I am on the home page
     When I navigate to login page as a user

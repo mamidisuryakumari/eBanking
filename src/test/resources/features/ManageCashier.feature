@@ -9,7 +9,7 @@ Feature: Manage Cashier
       | Password      | admin123        |
     And I should be navigated to the admin dashboard page
 
-  @AddCashier @happy-path
+  @AddCashier @happy-path @Regression
   Scenario: Verify that admin can add a cashier
     When I navigate to the add cashier page
     Then I should be on the add cashier page
@@ -24,7 +24,7 @@ Feature: Manage Cashier
       | Password      | cashier128                 |
     Then I should see a confirmation message that the cashier was added successfully
 
-  @AddAndDeleteCashier @happy-path
+  @AddAndDeleteCashier @happy-path @Regression
   Scenario: Verify that admin can delete a cashier
     When I navigate to the add cashier page
     Then I should be on the add cashier page
@@ -47,7 +47,7 @@ Feature: Manage Cashier
     When I search the cashier
     Then I should see No matching records found
 
-  @updateCashier
+  @updateCashier @Regression
   Scenario: Verify that admin can upadate the cashier details
     When I navigate to the add cashier page
     Then I should be on the add cashier page

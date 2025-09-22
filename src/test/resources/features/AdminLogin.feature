@@ -1,5 +1,6 @@
 Feature: Admin Login
 
+  @Regression
   Scenario: Verify that the admin can log in  with valid username and password
 
     Given I am on the home page

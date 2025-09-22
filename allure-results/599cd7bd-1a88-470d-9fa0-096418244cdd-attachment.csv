@@ -1,0 +1,8 @@
+First Name	Dhanya_${random}
+Last Name	M
+Mobile Number	${random}
+Email	dhanya_${random}@gmail.com
+Date of Birth	17031990
+Emp ID	cashier_${random}
+Address	D.no-2-2-1, Nandivada
+Password	cashier128

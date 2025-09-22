@@ -1,5 +1,5 @@
 Feature: Transaction History feature
-@TransactionHistory @happy-path
+@TransactionHistory @happy-path @Regression
 Scenario: Verify that the user's available balance matches the transaction balance
   Given I am on the home page
   When I navigate to admin login page as a user
