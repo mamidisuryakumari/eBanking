@@ -35,9 +35,6 @@ jobs:
     - name: Verify ChromeDriver
       run: chrome --version && chromedriver --version
 
-    - name: Clear corrupted aspectjweaver
-      run: Remove-Item -Recurse -Force $env:USERPROFILE\.m2\repository\org\aspectj\aspectjweaver
-
     - name: Run Selenium BDD Tests with Maven
       run: mvn -B clean test -U
 
