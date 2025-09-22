@@ -31,8 +31,7 @@ jobs:
 
     - name: Install Chrome
       uses: browser-actions/setup-chrome@latest
-    - name: Install ChromeDriver
-      uses: nanasess/setup-chromedriver@latest
+   
     - name: Verify ChromeDriver
       run: chrome --version && chromedriver --version
 
