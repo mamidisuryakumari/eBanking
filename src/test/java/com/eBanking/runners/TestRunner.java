@@ -13,7 +13,7 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
-@IncludeTags("AddPayeeorbeneficiary")
+@IncludeTags("UserLogin")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME,
         value = "pretty,html:target/cucumber-reports/reports.html, " +
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm," +
