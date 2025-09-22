@@ -1,4 +1,4 @@
-name: Selenium BDD CI with Maven
+name: eBanking CI with Maven
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
 
     - name: Install Chrome
       uses: browser-actions/setup-chrome@latest
-
+   
     - name: Verify ChromeDriver
       run: chrome --version && chromedriver --version
 
