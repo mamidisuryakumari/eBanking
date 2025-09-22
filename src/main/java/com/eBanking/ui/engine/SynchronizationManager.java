@@ -98,15 +98,7 @@ public class SynchronizationManager {
 		}
 	}
 
-	public Boolean waitForTitle(String expectedTitle) {
-		try {
-			return wait.until(ExpectedConditions.titleIs(expectedTitle));
 
-		} catch (Exception e) {
-			logger.error("Expected title not present: " + expectedTitle, e);
-			throw new RuntimeException("Expected title not present: " + expectedTitle, e);
-		}
-	}
 	
 
 	public void scrollToView(By locator) {

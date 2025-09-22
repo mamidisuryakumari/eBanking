@@ -106,9 +106,8 @@ public class Bot {
     }
 
     @Step("Get title ''{title}")
-    public String getTitle(String expectedTitle) {
+    public String getTitle() {
         try {
-            wait.waitForTitle(expectedTitle);
             String title = driver.getTitle();
             log.info("Page title is: " + title);
             return title;

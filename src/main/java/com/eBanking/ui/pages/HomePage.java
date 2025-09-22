@@ -57,8 +57,7 @@ public class HomePage extends BasePage {
 	}
 
 	public String getHomePageTitle() {
-		String s = "";
-		return context.getBot().getTitle(s);
+		return context.getBot().getTitle();
 	}
 
 	public UserLoginPage navigatedToAdminLoginPage() {
