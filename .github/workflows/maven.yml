@@ -1,4 +1,4 @@
-name: Selenium BDD CI with Maven
+name: eBanking CI with Maven
 
 on:
   push:
