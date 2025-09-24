@@ -2,7 +2,7 @@ Feature: Login feature
 
   @UserLogin @happy-path @Regression
   Scenario: Verify that the user can log in with valid email address and password
-    Given I am on the home page
+   # Given I am on the home page
     When I navigate to login page as a user
     And I log in with valid credentials
       | Email Address | rahul12@gmail.com |
